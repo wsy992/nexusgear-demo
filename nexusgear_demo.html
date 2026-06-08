@@ -1,0 +1,3491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS GEAR — 沉浸式O2O电竞潮玩定制平台</title>
+<style>
+/* ================================================
+   NEXUS GEAR CSS Design System
+   ================================================ */
+:root {
+  --bg-primary: #070711;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.07);
+  --cyan: #00f5ff;
+  --pink: #ff0090;
+  --purple: #7b2fff;
+  --yellow: #ffd700;
+  --green: #00ff88;
+  --red: #ff3355;
+  --text-primary: #e8eaf6;
+  --text-secondary: #8892a4;
+  --border: rgba(0,245,255,0.12);
+  --border-hover: rgba(0,245,255,0.4);
+  --shadow-cyan: 0 0 24px rgba(0,245,255,0.35);
+  --shadow-pink: 0 0 24px rgba(255,0,144,0.35);
+  --shadow-purple: 0 0 24px rgba(123,47,255,0.35);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI','PingFang SC','Noto Sans SC',system-ui,sans-serif;
+  background:var(--bg-primary);color:var(--text-primary);
+  overflow-x:hidden;line-height:1.6;
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0d0d1a}
+::-webkit-scrollbar-thumb{background:var(--cyan);border-radius:3px}
+
+/* ================ NAVIGATION ================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(7,7,17,0.92);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  padding:0 40px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;cursor:pointer;
+  font-size:22px;font-weight:900;letter-spacing:4px;text-transform:uppercase;
+  user-select:none;
+}
+.nav-logo-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:900;color:#000;
+  box-shadow:var(--shadow-cyan);
+}
+.nav-logo .n1{color:var(--cyan);text-shadow:0 0 20px var(--cyan)}
+.nav-logo .n2{color:var(--pink);text-shadow:0 0 20px var(--pink)}
+.nav-links{display:flex;gap:4px}
+.nav-link{
+  padding:8px 16px;border-radius:6px;color:var(--text-secondary);
+  font-size:14px;cursor:pointer;transition:all 0.2s;
+  border:1px solid transparent;background:none;letter-spacing:0.5px;
+  font-family:inherit;
+}
+.nav-link:hover,.nav-link.active{
+  color:var(--cyan);border-color:var(--border);
+  background:rgba(0,245,255,0.05);text-shadow:0 0 10px var(--cyan);
+}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.nav-btn{
+  padding:8px 18px;border-radius:6px;font-size:13px;
+  cursor:pointer;transition:all 0.2s;border:none;font-weight:600;font-family:inherit;
+}
+.nav-btn-ghost{
+  background:transparent;border:1px solid var(--border);color:var(--text-secondary);
+}
+.nav-btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.nav-btn-primary{
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  color:#000;font-weight:700;
+}
+.nav-btn-primary:hover{box-shadow:var(--shadow-cyan);transform:translateY(-1px)}
+.cart-btn{
+  position:relative;background:none;border:1px solid var(--border);
+  color:var(--text-primary);padding:8px 14px;border-radius:6px;
+  cursor:pointer;transition:all 0.2s;font-size:17px;line-height:1;
+}
+.cart-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.cart-badge{
+  position:absolute;top:-7px;right:-7px;
+  background:var(--pink);color:#fff;width:18px;height:18px;
+  border-radius:50%;font-size:10px;display:none;
+  align-items:center;justify-content:center;font-weight:700;
+}
+
+/* ================ PAGE SYSTEM ================ */
+.page{display:none;min-height:100vh;padding-top:64px}
+.page.active{display:block}
+
+/* ================ HERO ================ */
+.hero{
+  position:relative;min-height:calc(100vh - 104px);
+  display:flex;align-items:center;overflow:hidden;
+  background:linear-gradient(160deg,#070711 0%,#0d0d2b 50%,#070711 100%);
+}
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,245,255,0.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,245,255,0.035) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:gridMove 25s linear infinite;
+}
+@keyframes gridMove{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
+.hero-glow-l{
+  position:absolute;left:-250px;top:10%;width:700px;height:700px;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(0,245,255,0.1) 0%,transparent 70%);
+}
+.hero-glow-r{
+  position:absolute;right:-150px;bottom:5%;width:600px;height:600px;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(123,47,255,0.14) 0%,transparent 70%);
+}
+.hero-content{
+  position:relative;z-index:2;max-width:1280px;margin:0 auto;
+  padding:80px 40px;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,245,255,0.07);border:1px solid rgba(0,245,255,0.25);
+  padding:6px 16px;border-radius:20px;font-size:11px;
+  color:var(--cyan);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:22px;
+}
+.hero-badge::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 8px var(--cyan);
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.hero-title{font-size:68px;font-weight:900;line-height:1.08;margin-bottom:24px}
+.hero-title .l1{display:block;color:var(--text-primary)}
+.hero-title .l2{
+  display:block;
+  background:linear-gradient(135deg,var(--cyan) 0%,var(--purple) 50%,var(--pink) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  background-size:200% 200%;animation:gradShift 4s ease infinite;
+}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero-title .l3{display:block;color:var(--text-primary)}
+.hero-desc{color:var(--text-secondary);font-size:16px;line-height:1.85;margin-bottom:36px;max-width:490px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{
+  padding:14px 32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  color:#000;font-weight:700;font-size:15px;
+  border:none;cursor:pointer;transition:all 0.3s;font-family:inherit;
+}
+.btn-primary:hover{box-shadow:0 0 30px rgba(0,245,255,0.5);transform:translateY(-2px)}
+.btn-secondary{
+  padding:14px 32px;border-radius:8px;background:transparent;
+  border:1px solid rgba(0,245,255,0.4);color:var(--cyan);
+  font-weight:600;font-size:15px;cursor:pointer;transition:all 0.3s;font-family:inherit;
+}
+.btn-secondary:hover{background:rgba(0,245,255,0.07);box-shadow:var(--shadow-cyan)}
+.hero-stats{
+  display:flex;gap:44px;margin-top:48px;
+  padding-top:32px;border-top:1px solid var(--border);
+}
+.stat-num{font-size:30px;font-weight:900;color:var(--cyan)}
+.stat-label{font-size:12px;color:var(--text-secondary);margin-top:2px}
+
+/* Hero Visual */
+.hero-visual{display:flex;align-items:center;justify-content:center}
+.hero-frame{
+  width:400px;height:400px;position:relative;
+  background:rgba(255,255,255,0.025);border:1px solid var(--border);
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 0 80px rgba(0,245,255,0.08),inset 0 0 40px rgba(0,245,255,0.03);
+}
+.hero-frame::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,245,255,0.04),transparent,rgba(123,47,255,0.04));
+}
+.hero-3d-scene{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  perspective:700px;
+}
+.cube-wrap{width:200px;height:80px;transform-style:preserve-3d;animation:spinCube 9s linear infinite}
+@keyframes spinCube{0%{transform:rotateX(15deg) rotateY(0)}100%{transform:rotateX(15deg) rotateY(360deg)}}
+.face{
+  position:absolute;border:1px solid rgba(0,245,255,0.25);
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(0,245,255,0.1),rgba(123,47,255,0.1));
+  font-size:42px;font-weight:800;letter-spacing:2px;color:var(--cyan);
+  backdrop-filter:blur(4px);
+}
+.face.front{width:200px;height:80px;transform:translateZ(40px)}
+.face.back{width:200px;height:80px;transform:rotateY(180deg) translateZ(40px)}
+.face.left{width:80px;height:80px;transform:rotateY(-90deg) translateZ(100px)}
+.face.right{width:80px;height:80px;transform:rotateY(90deg) translateZ(100px)}
+.face.top{width:200px;height:80px;transform:rotateX(90deg) translateZ(40px)}
+.face.bottom{width:200px;height:80px;transform:rotateX(-90deg) translateZ(40px)}
+.htags{position:absolute;inset:0;pointer-events:none}
+.htag{
+  position:absolute;padding:6px 12px;border-radius:6px;
+  font-size:11px;font-weight:600;letter-spacing:1px;
+  background:rgba(7,7,17,0.92);border:1px solid;
+  animation:floatY 4s ease-in-out infinite;white-space:nowrap;
+}
+.htag.c{color:var(--cyan);border-color:rgba(0,245,255,0.4);top:14%;right:-20px}
+.htag.p{color:var(--pink);border-color:rgba(255,0,144,0.4);bottom:22%;left:-24px;animation-delay:1.2s}
+.htag.v{color:#bb86fc;border-color:rgba(123,47,255,0.4);top:58%;right:-26px;animation-delay:2.2s}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ================ TICKER ================ */
+.ticker-wrap{
+  background:rgba(0,0,0,0.55);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);overflow:hidden;height:40px;
+  display:flex;align-items:center;
+}
+.ticker-label{
+  flex-shrink:0;padding:0 18px;font-size:10px;font-weight:700;
+  color:var(--cyan);background:rgba(0,245,255,0.07);
+  border-right:1px solid var(--border);letter-spacing:2px;
+  height:100%;display:flex;align-items:center;text-transform:uppercase;
+}
+.ticker-scroll{overflow:hidden;flex:1}
+.ticker-track{
+  display:flex;animation:tickScroll 80s linear infinite;white-space:nowrap;
+}
+.ticker-item{
+  display:flex;align-items:center;gap:8px;padding:0 22px;
+  font-size:12px;color:var(--text-secondary);
+  border-right:1px solid rgba(255,255,255,0.04);
+}
+.ti-name{color:var(--text-primary);font-weight:600}
+.ti-price{color:var(--cyan);font-weight:700}
+.ti-up{color:var(--green)}
+.ti-dn{color:var(--pink)}
+@keyframes tickScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ================ SECTION COMMON ================ */
+.section{max-width:1280px;margin:0 auto;padding:80px 40px}
+.sec-hd{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:36px;
+}
+.sec-eye{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px}
+.sec-ttl{
+  font-size:34px;font-weight:900;
+  background:linear-gradient(135deg,var(--text-primary),var(--text-secondary));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.sec-link{color:var(--cyan);font-size:13px;cursor:pointer;border-bottom:1px solid transparent;transition:0.2s}
+.sec-link:hover{border-color:var(--cyan)}
+
+/* ================ AI STRIP ================ */
+.ai-strip{
+  background:linear-gradient(135deg,rgba(123,47,255,0.12),rgba(0,245,255,0.06));
+  border:1px solid rgba(123,47,255,0.25);border-radius:20px;
+  padding:28px 32px;display:flex;align-items:flex-start;gap:24px;
+  margin:0 40px 0;flex-wrap:wrap;
+}
+.ai-icon{font-size:44px;flex-shrink:0;margin-top:2px}
+.ai-txt{flex:1;min-width:200px}
+.ai-lbl{font-size:10px;letter-spacing:2px;color:#bb86fc;text-transform:uppercase;margin-bottom:5px}
+.ai-desc{font-size:15px;color:var(--text-primary);font-weight:600;margin-bottom:6px}
+.ai-desc-sub{font-size:12px;color:var(--text-secondary);line-height:1.6}
+.ai-pls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:2;min-width:320px}
+.ai-pill{
+  background:rgba(12,10,28,0.8);border:1px solid rgba(123,47,255,0.3);
+  border-radius:14px;cursor:pointer;transition:all 0.25s;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ai-pill:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,245,255,0.15)}
+.ai-pill-img{width:100%;height:90px;object-fit:contain;background:rgba(255,255,255,0.03);padding:8px;box-sizing:border-box}
+.ai-pill-img-placeholder{width:100%;height:90px;display:flex;align-items:center;justify-content:center;font-size:40px;background:rgba(255,255,255,0.03)}
+.ai-pill-info{padding:8px 10px 10px}
+.ai-pill-name{font-size:11px;font-weight:700;color:var(--text-primary);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ai-pill-price{font-size:13px;font-weight:900;color:var(--cyan)}
+.ai-pill-match{font-size:10px;color:#bb86fc;margin-bottom:2px}
+
+/* ================ PRODUCT GRID ================ */
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pgrid.c3{grid-template-columns:repeat(3,1fr)}
+.pgrid.c2{grid-template-columns:repeat(2,1fr)}
+
+/* ================ PRODUCT CARD ================ */
+.pcard{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.3s;
+  position:relative;
+}
+.pcard:hover{
+  border-color:var(--border-hover);background:var(--bg-card-hover);
+  transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,245,255,0.08);
+}
+.pimg{
+  height:200px;width:100%;display:flex;align-items:center;
+  justify-content:center;position:relative;overflow:hidden;
+}
+.pimg::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 80%,rgba(0,245,255,0.08) 0%,transparent 65%);
+  pointer-events:none;
+}
+.pimg-inner{
+  font-size:82px;transition:all 0.45s cubic-bezier(.2,.8,.3,1);display:flex;
+  align-items:center;justify-content:center;width:100%;height:100%;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+  position:relative;z-index:1;
+}
+.pcard:hover .pimg-inner{transform:scale(1.18) rotate(-5deg);filter:drop-shadow(0 12px 36px rgba(0,245,255,0.3))}
+.pimg-real{
+  width:100%;height:100%;object-fit:contain;
+  padding:16px;transition:transform 0.45s ease;
+  position:relative;z-index:1;
+}
+.pcard:hover .pimg-real{transform:scale(1.08)}
+.pimg-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,transparent 40%,rgba(255,255,255,0.03) 100%);
+  pointer-events:none;z-index:2;
+}
+.pbadges{position:absolute;top:10px;left:10px;display:flex;gap:5px;flex-wrap:wrap}
+.badge{
+  padding:3px 7px;border-radius:4px;font-size:9px;font-weight:700;
+  letter-spacing:0.5px;text-transform:uppercase;
+}
+.b-hot{background:rgba(255,0,144,0.18);color:var(--pink);border:1px solid rgba(255,0,144,0.3)}
+.b-new{background:rgba(0,245,255,0.14);color:var(--cyan);border:1px solid rgba(0,245,255,0.3)}
+.b-sale{background:rgba(255,215,0,0.14);color:var(--yellow);border:1px solid rgba(255,215,0,0.3)}
+.b-pro{background:rgba(123,47,255,0.18);color:#bb86fc;border:1px solid rgba(123,47,255,0.3)}
+.b-limited{background:rgba(255,120,0,0.14);color:#ff9060;border:1px solid rgba(255,120,0,0.3)}
+.pinfo{padding:14px}
+.pbrand{font-size:10px;color:var(--text-secondary);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.pname{font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:5px;line-height:1.3}
+.pspec{font-size:11px;color:var(--text-secondary);margin-bottom:10px;line-height:1.5}
+.pfooter{display:flex;align-items:center;justify-content:space-between}
+.pprice{font-size:17px;font-weight:900;color:var(--cyan)}
+.porig{font-size:11px;color:var(--text-secondary);text-decoration:line-through;margin-left:5px}
+.padd{
+  width:30px;height:30px;border-radius:7px;
+  background:rgba(0,245,255,0.09);border:1px solid rgba(0,245,255,0.3);
+  color:var(--cyan);font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all 0.2s;
+}
+.padd:hover{background:rgba(0,245,255,0.22);box-shadow:var(--shadow-cyan)}
+
+/* ================ WORKSHOP ================ */
+.ws-layout{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+.ws-sidebar{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:16px;padding:22px;position:sticky;top:80px;
+}
+.cat-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.ctab{
+  padding:9px 18px;border-radius:8px;background:var(--bg-card);
+  border:1px solid var(--border);color:var(--text-secondary);
+  font-size:13px;cursor:pointer;transition:all 0.2s;font-weight:600;
+  display:flex;align-items:center;gap:7px;font-family:inherit;
+}
+.ctab.active{
+  background:rgba(0,245,255,0.09);border-color:var(--cyan);
+  color:var(--cyan);box-shadow:0 0 14px rgba(0,245,255,0.09);
+}
+.ctab:hover:not(.active){border-color:rgba(0,245,255,0.3);color:var(--text-primary)}
+.ws-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.build-ttl{
+  font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:18px;display:flex;align-items:center;gap:7px;
+}
+.build-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;min-height:90px}
+.build-item{
+  display:flex;align-items:center;gap:10px;padding:9px 11px;
+  border-radius:8px;background:rgba(255,255,255,0.035);
+  border:1px solid rgba(255,255,255,0.06);
+  animation:slideR 0.3s ease;
+}
+@keyframes slideR{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+.bi-icon{font-size:22px}
+.bi-info{flex:1;min-width:0}
+.bi-name{font-size:11px;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bi-price{font-size:11px;color:var(--cyan)}
+.bi-rm{
+  background:none;border:none;color:var(--text-secondary);cursor:pointer;
+  font-size:15px;padding:2px 5px;border-radius:4px;transition:0.2s;
+}
+.bi-rm:hover{color:var(--pink);background:rgba(255,0,144,0.1)}
+.build-empty{color:var(--text-secondary);font-size:12px;text-align:center;padding:24px 0}
+.build-total-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 0;border-top:1px solid var(--border);font-weight:700;
+}
+.btl{color:var(--text-secondary);font-size:13px}
+.btp{font-size:20px;color:var(--cyan);font-weight:900}
+.build-actions{display:flex;flex-direction:column;gap:8px}
+.cust-sec{margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
+.cust-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-secondary);margin-bottom:8px}
+.swatches{display:flex;gap:7px;flex-wrap:wrap}
+.sw{
+  width:26px;height:26px;border-radius:50%;cursor:pointer;
+  border:2px solid transparent;transition:all 0.2s;
+}
+.sw:hover,.sw.active{border-color:#fff;box-shadow:0 0 9px rgba(255,255,255,0.3)}
+.engrave-input{
+  width:100%;padding:8px 12px;border-radius:6px;
+  background:rgba(255,255,255,0.045);border:1px solid var(--border);
+  color:var(--text-primary);font-size:13px;margin-top:5px;
+  outline:none;transition:border-color 0.2s;font-family:inherit;
+}
+.engrave-input:focus{border-color:var(--cyan)}
+.engrave-input::placeholder{color:var(--text-secondary)}
+
+/* ================ MODAL ================ */
+.m-overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,0.82);backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.m-overlay.open{display:flex}
+.modal{
+  background:#0c0c1e;border:1px solid var(--border);border-radius:20px;
+  max-width:900px;width:100%;max-height:90vh;overflow-y:auto;
+  position:relative;box-shadow:0 0 100px rgba(0,245,255,0.08);
+  animation:mIn 0.3s ease;
+}
+@keyframes mIn{from{opacity:0;transform:scale(0.94) translateY(24px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.m-close{
+  position:sticky;top:0;float:right;margin:16px 16px 0 0;z-index:10;
+  background:rgba(255,255,255,0.05);border:1px solid var(--border);
+  color:var(--text-secondary);width:34px;height:34px;border-radius:8px;
+  cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:0.2s;
+}
+.m-close:hover{background:rgba(255,0,144,0.1);color:var(--pink)}
+.m-body{padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:36px;clear:both}
+.m-viewer{
+  height:310px;border-radius:14px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  perspective:600px;overflow:hidden;position:relative;
+}
+.m-icon{
+  font-size:140px;animation:mFloat 3.2s ease-in-out infinite;
+  filter:drop-shadow(0 0 32px rgba(0,245,255,0.35)) drop-shadow(0 0 60px rgba(123,47,255,0.2));transition:all 0.3s;
+}
+@keyframes mFloat{0%,100%{transform:translateY(0) rotateY(0)}25%{transform:translateY(-10px) rotateY(-12deg)}75%{transform:translateY(6px) rotateY(12deg)}}
+.m-viewer:hover .m-icon{animation:mSpin 1s linear infinite}
+@keyframes mSpin{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+.m-real-img{
+  max-width:80%;max-height:80%;object-fit:contain;
+  animation:mFloat 3.2s ease-in-out infinite;
+  filter:drop-shadow(0 8px 30px rgba(0,245,255,0.22));
+  transition:all 0.3s;cursor:zoom-in;
+}
+.m-viewer:hover .m-real-img{
+  animation:none;transform:scale(1.06);
+  filter:drop-shadow(0 12px 40px rgba(0,245,255,0.35));
+}
+.m-hint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text-secondary);letter-spacing:2px}
+.m-brand{font-size:10px;color:var(--text-secondary);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px}
+.m-name{font-size:22px;font-weight:900;color:var(--text-primary);margin-bottom:10px}
+.m-pr{display:flex;align-items:baseline;gap:10px;margin-bottom:18px}
+.m-price{font-size:30px;font-weight:900;color:var(--cyan)}
+.m-orig{font-size:15px;color:var(--text-secondary);text-decoration:line-through}
+.m-save{font-size:12px;color:var(--green)}
+.m-desc{font-size:13px;color:var(--text-secondary);line-height:1.75;margin-bottom:18px}
+.m-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+.sp-item{padding:9px 11px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.055)}
+.sp-k{font-size:9px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1px}
+.sp-v{font-size:12px;font-weight:600;color:var(--text-primary);margin-top:2px}
+.m-clr{margin-bottom:18px}
+.m-rating{font-size:12px;color:var(--text-secondary);margin-bottom:16px}
+.m-acts{display:flex;gap:10px}
+.btn-build{
+  flex:1;padding:11px;border-radius:8px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  color:#000;font-weight:700;font-size:13px;border:none;cursor:pointer;transition:all 0.3s;font-family:inherit;
+}
+.btn-build:hover{box-shadow:0 0 25px rgba(0,245,255,0.4);transform:translateY(-1px)}
+.btn-addcart{
+  flex:1;padding:11px;border-radius:8px;background:transparent;
+  border:1px solid rgba(255,0,144,0.4);color:var(--pink);
+  font-weight:700;font-size:13px;cursor:pointer;transition:all 0.3s;font-family:inherit;
+}
+.btn-addcart:hover{background:rgba(255,0,144,0.09);box-shadow:var(--shadow-pink)}
+
+/* ================ COMMUNITY ================ */
+.cf-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.cf-btn{
+  padding:7px 16px;border-radius:20px;background:var(--bg-card);
+  border:1px solid var(--border);color:var(--text-secondary);
+  font-size:12px;cursor:pointer;transition:all 0.2s;font-family:inherit;
+}
+.cf-btn.active{background:rgba(255,0,144,0.09);border-color:var(--pink);color:var(--pink)}
+.cf-btn:hover:not(.active){border-color:rgba(255,255,255,0.18);color:var(--text-primary)}
+.masonry{columns:4;column-gap:18px}
+.ccard{
+  break-inside:avoid;margin-bottom:18px;
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;cursor:pointer;transition:all 0.3s;
+}
+.ccard:hover{border-color:rgba(255,0,144,0.3);transform:translateY(-4px);box-shadow:var(--shadow-pink)}
+.cimg{
+  width:100%;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.cimg-in{
+  width:100%;padding-bottom:75%;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.cimg-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:56px}
+.cimg-real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
+.ccard:hover .cimg-real{transform:scale(1.05)}
+.cinfo{padding:13px 15px}
+.cuser{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.cavatar{
+  width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:#000;flex-shrink:0;
+}
+.cuname{font-size:12px;font-weight:600;color:var(--text-primary)}
+.ctag-badge{
+  font-size:9px;padding:2px 6px;border-radius:4px;margin-left:auto;
+  background:rgba(0,245,255,0.1);color:var(--cyan);border:1px solid rgba(0,245,255,0.2);
+  white-space:nowrap;
+}
+.ccap{font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:9px}
+.cfoot{display:flex;gap:14px;align-items:center}
+.cact{
+  display:flex;align-items:center;gap:4px;font-size:11px;
+  color:var(--text-secondary);cursor:pointer;transition:0.2s;
+}
+.cact:hover{color:var(--pink)}
+.cact.liked{color:var(--pink)}
+
+/* ================ GIFT PAGE ================ */
+.gift-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:60px 0}
+.gift-visual{display:flex;align-items:center;justify-content:center;height:420px;position:relative}
+.gbox{
+  width:250px;height:250px;position:relative;
+  animation:gFloat 3.5s ease-in-out infinite;
+}
+@keyframes gFloat{0%,100%{transform:translateY(0) rotateZ(0)}50%{transform:translateY(-16px) rotateZ(2deg)}}
+.gbox-body{
+  width:100%;height:100%;border-radius:22px;
+  background:linear-gradient(135deg,var(--purple),#5a0099);
+  display:flex;align-items:center;justify-content:center;font-size:90px;
+  box-shadow:0 24px 70px rgba(123,47,255,0.45),0 0 0 1px rgba(255,255,255,0.09);
+  position:relative;overflow:hidden;
+}
+.gbox-body::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.09) 0%,transparent 50%)}
+.grh,.grv{position:absolute;background:var(--yellow);box-shadow:0 0 16px rgba(255,215,0,0.6)}
+.grh{height:7px;left:0;right:0;top:50%;transform:translateY(-50%)}
+.grv{width:7px;top:0;bottom:0;left:50%;transform:translateX(-50%)}
+.g-particles{position:absolute;inset:-50px;pointer-events:none}
+.g-p{
+  position:absolute;width:7px;height:7px;border-radius:50%;
+  animation:pFly 3s ease-out infinite;
+}
+@keyframes pFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0)}}
+.gift-info{padding:20px 0}
+.gift-title{font-size:42px;font-weight:900;line-height:1.2;margin-bottom:16px}
+.gift-title span{color:var(--purple)}
+.gift-desc{color:var(--text-secondary);font-size:15px;line-height:1.85;margin-bottom:30px}
+.gift-steps{display:flex;flex-direction:column;gap:14px;margin-bottom:30px}
+.g-step{
+  display:flex;align-items:flex-start;gap:14px;padding:14px;
+  border-radius:11px;background:var(--bg-card);border:1px solid var(--border);
+}
+.g-num{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:900;color:#000;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+}
+.g-stl{font-size:13px;font-weight:700;margin-bottom:3px}
+.g-std{font-size:11px;color:var(--text-secondary)}
+
+/* ================ CART SIDEBAR ================ */
+.cart-overlay{
+  position:fixed;inset:0;z-index:1500;
+  background:rgba(0,0,0,0.65);backdrop-filter:blur(5px);display:none;
+}
+.cart-overlay.open{display:block}
+.cart-sidebar{
+  position:fixed;top:0;right:-420px;bottom:0;width:420px;z-index:1600;
+  background:#0c0c1e;border-left:1px solid var(--border);
+  display:flex;flex-direction:column;transition:right 0.3s ease;
+}
+.cart-sidebar.open{right:0}
+.cart-hd{
+  padding:18px 22px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cart-ttl{font-size:15px;font-weight:800;letter-spacing:1px}
+.cart-x{background:none;border:none;color:var(--text-secondary);font-size:24px;cursor:pointer;transition:0.2s;line-height:1}
+.cart-x:hover{color:var(--pink)}
+.cart-items{flex:1;overflow-y:auto;padding:14px 22px;display:flex;flex-direction:column;gap:10px}
+.ci{
+  display:flex;align-items:center;gap:12px;padding:12px;border-radius:11px;
+  background:rgba(255,255,255,0.028);border:1px solid rgba(255,255,255,0.055);
+}
+.ci-icon{font-size:34px;flex-shrink:0}
+.ci-info{flex:1;min-width:0}
+.ci-name{font-size:12px;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-price{font-size:13px;font-weight:700;color:var(--cyan);margin-top:1px}
+.ci-qty{display:flex;align-items:center;gap:7px;margin-top:5px}
+.qb{
+  width:22px;height:22px;border-radius:4px;background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);color:var(--text-primary);cursor:pointer;
+  font-size:14px;display:flex;align-items:center;justify-content:center;transition:0.2s;
+}
+.qb:hover{background:rgba(0,245,255,0.1);border-color:var(--cyan);color:var(--cyan)}
+.qn{font-size:12px;font-weight:600;min-width:18px;text-align:center}
+.ci-del{background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:16px;transition:0.2s;flex-shrink:0}
+.ci-del:hover{color:var(--pink)}
+.cart-empty-msg{text-align:center;color:var(--text-secondary);padding:56px 0}
+.cart-ft{padding:18px 22px;border-top:1px solid var(--border)}
+.cart-sub{display:flex;justify-content:space-between;margin-bottom:7px}
+.cart-sub-l{color:var(--text-secondary);font-size:12px}
+.cart-sub-v{font-size:12px;font-weight:600}
+.cart-total-row{display:flex;justify-content:space-between;margin-bottom:14px;align-items:baseline}
+.ct-l{font-size:14px;font-weight:700}
+.ct-v{font-size:22px;font-weight:900;color:var(--cyan)}
+.btn-checkout{
+  width:100%;padding:13px;border-radius:9px;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  color:#fff;font-weight:700;font-size:14px;border:none;
+  cursor:pointer;transition:all 0.3s;letter-spacing:1px;font-family:inherit;
+}
+.btn-checkout:hover{box-shadow:var(--shadow-pink);transform:translateY(-1px)}
+.btn-gift-cta{
+  width:100%;margin-top:8px;padding:11px;border-radius:9px;
+  background:transparent;border:1px solid var(--border);color:var(--text-secondary);
+  font-size:13px;cursor:pointer;transition:0.2s;font-family:inherit;
+}
+.btn-gift-cta:hover{border-color:var(--purple);color:#bb86fc}
+
+/* ================ TOAST ================ */
+.toast-container{position:fixed;bottom:28px;right:28px;z-index:3000;display:flex;flex-direction:column;gap:8px}
+.toast{
+  padding:12px 18px;border-radius:9px;
+  background:#15152a;border-left:4px solid var(--cyan);
+  color:var(--text-primary);font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:9px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.45);
+  animation:tIn 0.3s ease;max-width:300px;
+}
+.toast.s{border-color:var(--green)}
+.toast.e{border-color:var(--red)}
+.toast.i{border-color:var(--purple)}
+@keyframes tIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes tOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(30px)}}
+
+/* ================ ABOUT ================ */
+.about-hero{
+  min-height:420px;display:flex;align-items:center;
+  background:linear-gradient(160deg,#070711,#0d0d2b 60%,#070711);
+  position:relative;overflow:hidden;
+}
+.about-hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,245,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,0.03) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.about-content{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:80px 40px}
+.about-pill{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;
+  background:rgba(0,245,255,0.07);border:1px solid rgba(0,245,255,0.22);
+  padding:6px 16px;border-radius:20px;font-size:11px;
+  color:var(--cyan);letter-spacing:2px;text-transform:uppercase;
+}
+.about-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.about-card{
+  padding:28px;border-radius:16px;
+  background:var(--bg-card);border:1px solid var(--border);
+}
+.about-card-icon{font-size:40px;margin-bottom:16px}
+.about-card-ttl{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--text-primary)}
+.about-card-desc{font-size:13px;color:var(--text-secondary);line-height:1.75}
+
+/* ================ FOOTER ================ */
+.footer{border-top:1px solid var(--border);padding:56px 40px 28px;max-width:1280px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.footer-brand-desc{font-size:12px;color:var(--text-secondary);line-height:1.8;margin-top:10px}
+.footer-col-ttl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:7px}
+.footer-lk{font-size:12px;color:var(--text-secondary);cursor:pointer;transition:0.2s}
+.footer-lk:hover{color:var(--text-primary)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border);font-size:11px;color:var(--text-secondary)}
+
+/* ================ FLOWCHART ================ */
+.flow-row{
+  display:flex;align-items:center;flex-wrap:wrap;gap:0;
+  overflow-x:auto;padding-bottom:12px;
+}
+.flow-node{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  min-width:130px;
+}
+.flow-box{
+  width:120px;padding:14px 10px;border-radius:12px;text-align:center;
+  background:var(--bg-card);border:1px solid var(--border);
+  font-size:12px;font-weight:600;color:var(--text-primary);line-height:1.4;
+  transition:all 0.3s;cursor:default;position:relative;
+}
+.flow-box:hover{transform:translateY(-3px);border-color:var(--border-hover);box-shadow:0 8px 24px rgba(0,245,255,0.12)}
+.flow-box-icon{font-size:26px;margin-bottom:6px;display:block}
+.flow-box.start{border-color:rgba(0,245,255,0.5);background:rgba(0,245,255,0.07)}
+.flow-box.end{border-color:rgba(0,255,136,0.5);background:rgba(0,255,136,0.07)}
+.flow-box.decision{
+  width:110px;height:110px;border-radius:12px;
+  transform:rotate(45deg);display:flex;align-items:center;justify-content:center;
+  border-color:rgba(255,215,0,0.5);background:rgba(255,215,0,0.07);
+  padding:0;
+}
+.flow-box.decision .flow-inner{transform:rotate(-45deg);font-size:11px;font-weight:600;text-align:center;line-height:1.3}
+.flow-box.pink-node{border-color:rgba(255,0,144,0.5);background:rgba(255,0,144,0.07)}
+.flow-box.purple-node{border-color:rgba(123,47,255,0.5);background:rgba(123,47,255,0.07)}
+.flow-arrow{
+  display:flex;align-items:center;color:var(--text-secondary);
+  font-size:22px;padding:0 8px;flex-shrink:0;margin-top:-30px;
+}
+.flow-arrow.down{font-size:18px;margin-top:0;color:var(--cyan)}
+.flow-label{font-size:10px;color:var(--text-secondary);letter-spacing:0.5px}
+.flow-branch{display:flex;flex-direction:column;gap:16px}
+.flow-sub-row{display:flex;align-items:flex-start;gap:0}
+
+/* ================ SEARCH ================ */
+.search-wrap{
+  position:relative;margin-bottom:24px;
+}
+.search-input{
+  width:100%;padding:12px 20px 12px 44px;border-radius:10px;
+  background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  color:var(--text-primary);font-size:14px;outline:none;
+  transition:all 0.2s;font-family:inherit;
+}
+.search-input:focus{border-color:var(--cyan);background:rgba(0,245,255,0.04);box-shadow:0 0 0 3px rgba(0,245,255,0.08)}
+.search-input::placeholder{color:var(--text-secondary)}
+.search-icon{
+  position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  color:var(--text-secondary);font-size:16px;pointer-events:none;
+}
+.search-clear{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:var(--text-secondary);cursor:pointer;
+  font-size:16px;display:none;transition:color 0.2s;
+}
+.search-clear:hover{color:var(--pink)}
+.search-count{font-size:12px;color:var(--text-secondary);margin-bottom:16px}
+
+/* ================ UTILITIES ================ */
+.g-cyan{color:var(--cyan);text-shadow:0 0 20px rgba(0,245,255,0.4)}
+.g-pink{color:var(--pink)}
+.divider{height:1px;background:var(--border);margin:0 40px}
+@media(max-width:960px){
+  .hero-content{grid-template-columns:1fr}.hero-visual{display:none}
+  .pgrid{grid-template-columns:repeat(2,1fr)}.ws-layout{grid-template-columns:1fr}
+  .masonry{columns:2}.gift-layout{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}.m-body{grid-template-columns:1fr}
+  .ai-strip{flex-direction:column;align-items:flex-start}
+  .comm-modal{grid-template-columns:1fr}
+  .comm-img-side{min-height:220px;border-radius:20px 20px 0 0}
+}
+
+/* ===== COMMUNITY POST MODAL ===== */
+.comm-overlay{position:fixed;inset:0;z-index:1999;background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:20px}
+.comm-overlay.open{display:flex}
+.comm-modal{background:#0c0c1e;border:1px solid var(--border);border-radius:20px;max-width:860px;width:100%;max-height:92vh;overflow:hidden;position:relative;box-shadow:0 0 80px rgba(255,0,144,0.1);animation:mIn 0.3s ease;display:grid;grid-template-columns:1fr 1fr}
+.comm-img-side{min-height:440px;position:relative;overflow:hidden;border-radius:20px 0 0 20px}
+.comm-img-side img{width:100%;height:100%;object-fit:cover;display:block}
+.comm-img-tags{position:absolute;bottom:0;left:0;right:0;padding:14px;background:linear-gradient(transparent,rgba(0,0,0,0.75))}
+.comm-info-side{padding:24px;display:flex;flex-direction:column;overflow-y:auto;max-height:92vh}
+.comm-close-btn{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.6);border:1px solid var(--border);color:var(--text-secondary);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:0.2s;z-index:10}
+.comm-close-btn:hover{background:rgba(255,0,144,0.15);color:var(--pink)}
+.comm-post-author{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.comm-post-cap{font-size:13px;color:var(--text-primary);line-height:1.8;margin-bottom:14px;flex:1}
+.comm-post-acts{display:flex;gap:10px;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:14px;flex-wrap:wrap}
+.cpa-btn{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-secondary);cursor:pointer;background:none;border:none;font-family:inherit;transition:0.2s;padding:5px 10px;border-radius:6px}
+.cpa-btn:hover,.cpa-btn.liked{color:var(--pink);background:rgba(255,0,144,0.08)}
+.comm-prod-rec{background:rgba(0,245,255,0.04);border:1px solid rgba(0,245,255,0.15);border-radius:12px;padding:14px;margin-top:auto}
+.cpr-ttl{font-size:9px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;margin-bottom:10px}
+.cpr-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.cpr-icon{font-size:30px;flex-shrink:0}
+.cpr-name{font-size:12px;font-weight:700;color:var(--text-primary);margin-bottom:2px}
+.cpr-price{font-size:15px;font-weight:900;color:var(--cyan)}
+.btn-sameorder{width:100%;padding:11px;border-radius:8px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#000;font-weight:700;font-size:13px;border:none;cursor:pointer;transition:all 0.3s;font-family:inherit;letter-spacing:0.5px}
+.btn-sameorder:hover{box-shadow:0 0 24px rgba(0,245,255,0.4);transform:translateY(-1px)}
+
+/* ===== GIFT ANIMATION MODAL ===== */
+.gift-open-overlay{position:fixed;inset:0;z-index:2500;background:rgba(0,0,0,0.96);backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center}
+.gift-open-overlay.open{display:flex;animation:mIn 0.3s ease}
+.gift-open-inner{position:relative;text-align:center;padding:32px 48px;border-radius:24px;border:1px solid rgba(123,47,255,0.25);background:rgba(12,12,30,0.9);min-width:420px;max-width:520px;max-height:90vh;overflow-y:auto}
+.gift-open-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-secondary);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:0.2s}
+.gift-open-close:hover{color:var(--pink);background:rgba(255,0,144,0.1)}
+.gbox-stage{width:180px;height:180px;margin:0 auto 10px;position:relative;cursor:pointer}
+.gbox-stage-lid{position:absolute;top:0;left:0;width:100%;height:48%;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:center;transition:all 0.65s cubic-bezier(0.34,1.56,0.64,1);transform-origin:top center;z-index:2;font-size:13px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.7)}
+.gbox-stage-body{position:absolute;bottom:0;left:0;width:100%;height:56%;border-radius:0 0 14px 14px;display:flex;align-items:center;justify-content:center;font-size:44px}
+.gbox-ribbon-h{position:absolute;height:8px;left:0;right:0;box-shadow:0 0 12px rgba(255,215,0,0.9);z-index:3;pointer-events:none;background:var(--yellow)}
+.gbox-ribbon-v{position:absolute;width:8px;top:0;bottom:0;left:50%;transform:translateX(-50%);box-shadow:0 0 12px rgba(255,215,0,0.9);z-index:3;pointer-events:none;background:var(--yellow)}
+.gbox-stage.opened .gbox-stage-lid{transform:translateY(-95px) rotateX(-40deg) scale(0.9);opacity:0}
+.gbox-sparkle-ring{position:absolute;inset:-60px;pointer-events:none;overflow:visible}
+.gs-dot{position:absolute;border-radius:50%;opacity:0;left:50%;top:50%}
+@keyframes gsDot{0%{opacity:1;transform:translate(-50%,-50%) scale(0.3)}50%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--gx)),calc(-50% + var(--gy))) scale(0)}}
+.gift-open-hint{font-size:11px;color:var(--text-secondary);letter-spacing:1.5px;margin-bottom:8px;min-height:18px}
+.gift-open-ttl{font-size:22px;font-weight:900;color:var(--text-primary);margin-bottom:4px}
+.gift-open-sub{font-size:13px;color:var(--text-secondary);margin-bottom:16px}
+.gift-items-row{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.gi-chip{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:11px;color:var(--text-primary);display:flex;align-items:center;gap:5px;transition:all 0.4s}
+.gi-chip.revealed{border-color:rgba(0,245,255,0.35);background:rgba(0,245,255,0.07);color:var(--cyan)}
+.gift-link-box{background:rgba(0,245,255,0.05);border:1px dashed rgba(0,245,255,0.35);border-radius:8px;padding:11px 18px;margin-bottom:16px;font-family:monospace;font-size:13px;letter-spacing:3px;color:var(--cyan)}
+.gift-share-row{display:flex;gap:10px;justify-content:center}
+.gift-share-wechat{padding:10px 22px;border-radius:8px;background:linear-gradient(135deg,#07c160,#00a854);color:#fff;font-weight:700;font-size:13px;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.gift-share-weibo{padding:10px 22px;border-radius:8px;background:linear-gradient(135deg,#e6162d,#aa0020);color:#fff;font-weight:700;font-size:13px;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.gift-share-wechat:hover,.gift-share-weibo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.3)}
+
+/* Gift pop items */
+@keyframes giftItemPop{
+  0%{opacity:0;transform:translateX(-50%) translateY(var(--gift-src,80px)) scale(0.1) rotate(-15deg)}
+  65%{opacity:1;transform:translateX(-50%) translateY(var(--gift-ty,0px)) scale(1.12) rotate(3deg)}
+  100%{opacity:1;transform:translateX(-50%) translateY(var(--gift-ty,0px)) scale(1) rotate(0deg)}
+}
+@keyframes giftItemFloat{
+  0%,100%{transform:translateX(-50%) translateY(var(--gift-ty,0px))}
+  50%{transform:translateX(-50%) translateY(calc(var(--gift-ty,0px) - 7px))}
+}
+.gift-prod-popup{
+  position:absolute;top:0;left:var(--gift-lx,50%);
+  transform:translateX(-50%) translateY(60px) scale(0.1);
+  opacity:0;z-index:10;width:96px;
+  background:rgba(16,10,36,0.95);border:1px solid rgba(0,245,255,0.3);
+  border-radius:14px;padding:10px 8px;text-align:center;pointer-events:none;
+}
+.gift-prod-popup.popped{
+  animation:giftItemPop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards,
+             giftItemFloat 2.8s ease-in-out 0.7s infinite;
+  pointer-events:auto;cursor:pointer;
+}
+.gift-prod-popup img{width:60px;height:60px;object-fit:contain;display:block;margin:0 auto 5px}
+.gift-prod-popup .gpop-name{font-size:10px;font-weight:700;color:var(--text-primary);line-height:1.3}
+.gift-prod-popup .gpop-price{font-size:11px;color:var(--cyan);font-weight:700;margin-top:2px}
+
+/* WeChat-style gift card */
+.gift-wechat-card{
+  background:linear-gradient(135deg,#1a7a40,#0a5e2c);
+  border-radius:18px;padding:20px 28px 16px;margin-bottom:12px;
+  border:1px solid rgba(7,193,96,0.4);box-shadow:0 0 30px rgba(7,193,96,0.2);
+  position:relative;overflow:hidden;
+}
+.gift-wechat-card::before{content:'';position:absolute;right:-20px;top:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.06)}
+.gift-wechat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.gift-wechat-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--purple));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.gift-wechat-from{font-size:12px;color:rgba(255,255,255,0.7)}
+.gift-wechat-msg{font-size:14px;font-weight:700;color:#fff}
+.gift-wechat-divider{height:1px;background:rgba(255,255,255,0.15);margin:0 -28px 14px}
+.gift-wechat-code-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gift-wechat-code{font-family:monospace;font-size:20px;letter-spacing:4px;color:#ffd700;font-weight:900}
+.gift-wechat-open-btn{background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.4);color:#ffd700;padding:6px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;transition:0.2s;white-space:nowrap}
+.gift-wechat-open-btn:hover{background:rgba(255,215,0,0.25)}
+.gift-products-stage{position:relative;height:140px;margin:8px 0 0;overflow:visible}
+
+/* ===== ENHANCED FLOWCHART V2 ===== */
+.fv2-row{display:flex;align-items:flex-start;flex-wrap:wrap;padding-bottom:16px;gap:0;overflow-x:auto}
+.fv2-node{display:flex;flex-direction:column;align-items:center;min-width:148px}
+.fv2-box{width:134px;padding:18px 10px;border-radius:16px;text-align:center;font-size:12px;font-weight:600;color:var(--text-primary);line-height:1.4;border:1px solid;transition:all 0.3s;cursor:default}
+.fv2-box:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,245,255,0.15)}
+.fv2-icon{font-size:30px;display:block;margin-bottom:8px}
+.fv2-sub{font-size:10px;color:var(--text-secondary);display:block;margin-top:3px;font-weight:400;line-height:1.4}
+.fv2-box.c-start{background:rgba(0,245,255,0.08);border-color:rgba(0,245,255,0.45);box-shadow:0 0 18px rgba(0,245,255,0.07)}
+.fv2-box.c-end{background:rgba(0,255,136,0.08);border-color:rgba(0,255,136,0.45)}
+.fv2-box.c-purple{background:rgba(123,47,255,0.1);border-color:rgba(123,47,255,0.45)}
+.fv2-box.c-pink{background:rgba(255,0,144,0.08);border-color:rgba(255,0,144,0.4)}
+.fv2-box.c-yellow{background:rgba(255,215,0,0.07);border-color:rgba(255,215,0,0.4)}
+.fv2-box.c-default{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.1)}
+.fv2-arrow{display:flex;align-items:center;color:var(--text-secondary);font-size:22px;padding:0 4px;align-self:center;margin-bottom:20px;flex-shrink:0}
+.fv2-branch{display:flex;flex-direction:column;gap:28px;margin-left:4px}
+.fv2-brow{display:flex;align-items:center;gap:0}
+.fv2-blabel{font-size:10px;font-weight:700;padding:3px 6px;border-radius:4px;margin-right:6px;align-self:center;white-space:nowrap;writing-mode:vertical-rl;letter-spacing:1px}
+.fv2-blabel.buy{color:var(--green);background:rgba(0,255,136,0.1)}
+.fv2-blabel.gift{color:var(--yellow);background:rgba(255,215,0,0.1)}
+
+/* ===== DUTCH AUCTION ===== */
+.auc-section{padding:0 0 32px}
+.auc-hd{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding:0 24px}
+.auc-badge{background:linear-gradient(135deg,var(--yellow),#ff9900);color:#000;font-weight:900;font-size:10px;letter-spacing:1.5px;padding:4px 10px;border-radius:4px}
+.auc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 24px}
+@media(max-width:700px){.auc-grid{grid-template-columns:1fr}}
+.auc-card{background:rgba(20,14,42,0.85);border:1px solid rgba(255,215,0,0.25);border-radius:16px;padding:20px;position:relative;overflow:hidden;transition:all 0.3s}
+.auc-card:hover{border-color:rgba(255,215,0,0.6);transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,215,0,0.15)}
+.auc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,215,0,0.04) 0%,transparent 60%);pointer-events:none}
+.auc-lbl{position:absolute;top:12px;right:12px;background:rgba(255,0,0,0.85);color:#fff;font-size:9px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:4px}
+.auc-img{font-size:52px;text-align:center;margin:10px 0 14px;display:block}
+.auc-name{font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px}
+.auc-orig{font-size:11px;color:var(--text-secondary);text-decoration:line-through;margin-bottom:8px}
+.auc-cur{font-size:28px;font-weight:900;color:var(--yellow);line-height:1}
+.auc-save{font-size:11px;color:#ff9900;margin-top:2px;margin-bottom:10px}
+.auc-meta{display:flex;gap:12px;margin-bottom:14px;font-size:11px;color:var(--text-secondary)}
+.auc-meta span{display:flex;align-items:center;gap:4px}
+.auc-timer{font-family:monospace;font-size:18px;font-weight:900;color:var(--yellow);letter-spacing:2px;margin-bottom:14px;text-shadow:0 0 12px rgba(255,215,0,0.5)}
+.btn-snatch{width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,var(--yellow),#ff9900);color:#000;font-weight:900;font-size:13px;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s;letter-spacing:1px}
+.btn-snatch:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,180,0,0.4)}
+.btn-snatch:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.auc-progress{width:100%;height:4px;background:rgba(255,255,255,0.08);border-radius:4px;margin-bottom:14px;overflow:hidden}
+.auc-progress-bar{height:100%;background:linear-gradient(90deg,var(--yellow),#ff4400);border-radius:4px;transition:width 1s linear}
+
+/* ===== DNA MODAL ===== */
+.dna-overlay{position:fixed;inset:0;z-index:2100;background:rgba(0,0,0,0.82);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px}
+.dna-overlay.open{display:flex}
+.dna-modal{background:linear-gradient(135deg,rgba(16,10,40,0.98),rgba(8,6,22,0.98));border:1px solid rgba(0,245,255,0.25);border-radius:20px;max-width:600px;width:100%;padding:32px;position:relative;max-height:90vh;overflow-y:auto}
+.dna-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-secondary);font-size:22px;cursor:pointer;padding:4px 8px;transition:color 0.2s}
+.dna-close:hover{color:var(--text-primary)}
+.dna-step-bar{display:flex;gap:6px;margin-bottom:24px}
+.dna-step-dot{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.1);transition:background 0.4s}
+.dna-step-dot.done{background:var(--cyan)}
+.dna-step-dot.active{background:rgba(0,245,255,0.5)}
+.dna-q{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px}
+.dna-qsub{font-size:12px;color:var(--text-secondary);margin-bottom:18px}
+.dna-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.dna-opt{padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:var(--text-secondary);font-size:12px;cursor:pointer;transition:all 0.2s;text-align:left;font-family:inherit;display:flex;align-items:center;gap:8px}
+.dna-opt:hover{border-color:rgba(0,245,255,0.4);color:var(--text-primary)}
+.dna-opt.selected{border-color:var(--cyan);color:var(--cyan);background:rgba(0,245,255,0.07)}
+.dna-opt .opt-icon{font-size:20px}
+.dna-next-btn{width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.dna-next-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.dna-result-wrap{text-align:center}
+.dna-radar-wrap{display:flex;justify-content:center;margin:20px 0}
+.dna-score-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px}
+.dna-score-chip{background:rgba(0,245,255,0.07);border:1px solid rgba(0,245,255,0.2);border-radius:8px;padding:6px 12px;font-size:11px;color:var(--cyan)}
+.dna-rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:left}
+.dna-rec-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:12px;cursor:pointer;transition:all 0.2s}
+.dna-rec-card:hover{border-color:rgba(0,245,255,0.4);transform:translateY(-2px)}
+.dna-rec-img{font-size:30px;margin-bottom:6px}
+.dna-rec-name{font-size:11px;font-weight:700;color:var(--text-primary);margin-bottom:2px}
+.dna-rec-match{font-size:10px;color:var(--cyan)}
+.dna-rec-price{font-size:13px;font-weight:700;color:var(--yellow);margin-top:4px}
+
+/* ===== TRADE-IN ===== */
+.tradein-layout{max-width:860px;margin:0 auto}
+.ti-steps{display:flex;gap:0;margin-bottom:32px}
+.ti-step{flex:1;text-align:center;font-size:11px;font-weight:600;padding:10px 4px;border-bottom:2px solid rgba(255,255,255,0.08);color:var(--text-secondary);transition:all 0.3s;position:relative}
+.ti-step.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.ti-step.done{color:var(--green);border-bottom-color:var(--green)}
+.ti-step-num{display:block;font-size:18px;font-weight:900;margin-bottom:2px}
+.ti-panel{display:none}
+.ti-panel.active{display:block}
+.ti-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.ti-option{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:18px;text-align:center;cursor:pointer;transition:all 0.2s;font-family:inherit}
+.ti-option:hover{border-color:rgba(0,245,255,0.4);transform:translateY(-2px)}
+.ti-option.selected{border-color:var(--cyan);background:rgba(0,245,255,0.07)}
+.ti-option .ti-oi{font-size:32px;display:block;margin-bottom:6px}
+.ti-option .ti-on{font-size:12px;font-weight:700;color:var(--text-primary)}
+.ti-cond-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.ti-cond{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;cursor:pointer;font-family:inherit;text-align:left;transition:all 0.2s}
+.ti-cond:hover{border-color:rgba(0,245,255,0.4)}
+.ti-cond.selected{border-color:var(--cyan);background:rgba(0,245,255,0.07)}
+.ti-cond-name{font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:3px}
+.ti-cond-desc{font-size:11px;color:var(--text-secondary)}
+.ti-estimate-box{background:linear-gradient(135deg,rgba(0,245,255,0.06),rgba(123,47,255,0.06));border:1px solid rgba(0,245,255,0.2);border-radius:16px;padding:24px;text-align:center;margin-bottom:20px}
+.ti-val-lbl{font-size:12px;color:var(--text-secondary);margin-bottom:6px;letter-spacing:1px}
+.ti-val-num{font-size:48px;font-weight:900;color:var(--cyan);line-height:1;margin-bottom:4px}
+.ti-val-sub{font-size:11px;color:var(--text-secondary)}
+.ti-ai-analysis{background:rgba(255,255,255,0.03);border-radius:12px;padding:14px;margin-bottom:20px;font-size:12px;color:var(--text-secondary);line-height:1.8;text-align:left}
+.ti-ai-analysis strong{color:var(--cyan)}
+.voucher-box{border:2px dashed rgba(0,245,255,0.4);border-radius:12px;padding:18px;text-align:center;margin:16px 0}
+.voucher-label{font-size:11px;color:var(--text-secondary);letter-spacing:1px;margin-bottom:6px}
+.voucher-code{font-family:monospace;font-size:24px;letter-spacing:5px;color:var(--cyan);font-weight:900}
+.voucher-value{font-size:12px;color:var(--yellow);margin-top:4px}
+.eco-flow{display:flex;align-items:center;justify-content:center;gap:0;margin-top:24px;flex-wrap:wrap}
+.eco-node{text-align:center;padding:12px 16px;font-size:11px;color:var(--text-secondary)}
+.eco-node .eco-icon{font-size:26px;display:block;margin-bottom:4px}
+.eco-node .eco-lbl{font-weight:600;color:var(--text-primary)}
+.eco-arrow{font-size:18px;color:var(--text-secondary);padding:0 4px;align-self:center}
+</style>
+</head>
+<body>
+
+<!-- =========== NAV =========== -->
+<nav class="nav">
+  <div class="nav-logo" onclick="goPage('home')">
+    <div class="nav-logo-icon">N</div>
+    <span class="n1">NEXUS</span><span class="n2">GEAR</span>
+  </div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="goPage('home')">首页</button>
+    <button class="nav-link" onclick="goPage('workshop')">定制车间</button>
+    <button class="nav-link" onclick="goPage('community')">玩家社区</button>
+    <button class="nav-link" onclick="goPage('gift')">赛博礼盒</button>
+    <button class="nav-link" onclick="goPage('flowchart')">业务流程</button>
+    <button class="nav-link" onclick="goPage('tradein')">以旧换新</button>
+    <button class="nav-link" onclick="goPage('about')">关于我们</button>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-btn nav-btn-ghost">登录</button>
+    <button class="nav-btn nav-btn-primary" onclick="goPage('workshop')">开始定制</button>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- =========== CART =========== -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-hd">
+    <div class="cart-ttl">购物车 &nbsp;<span class="g-cyan" id="cartCount">0</span>&nbsp;件</div>
+    <button class="cart-x" onclick="toggleCart()">×</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty-msg">
+      <div style="font-size:48px;margin-bottom:10px">🛒</div>
+      <div style="font-size:13px">空空如也，快去挑选吧</div>
+    </div>
+  </div>
+  <div class="cart-ft">
+    <div class="cart-sub"><span class="cart-sub-l">运费</span><span class="cart-sub-v g-cyan">免运费</span></div>
+    <div class="cart-total-row"><span class="ct-l">合计</span><span class="ct-v" id="cartTotal">¥0</span></div>
+    <button class="btn-checkout" onclick="doCheckout()">立即结算 →</button>
+    <button class="btn-gift-cta" onclick="goPage('gift');toggleCart()">🎁 打包成礼盒送给Ta</button>
+  </div>
+</aside>
+
+<!-- =========== MODAL =========== -->
+<div class="m-overlay" id="mOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="m-close" onclick="closeModalDirect()">×</button>
+    <div class="m-body" id="mBody"></div>
+  </div>
+</div>
+
+<!-- =========== TOAST =========== -->
+<div class="toast-container" id="toastWrap"></div>
+
+<!-- =========== COMMUNITY POST MODAL =========== -->
+<div class="comm-overlay" id="commOverlay" onclick="closeCommOverlay(event)">
+  <div class="comm-modal" id="commModal"></div>
+</div>
+
+<!-- =========== GIFT ANIMATION MODAL =========== -->
+<div class="gift-open-overlay" id="giftOpenOverlay">
+  <div class="gift-open-inner" id="giftOpenInner"></div>
+</div>
+
+<!-- =========== DNA MODAL =========== -->
+<div class="dna-overlay" id="dnaOverlay" onclick="closeDNAOverlay(event)">
+  <div class="dna-modal" id="dnaModal">
+    <button class="dna-close" onclick="closeDNA()">×</button>
+    <div id="dnaInner"></div>
+  </div>
+</div>
+
+<!-- ====================================================
+     PAGE: HOME
+     ==================================================== -->
+<div class="page active" id="page-home">
+  <div class="ticker-wrap">
+    <div class="ticker-label" style="flex-direction:column;gap:1px">
+      <span>实时行情</span>
+      <span style="font-size:8px;color:rgba(0,245,255,0.55);letter-spacing:1px;font-weight:400">受市场波动</span>
+    </div>
+    <div class="ticker-scroll">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow-l"></div>
+    <div class="hero-glow-r"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge">O2O 沉浸式电竞平台 &nbsp;·&nbsp; 2026 SEASON</div>
+        <h1 class="hero-title">
+          <span class="l1">打造你的</span>
+          <span class="l2">极限战场</span>
+          <span class="l3">从这里开始</span>
+        </h1>
+        <p class="hero-desc">
+          汇聚全球顶级电竞外设与限定潮玩，3D虚拟定制车间让你在下单前看到每一个细节。
+          <br>O2O线下体验店 &nbsp;·&nbsp; 智能仓配直发 &nbsp;·&nbsp; 赛博礼盒社交裂变
+        </p>
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="goPage('workshop')">进入定制车间 ⚡</button>
+          <button class="btn-secondary" onclick="goPage('community')">探索玩家桌搭</button>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num" id="sc1">57+</div><div class="stat-label">精选外设</div></div>
+          <div><div class="stat-num">6</div><div class="stat-label">品类分区</div></div>
+          <div><div class="stat-num">28K+</div><div class="stat-label">活跃玩家</div></div>
+          <div><div class="stat-num">4.9★</div><div class="stat-label">综合评分</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-frame">
+          <div class="hero-3d-scene">
+            <div class="cube-wrap">
+              <div class="face front"><img src="https://assets3.razerzone.com/LQ1cxhHVvbhiSLOMjv3r4MoTo4g=/500x333/https://medias-p1.phoenix.razer.com/sys-master-phoenix-images-container/h08/h61/9765618188318/viper-v3-pro-black-500x500.png" alt="" style="width:90%;height:90%;object-fit:contain" onerror="this.onerror=null;this.replaceWith(document.createTextNode('⌨️'))"></div>
+              <div class="face back"><img src="https://dlcdnwebimgs.asus.com/gain/BB5CFB46-150B-468C-AAD4-A16811BDA7E8/w500/h366" alt="" style="width:90%;height:90%;object-fit:contain" onerror="this.onerror=null;this.replaceWith(document.createTextNode('🖱️'))"></div>
+              <div class="face left"><img src="https://images.ctfassets.net/hmm5mo4qf4mf/4EwYTpKVVXomhKP0iwxz5l/eee8a3f7c09dab1956a92d984523ee0c/arctis_nova_pro_wl_black_img_buy_1.png__600x338_crop-fit_optimize_subsampling-2-227.png" alt="" style="width:90%;height:90%;object-fit:contain" onerror="this.onerror=null;this.replaceWith(document.createTextNode('🎧'))"></div>
+              <div class="face right"><img src="https://dlcdnwebimgs.asus.com/gain/2DDC8872-7B9F-4395-85FE-4D116C96FC75/w500/h366" alt="" style="width:90%;height:90%;object-fit:contain" onerror="this.onerror=null;this.replaceWith(document.createTextNode('🖥️'))"></div>
+              <div class="face top"><img src="https://wooting-website.ams3.cdn.digitaloceanspaces.com/products/keyboards/60HEv2/layer-carousel/layers/TV/ANSI_SP_Main.webp" alt="" style="width:90%;height:90%;object-fit:contain" onerror="this.onerror=null;this.replaceWith(document.createTextNode('🪑'))"></div>
+              <div class="face bottom"><img src="https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x-superlight-2-dex/gallery/new-gallery-assets-2025/pro-x-superlight-2-dex-mouse-top-angle-black-gallery-1.png" alt="" style="width:90%;height:90%;object-fit:contain" onerror="this.onerror=null;this.replaceWith(document.createTextNode('🧸'))"></div>
+            </div>
+          </div>
+          <div class="htags">
+            <div class="htag c">540Hz OLED</div>
+            <div class="htag p">52g 超轻鼠标</div>
+            <div class="htag v">RAPID TRIGGER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dutch Auction -->
+  <div class="auc-section">
+    <div class="auc-hd">
+      <div class="sec-eye">DUTCH AUCTION</div>
+      <div class="sec-ttl" style="margin:0">荷兰式限定拍卖</div>
+      <div class="auc-badge">价格每分钟递减</div>
+    </div>
+    <div class="auc-grid" id="aucGrid"></div>
+  </div>
+
+  <!-- AI Strip -->
+  <div class="ai-strip">
+    <div class="ai-icon">🤖</div>
+    <div class="ai-txt">
+      <div class="ai-lbl">C2M AI 智能推荐引擎</div>
+      <div class="ai-desc">今日为你定制：<span class="g-cyan">FPS 精准制胜套装</span></div>
+      <div class="ai-desc-sub">根据你的游戏类型与历史浏览行为，AI 已为你精选以下外设组合，点击查看详情 →</div>
+    </div>
+    <div class="ai-pls" id="aiPills"></div>
+  </div>
+
+  <!-- Hot Sellers -->
+  <div class="section">
+    <div class="sec-hd">
+      <div><div class="sec-eye">HOT SELLERS</div><div class="sec-ttl">热销排行榜</div></div>
+      <span class="sec-link" onclick="goPage('workshop')">查看全部 →</span>
+    </div>
+    <div class="pgrid" id="homeHot"></div>
+  </div>
+
+  <!-- New Drops -->
+  <div class="section" style="padding-top:0">
+    <div class="sec-hd">
+      <div><div class="sec-eye">NEW DROPS</div><div class="sec-ttl">最新上架</div></div>
+      <span class="sec-link" onclick="goPage('workshop')">查看全部 →</span>
+    </div>
+    <div class="pgrid c3" id="homeNew"></div>
+  </div>
+
+  <div class="divider"></div>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="nav-logo">
+          <div class="nav-logo-icon" style="width:30px;height:30px;font-size:13px">N</div>
+          <span class="n1">NEXUS</span><span class="n2">GEAR</span>
+        </div>
+        <p class="footer-brand-desc">沉浸式O2O电竞潮玩定制平台。汇聚全球顶级外设，以3D虚拟技术重新定义硬核玩家的购物体验。</p>
+      </div>
+      <div>
+        <div class="footer-col-ttl">产品分类</div>
+        <div class="footer-links">
+          <span class="footer-lk" onclick="goCat('keyboard')">机械键盘</span>
+          <span class="footer-lk" onclick="goCat('mouse')">电竞鼠标</span>
+          <span class="footer-lk" onclick="goCat('headset')">头戴耳机</span>
+          <span class="footer-lk" onclick="goCat('monitor')">电竞显示器</span>
+          <span class="footer-lk" onclick="goCat('chair')">人体工学椅</span>
+          <span class="footer-lk" onclick="goCat('figure')">潮流玩具</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-ttl">服务支持</div>
+        <div class="footer-links">
+          <span class="footer-lk">O2O体验店</span>
+          <span class="footer-lk">智能仓配直发</span>
+          <span class="footer-lk">7天无理由退换</span>
+          <span class="footer-lk">延保增值服务</span>
+          <span class="footer-lk">企业采购</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-ttl">关注我们</div>
+        <div class="footer-links">
+          <span class="footer-lk">微博 @NEXUSGEAR</span>
+          <span class="footer-lk">B站 NEXUSGEAR官方</span>
+          <span class="footer-lk">微信公众号</span>
+          <span class="footer-lk">小红书</span>
+          <span class="footer-lk">Discord 社区</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 NEXUSGEAR. All rights reserved. &nbsp;|&nbsp; 粤ICP备XXXXXXXX号</span>
+      <span>隐私政策 &nbsp;·&nbsp; 服务条款 &nbsp;·&nbsp; 联系我们</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ====================================================
+     PAGE: WORKSHOP
+     ==================================================== -->
+<div class="page" id="page-workshop">
+  <div class="section">
+    <div class="sec-hd">
+      <div><div class="sec-eye">CUSTOM WORKSHOP</div><div class="sec-ttl">3D 定制车间</div></div>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="搜索外设品牌、型号、特性... 例如：Razer、磁轴、OLED" oninput="doSearch(this.value)" />
+      <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+    </div>
+    <div class="search-count" id="searchCount" style="display:none"></div>
+    <!-- DNA Banner -->
+    <div style="background:linear-gradient(135deg,rgba(0,245,255,0.07),rgba(123,47,255,0.07));border:1px solid rgba(0,245,255,0.2);border-radius:14px;padding:14px 20px;margin-bottom:18px;display:flex;align-items:center;gap:14px;cursor:pointer" onclick="openDNAModal()">
+      <div style="font-size:36px">🧬</div>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:2px">外设DNA图谱 × AI兼容性匹配</div>
+        <div style="font-size:11px;color:var(--text-secondary)">5题测出你的玩家基因，AI推荐最适配的外设组合并生成专属雷达图谱</div>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;font-size:11px;font-weight:700;padding:8px 16px;border-radius:8px;white-space:nowrap">开始测试 →</div>
+    </div>
+    <div class="cat-tabs" id="catTabs"></div>
+    <div class="ws-layout">
+      <div class="ws-grid" id="wsGrid"></div>
+      <div class="ws-sidebar">
+        <div class="build-ttl">⚡ 我的装备清单</div>
+        <div class="build-list" id="buildList">
+          <div class="build-empty">点击商品加入装备清单<br>开始打造你的专属战场</div>
+        </div>
+        <div class="build-total-row">
+          <span class="btl">装备总价</span>
+          <span class="btp" id="buildTotal">¥0</span>
+        </div>
+        <div class="build-actions">
+          <button class="btn-primary" style="text-align:center" onclick="buildToCart()">加入购物车 🛒</button>
+          <button class="btn-secondary" style="text-align:center" onclick="goPage('gift')">打包礼盒送朋友 🎁</button>
+        </div>
+        <div class="cust-sec">
+          <div class="cust-lbl">选择主题配色</div>
+          <div class="swatches" id="swatches"></div>
+        </div>
+        <div class="cust-sec">
+          <div class="cust-lbl">激光镌刻文字</div>
+          <input class="engrave-input" type="text" placeholder="输入你的专属ID / 座右铭..." maxlength="20" id="engraveText">
+        </div>
+        <div class="cust-sec">
+          <div class="cust-lbl">O2O 智能仓配</div>
+          <div style="font-size:11px;color:var(--text-secondary);line-height:1.7">
+            系统将自动匹配距你<span class="g-cyan">收货地最近的仓库</span>发货，预计 <span class="g-cyan">24~48小时</span> 到达。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     PAGE: COMMUNITY
+     ==================================================== -->
+<div class="page" id="page-community">
+  <div class="section">
+    <div class="sec-hd">
+      <div><div class="sec-eye">PLAYER COMMUNITY</div><div class="sec-ttl">玩家桌搭 &amp; 外设评测</div></div>
+    </div>
+    <div class="cf-wrap" id="cfWrap"></div>
+    <div class="masonry" id="masonry"></div>
+  </div>
+</div>
+
+<!-- ====================================================
+     PAGE: GIFT BOX
+     ==================================================== -->
+<div class="page" id="page-gift">
+  <div class="section">
+    <div class="gift-layout">
+      <div class="gift-visual">
+        <div style="position:relative">
+          <div class="gbox">
+            <div class="gbox-body">
+              🎮
+              <div class="grh"></div>
+              <div class="grv"></div>
+            </div>
+          </div>
+          <div class="g-particles" id="gParticles"></div>
+        </div>
+      </div>
+      <div class="gift-info">
+        <div class="sec-eye">CYBER GIFT BOX</div>
+        <h2 class="gift-title">把玩家的<br><span>热爱</span>打包送出</h2>
+        <p class="gift-desc">
+          精选一套心仪的电竞外设或潮玩组合，生成专属赛博礼盒链接发送给好友。
+          收到链接的人只需填写自己的收货地址，我们直接从智能仓库发货
+          ——你甚至不需要提前知道对方住在哪里。
+        </p>
+        <div class="gift-steps">
+          <div class="g-step">
+            <div class="g-num">1</div>
+            <div><div class="g-stl">前往定制车间选品</div><div class="g-std">挑选你想送出的外设或潮玩，加入装备清单</div></div>
+          </div>
+          <div class="g-step">
+            <div class="g-num">2</div>
+            <div><div class="g-stl">生成专属礼盒链接</div><div class="g-std">写下一句送给Ta的话，平台生成带动画的赛博礼盒页面</div></div>
+          </div>
+          <div class="g-step">
+            <div class="g-num">3</div>
+            <div><div class="g-stl">一键分享到微信 / 微博</div><div class="g-std">收礼人打开链接，填写收货地址，完成惊喜</div></div>
+          </div>
+          <div class="g-step">
+            <div class="g-num">4</div>
+            <div><div class="g-stl">智能仓配极速发货</div><div class="g-std">系统自动匹配距收货地最近的仓库，当日安排发货</div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <button class="btn-primary" onclick="goPage('workshop')">去选品 →</button>
+          <button class="btn-secondary" onclick="giftDemo()">体验礼盒动画 🎁</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:60px">
+      <div class="sec-hd">
+        <div><div class="sec-eye">GIFT TEMPLATES</div><div class="sec-ttl">热门礼盒模板</div></div>
+      </div>
+      <div class="pgrid" id="giftTemplates"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     PAGE: FLOWCHART
+     ==================================================== -->
+<div class="page" id="page-flowchart">
+  <div class="section">
+    <div class="sec-hd">
+      <div><div class="sec-eye">CORE PROCESS</div><div class="sec-ttl">核心业务流程图</div></div>
+    </div>
+
+    <!-- Flow: O2O Purchase -->
+    <div style="margin-bottom:60px">
+      <div style="font-size:13px;color:var(--cyan);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px">▸ O2O 体验与社交购买流程</div>
+      <div class="flow-row" id="flowMain"></div>
+    </div>
+
+    <!-- Flow: Gift Box -->
+    <div style="margin-bottom:60px">
+      <div style="font-size:13px;color:var(--purple);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px">▸ 赛博礼盒社交裂变流程</div>
+      <div class="flow-row" id="flowGift"></div>
+    </div>
+
+    <!-- Flow: C2M -->
+    <div>
+      <div style="font-size:13px;color:var(--pink);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px">▸ C2M AI 反向定制流程</div>
+      <div class="flow-row" id="flowC2M"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     PAGE: TRADE-IN
+     ==================================================== -->
+<div class="page" id="page-tradein">
+  <div class="section">
+    <div class="sec-hd">
+      <div><div class="sec-eye">TRADE-IN &amp; RECYCLE</div><div class="sec-ttl">以旧换新 × AI残值估算</div></div>
+    </div>
+    <div class="tradein-layout">
+      <!-- Step bar -->
+      <div class="ti-steps">
+        <div class="ti-step active" id="ti-s0"><span class="ti-step-num">①</span>选择品类</div>
+        <div class="ti-step" id="ti-s1"><span class="ti-step-num">②</span>填写型号</div>
+        <div class="ti-step" id="ti-s2"><span class="ti-step-num">③</span>外观成色</div>
+        <div class="ti-step" id="ti-s3"><span class="ti-step-num">④</span>AI估价结果</div>
+      </div>
+      <!-- Panel 0: Category -->
+      <div class="ti-panel active" id="ti-p0">
+        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:16px">选择旧设备品类</div>
+        <div class="ti-grid">
+          <button class="ti-option" onclick="tiSelect('cat','keyboard',this)"><span class="ti-oi">⌨️</span><span class="ti-on">机械键盘</span></button>
+          <button class="ti-option" onclick="tiSelect('cat','mouse',this)"><span class="ti-oi">🖱️</span><span class="ti-on">电竞鼠标</span></button>
+          <button class="ti-option" onclick="tiSelect('cat','headset',this)"><span class="ti-oi">🎧</span><span class="ti-on">耳机/麦克风</span></button>
+          <button class="ti-option" onclick="tiSelect('cat','monitor',this)"><span class="ti-oi">🖥️</span><span class="ti-on">显示器</span></button>
+          <button class="ti-option" onclick="tiSelect('cat','controller',this)"><span class="ti-oi">🎮</span><span class="ti-on">手柄/摇杆</span></button>
+          <button class="ti-option" onclick="tiSelect('cat','other',this)"><span class="ti-oi">🔧</span><span class="ti-on">其他外设</span></button>
+        </div>
+        <button class="dna-next-btn" onclick="tiNext(0)" id="ti-next0" style="opacity:0.4;cursor:not-allowed" disabled>下一步 →</button>
+      </div>
+      <!-- Panel 1: Model -->
+      <div class="ti-panel" id="ti-p1">
+        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:16px">选择品牌与型号</div>
+        <div class="ti-grid" id="ti-model-grid"></div>
+        <button class="dna-next-btn" onclick="tiNext(1)" id="ti-next1" style="opacity:0.4;cursor:not-allowed" disabled>下一步 →</button>
+      </div>
+      <!-- Panel 2: Condition -->
+      <div class="ti-panel" id="ti-p2">
+        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:16px">描述外观成色</div>
+        <div class="ti-cond-list">
+          <button class="ti-cond" onclick="tiSelect('cond','mint',this)"><div class="ti-cond-name">💎 近全新</div><div class="ti-cond-desc">使用3个月内，无划痕，全配件</div></button>
+          <button class="ti-cond" onclick="tiSelect('cond','good',this)"><div class="ti-cond-name">✅ 九成新</div><div class="ti-cond-desc">正常使用，轻微磨损，功能完好</div></button>
+          <button class="ti-cond" onclick="tiSelect('cond','fair',this)"><div class="ti-cond-name">🔶 七成新</div><div class="ti-cond-desc">明显使用痕迹，少量配件缺失</div></button>
+          <button class="ti-cond" onclick="tiSelect('cond','poor',this)"><div class="ti-cond-name">🔧 需维修</div><div class="ti-cond-desc">有破损/故障，功能部分正常</div></button>
+        </div>
+        <button class="dna-next-btn" onclick="tiNext(2)" id="ti-next2" style="opacity:0.4;cursor:not-allowed" disabled>AI 一键估价 🤖</button>
+      </div>
+      <!-- Panel 3: Result -->
+      <div class="ti-panel" id="ti-p3">
+        <div style="text-align:center;margin-bottom:20px">
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:4px">🤖 AI 残值估算报告</div>
+          <div style="font-size:15px;font-weight:700;color:var(--text-primary)" id="ti-result-title">—</div>
+        </div>
+        <div class="ti-estimate-box">
+          <div class="ti-val-lbl">AI 估算回收价值</div>
+          <div class="ti-val-num" id="ti-val-num">¥—</div>
+          <div class="ti-val-sub" id="ti-val-sub">基于市场行情·品牌残值·成色系数综合评估</div>
+        </div>
+        <div class="ti-ai-analysis" id="ti-ai-analysis">AI 分析中...</div>
+        <div class="voucher-box">
+          <div class="voucher-label">专属折抵券码</div>
+          <div class="voucher-code" id="ti-voucher-code">NEXUS-XXXX</div>
+          <div class="voucher-value" id="ti-voucher-val">可用于下单时直接抵扣，限7天有效</div>
+        </div>
+        <div style="display:flex;gap:12px">
+          <button class="dna-next-btn" style="background:linear-gradient(135deg,var(--cyan),var(--purple))" onclick="goPage('workshop')">立即选购新品 →</button>
+          <button class="dna-next-btn" style="background:rgba(255,255,255,0.06);color:var(--text-primary)" onclick="tiReset()">重新估价</button>
+        </div>
+        <!-- Circular economy flow -->
+        <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text-secondary);text-align:center;margin-bottom:14px;letter-spacing:1px">循环经济闭环</div>
+          <div class="eco-flow">
+            <div class="eco-node"><span class="eco-icon">👤</span><span class="eco-lbl">用户寄回</span></div>
+            <div class="eco-arrow">→</div>
+            <div class="eco-node"><span class="eco-icon">🔍</span><span class="eco-lbl">AI质检</span></div>
+            <div class="eco-arrow">→</div>
+            <div class="eco-node"><span class="eco-icon">♻️</span><span class="eco-lbl">翻新处理</span></div>
+            <div class="eco-arrow">→</div>
+            <div class="eco-node"><span class="eco-icon">🏷️</span><span class="eco-lbl">低价再售</span></div>
+            <div class="eco-arrow">→</div>
+            <div class="eco-node"><span class="eco-icon">🌱</span><span class="eco-lbl">减少碳排放</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     PAGE: ABOUT
+     ==================================================== -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="about-hero-grid"></div>
+    <div class="about-content">
+      <div class="about-pill">ABOUT NEXUSGEAR</div>
+      <h1 style="font-size:56px;font-weight:900;margin-bottom:20px">
+        关于 <span class="g-cyan">NEXUS</span><span class="g-pink">GEAR</span>
+      </h1>
+      <p style="color:var(--text-secondary);font-size:16px;line-height:1.9;max-width:640px">
+        NEXUSGEAR 是一个<span class="g-cyan">沉浸式 O2O 电竞硬件与潮玩定制平台</span>，
+        将线下体验店的真实触感与线上3D虚拟定制的便捷性融合，打造全新的硬核玩家购物体验。
+      </p>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-card-icon">🏪</div>
+          <div class="about-card-ttl">前店后仓 O2O 模式</div>
+          <div class="about-card-desc">主要城市设立赛博朋克风格体验店，用户试玩后扫码下单，由全国智能云仓直接发货，解决库存积压痛点。</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🤖</div>
+          <div class="about-card-ttl">C2M AI 反向定制</div>
+          <div class="about-card-desc">分析用户游戏偏好与浏览数据，向合作代工厂提供C2M需求，让每位玩家都能买到专属于自己游戏风格的外设组合。</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🎁</div>
+          <div class="about-card-ttl">赛博礼盒社交裂变</div>
+          <div class="about-card-desc">借鉴微信红包逻辑，用户生成礼盒链接分享好友，收礼人填写地址直接发货，将电商购物变成社交互动仪式。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:60px">
+      <div style="text-align:center;padding:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px">
+        <div class="stat-num">12</div><div class="stat-label" style="margin-top:4px">线下体验店</div>
+      </div>
+      <div style="text-align:center;padding:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px">
+        <div class="stat-num">48h</div><div class="stat-label" style="margin-top:4px">极速发货</div>
+      </div>
+      <div style="text-align:center;padding:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px">
+        <div class="stat-num">200+</div><div class="stat-label" style="margin-top:4px">合作品牌</div>
+      </div>
+      <div style="text-align:center;padding:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px">
+        <div class="stat-num">99%</div><div class="stat-label" style="margin-top:4px">好评率</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     JAVASCRIPT
+     ==================================================== -->
+<script src="assets/remote/asset-map.js"></script>
+<script>
+// ============================================================
+//  NEXUS GEAR — Application
+// ============================================================
+
+// ---------- PRODUCT DATABASE ----------
+const DB = [
+  // ===== KEYBOARDS (8) =====
+  {
+    id:'kb-1', cat:'keyboard', brand:'Wooting', name:'Wooting 60HE+', sname:'60HE+',
+    price:2299, orig:null, icon:'⌨️',
+    img:'https://wooting-website.ams3.cdn.digitaloceanspaces.com/products/keyboards/60HEv2/layer-carousel/layers/TV/ANSI_SP_Main.webp',
+    bg:'linear-gradient(135deg,#0d1f37,#1a3f60)',
+    tags:['hot','pro'], rating:4.9, sold:3820,
+    spec:'霍尔磁轴 · Rapid Trigger 0.1mm精度 · 60% · 8000Hz',
+    specs:{布局:'60% (61键)',轴体:'霍尔磁轴 (磁感应)',轮询率:'8000Hz',连接:'USB-C 有线',重量:'约 680g'},
+    colors:['#111','#fff','#ff0090','#00f5ff','#7b2fff'],
+    desc:'职业电竞玩家的磁轴圣经。Rapid Trigger功能让按键触发精度达0.1mm，CS2/VALORANT中的急停表现堪称"物理外挂"。连续两年职业赛场出现率第一的键盘。'
+  },
+  {
+    id:'kb-2', cat:'keyboard', brand:'ASUS ROG', name:'ROG 魔导士 Ace HFX', sname:'魔导士 Ace',
+    price:999, orig:1299, icon:'⌨️',
+    img:'https://dlcdnwebimgs.asus.com/gain/BB5CFB46-150B-468C-AAD4-A16811BDA7E8/w1000/h732',
+    bg:'linear-gradient(135deg,#1a0022,#3d0065)',
+    tags:['new','pro'], rating:4.8, sold:1560,
+    spec:'ROG HFX磁轴 · Rapid Trigger · 65% · AURA SYNC RGB',
+    specs:{布局:'65% (68键)',轴体:'ROG HFX 磁轴',触发力:'40gf',响应时间:'1.8ms',背光:'AURA SYNC RGB'},
+    colors:['#111','#7b2fff','#ff0090','#ffd700'],
+    desc:'ROG旗舰磁轴键盘，触发力40gf，响应速度比传统机械轴快30%。与ROG全家桶神光同步，打造沉浸式发光战场。'
+  },
+  {
+    id:'kb-3', cat:'keyboard', brand:'Razer', name:'Razer Huntsman V3 Pro TKL', sname:'Huntsman V3',
+    price:1099, orig:1299, icon:'⌨️',
+    img:'https://assets3.razerzone.com/iajuRCuAMNuncojOMjSjzRZzBNY=/1500x1000/https://medias-p1.phoenix.razer.com/sys-master-phoenix-images-container/hb9/h24/9980311076894/huntsman-v3-pro-tkl-8khz-b-500x500.png',
+    bg:'linear-gradient(135deg,#0d1a0d,#003300)',
+    tags:['hot'], rating:4.7, sold:4210,
+    spec:'光感模拟轴 · Rapid Trigger · TKL · Chroma RGB',
+    specs:{布局:'TKL (87键)',轴体:'Razer 光感模拟轴',响应时间:'< 0.2ms',背光:'Razer Chroma RGB',连接:'USB-C'},
+    colors:['#111','#00ff41','#fff'],
+    desc:'完全无机械接触，使用寿命高达1亿次按键。Rapid Trigger加持，是目前市面上最受职业FPS选手认可的光轴键盘。'
+  },
+  {
+    id:'kb-4', cat:'keyboard', brand:'Logitech', name:'罗技 G316X 闪逸龙 8K', sname:'G316X',
+    price:899, orig:1099, icon:'⌨️',
+    img:null,
+    bg:'linear-gradient(135deg,#001a33,#003366)',
+    tags:['sale','hot'], rating:4.6, sold:6890,
+    spec:'8000Hz超高轮询 · LIGHTSYNC RGB · 游戏联动光效',
+    specs:{布局:'TKL (87键)',轴体:'GX 线性轴',轮询率:'8000Hz',背光:'LIGHTSYNC RGB',联动:'原神/无畏契约光效'},
+    colors:['#111','#0060ff','#fff','#ffd700'],
+    desc:'8000Hz超高轮询率，将输入延迟压缩到极致。支持《原神》《无畏契约》等热门游戏联动光效，打游戏的同时享受灯光秀。'
+  },
+  {
+    id:'kb-5', cat:'keyboard', brand:'Keychron', name:'Keychron Q1 Pro QMK', sname:'Q1 Pro',
+    price:949, orig:null, icon:'⌨️',
+    img:'https://www.keychron.com/cdn/shop/products/Keychron-Q1-Pro-QMK-VIA-wireless-custom-mechanical-keyboard-knob-75-percent-layout-full-aluminum-white-frame-for-Mac-Windows-Linux-with-RGB-backlight-hot-swappable-K-Pro-switch-red.jpg',
+    bg:'linear-gradient(135deg,#1a1000,#332200)',
+    tags:['new'], rating:4.8, sold:2340,
+    spec:'全铝合金机身 · 无线三模 · 铝坨坨 · QMK/VIA',
+    specs:{布局:'75% (83键)',轴体:'Gateron G Pro (可热插拔)',连接:'2.4G/蓝牙/有线 三模',机身:'全铝阳极氧化',编程:'QMK/VIA 全键自定义'},
+    colors:['#c0c0c0','#4a3728','#1a1a1a','#2d4a2d'],
+    desc:'铝坨坨工艺带来的扎实敲击感是塑料键盘无法企及的。全铝机身+三模无线+QMK开源固件，程序员与设计师的理想日用键盘。'
+  },
+  {
+    id:'kb-6', cat:'keyboard', brand:'HHKB', name:'HHKB Professional Hybrid Type-S', sname:'HHKB Pro',
+    price:2299, orig:null, icon:'⌨️',
+    img:null,
+    bg:'linear-gradient(135deg,#0d0d0d,#1a1a1a)',
+    tags:['pro','limited'], rating:4.9, sold:890,
+    spec:'静电容轴 · 极静 Type-S · 60% · 蓝牙 · 日本制造',
+    specs:{布局:'60% (60键)',轴体:'Topre 静电容 45g',噪音级别:'Type-S 极静版',连接:'蓝牙4.2/USB',产地:'日本制造'},
+    colors:['#e8e8e8','#1a1a1a'],
+    desc:'程序员的圣杯。静电容轴独特的弹性手感一旦用过便无法回头。日本原装进口，限量供应，是键盘爱好者的终极收藏。'
+  },
+  {
+    id:'kb-7', cat:'keyboard', brand:'Ducky', name:'Ducky One 3 Mini', sname:'One 3 Mini',
+    price:699, orig:799, icon:'⌨️',
+    img:null,
+    bg:'linear-gradient(135deg,#1a001a,#330033)',
+    tags:['sale'], rating:4.5, sold:3120,
+    spec:'Cherry MX轴 · 60% · PBT双色射出键帽 · 全键无冲',
+    specs:{布局:'60% (61键)',轴体:'Cherry MX 红轴/茶轴/青轴可选',键帽:'PBT 双色射出 耐磨不打油',背光:'RGB 可编程',特点:'全键无冲突'},
+    colors:['#ff9900','#ff4466','#6699ff','#99ff66'],
+    desc:'Ducky每年必出联名爆款。PBT双色键帽耐磨不打油，Cherry MX轴稳定耐用。是颜值党入手60%配列的首选。'
+  },
+  {
+    id:'kb-8', cat:'keyboard', brand:'ATK', name:'ATK 68RX 磁轴竞技版', sname:'ATK 68RX',
+    price:499, orig:599, icon:'⌨️',
+    img:'https://m.media-amazon.com/images/I/71mzqXMpURL._AC_SL1500_.jpg',
+    bg:'linear-gradient(135deg,#001a2e,#004466)',
+    tags:['sale','hot'], rating:4.6, sold:8840,
+    spec:'磁轴 Rapid Trigger · 65% · FPS深度优化 · 高性价比之王',
+    specs:{布局:'65% (68键)',轴体:'ATK 精准磁轴',功能:'Rapid Trigger 急停',连接:'USB-C 有线',适配:'无畏契约/CS2/Apex'},
+    colors:['#111','#00aaff','#fff'],
+    desc:'五百元档位磁轴天花板！Rapid Trigger急停功能专门针对FPS游戏优化，让走停射在无畏契约中实现"物理外挂"式体验。'
+  },
+
+  // ===== KEYBOARDS EXTRA =====
+  {
+    id:'kb-9', cat:'keyboard', brand:'VGN', name:'VGN S99 磁轴竞技版', sname:'S99',
+    price:399, orig:499, icon:'⌨️',
+    img:'https://m.media-amazon.com/images/I/61xbJMqIe1L._AC_SL1500_.jpg',
+    bg:'linear-gradient(135deg,#001833,#003d66)',
+    tags:['hot','sale'], rating:4.8, sold:22400,
+    spec:'磁轴 Rapid Trigger 0.1mm · 1000Hz · 全尺寸 · 国货电竞之光',
+    specs:{布局:'全键配列 (104键)',轴体:'VGN Hall Effect 磁轴',触发精度:'0.1mm Rapid Trigger',轮询率:'1000Hz',连接:'USB-C 有线'},
+    colors:['#111','#00aaff','#fff'],
+    desc:'399元买到磁轴+Rapid Trigger，性能完全不输千元级竞品。国产之光，在VALORANT与CS2玩家圈中快速出圈，B站开箱视频百万播放。'
+  },
+  {
+    id:'kb-10', cat:'keyboard', brand:'Nuphy', name:'Nuphy Air75 V2 三模', sname:'Air75 V2',
+    price:649, orig:799, icon:'⌨️',
+    img:null,
+    bg:'linear-gradient(135deg,#1a0d00,#3a2000)',
+    tags:['new','sale'], rating:4.7, sold:5200,
+    spec:'三模无线 · 矮轴 · 75% · Mac/Win双系统 · 商务出行神器',
+    specs:{布局:'75% (83键)',轴体:'Nuphy Aloe Switch 矮轴',连接:'蓝牙5.0 / 2.4G / USB 三模',续航:'约3000小时(蓝牙)',兼容:'Mac · Windows · Linux'},
+    colors:['#c8a050','#ffffff','#1a1a1a'],
+    desc:'超薄矮轴，比普通机械键盘低30%，放入背包毫无负担。三模自由切换，程序员与设计师出差旅行的首选利器。'
+  },
+  {
+    id:'kb-11', cat:'keyboard', brand:'Monsgeek', name:'Monsgeek M1W 客制化', sname:'M1W',
+    price:799, orig:999, icon:'⌨️',
+    img:null,
+    bg:'linear-gradient(135deg,#1a0022,#400055)',
+    tags:['new'], rating:4.8, sold:3100,
+    spec:'全铝 Gasket Mount · 三模 · 75% · 键盘圈性价比神器',
+    specs:{布局:'75% (82键)',轴体:'可热插拔 (自选轴体)',连接:'2.4G / 蓝牙 / 有线 三模',结构:'Gasket Mount 减震',机身:'全铝阳极氧化'},
+    colors:['#c0c0c0','#1a1a1a','#5a0099'],
+    desc:'客制化圈子的性价比神话。Gasket Mount结构带来柔韧弹性敲击感，全铝机身提供旗舰质感，三模连接兼顾游戏与办公。'
+  },
+
+  // ===== MICE (8) =====
+  {
+    id:'m-1', cat:'mouse', brand:'Razer', name:'Razer Viper V3 Pro', sname:'Viper V3 Pro',
+    price:1299, orig:1499, icon:'🖱️',
+    img:'https://assets3.razerzone.com/LQ1cxhHVvbhiSLOMjv3r4MoTo4g=/1500x1000/https://medias-p1.phoenix.razer.com/sys-master-phoenix-images-container/h08/h61/9765618188318/viper-v3-pro-black-500x500.png',
+    bg:'linear-gradient(135deg,#0d1a0d,#001a00)',
+    tags:['hot','pro'], rating:4.9, sold:9210,
+    spec:'Focus Pro 35K传感器 · 95g · 2.4G无线 · 职业赛场使用率第一',
+    specs:{传感器:'Focus Pro 35K',重量:'95g',连接:'2.4G HyperSpeed 无线',DPI范围:'100~35,000',开关:'Razer 光学微动'},
+    colors:['#111','#fff'],
+    desc:'2025年职业赛场使用率冠军。Focus Pro 35K传感器配合Razer独有光学开关，零预旅程触发，让每一次点击都快人一步。'
+  },
+  {
+    id:'m-2', cat:'mouse', brand:'Logitech', name:'G Pro X Superlight 2 DEX', sname:'Superlight 2 DEX',
+    price:1199, orig:1499, icon:'🖱️',
+    img:'https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x-superlight-2-dex/gallery/new-gallery-assets-2025/pro-x-superlight-2-dex-mouse-top-angle-black-gallery-1.png',
+    bg:'linear-gradient(135deg,#001633,#003366)',
+    tags:['pro'], rating:4.9, sold:7630,
+    spec:'HERO 25K · 60g超极轻 · LIGHTSPEED无线 · 旗舰对称设计',
+    specs:{传感器:'HERO 25K',重量:'60g (!)',连接:'LIGHTSPEED 2.4G',DPI范围:'100~32,000',续航:'95小时'},
+    colors:['#e8e8e8','#111','#ff9900'],
+    desc:'60g的重量是最大卖点。即使比赛打满五局，手腕依然毫无疲惫感。对称设计适合左右手，是最受职业选手青睐的旗舰无线鼠标。'
+  },
+  {
+    id:'m-3', cat:'mouse', brand:'Logitech', name:'罗技 G304X LIGHTSPEED 秒鲨', sname:'G304X',
+    price:399, orig:499, icon:'🖱️',
+    img:'https://resource.logitechg.com/c_fill,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/g304/gallery/g304-black-gallery-1.png',
+    bg:'linear-gradient(135deg,#001a33,#004080)',
+    tags:['hot','sale'], rating:4.7, sold:15600,
+    spec:'HERO 25K · 57g · 106小时超长续航 · 性价比之王',
+    specs:{传感器:'HERO 25K',重量:'57g',连接:'LIGHTSPEED 2.4G',续航:'106小时',快充:'10分钟用11小时'},
+    colors:['#111','#fff','#00f5ff'],
+    desc:'同等旗舰传感器，价格砍半。106小时续航意味着几乎不用惦记充电。中小手型玩家性价比最高的无线鼠标选择。'
+  },
+  {
+    id:'m-4', cat:'mouse', brand:'Finalmouse', name:'Starlight Pro TenZ 联名版', sname:'Starlight Pro',
+    price:1599, orig:null, icon:'🖱️',
+    img:null,
+    bg:'linear-gradient(135deg,#1a1000,#332200)',
+    tags:['limited','pro'], rating:4.8, sold:420,
+    spec:'镁合金骨架 · 42g超极轻 · TenZ联名 · 全球限量',
+    specs:{传感器:'Finalmouse PE1',重量:'42g (！)',材质:'镁合金+碳纤维',连接:'2.4G 无线',联名:'VALORANT Pro TenZ 签名版'},
+    colors:['#c8a050','#c0c0c0'],
+    desc:'世界上最轻的无线竞技鼠标之一。42g的重量让你在游戏中几乎感觉不到鼠标的存在。VALORANT神级选手TenZ联名限量版。'
+  },
+  {
+    id:'m-5', cat:'mouse', brand:'Zowie', name:'Zowie EC2-C (2024升级版)', sname:'EC2-C',
+    price:599, orig:null, icon:'🖱️',
+    img:null,
+    bg:'linear-gradient(135deg,#0d0d0d,#222222)',
+    tags:['pro'], rating:4.7, sold:5670,
+    spec:'PixArt 3395 · 73g · 免驱即用 · CS职业选手御用',
+    specs:{传感器:'PixArt 3395',重量:'73g',连接:'USB-C 有线',DPI:'400~3200 (专业级预设)',特点:'免驱动 即插即用'},
+    colors:['#111'],
+    desc:'Zowie哲学：没有花哨功能，只有极致硬件性能。无需安装任何驱动，插上即享专业级精度。人体工学右手握型，CS职业圈传奇。'
+  },
+  {
+    id:'m-6', cat:'mouse', brand:'Pulsar', name:'Pulsar X2 Mini', sname:'X2 Mini',
+    price:449, orig:549, icon:'🖱️',
+    img:null,
+    bg:'linear-gradient(135deg,#1a001a,#400040)',
+    tags:['sale','new'], rating:4.7, sold:3480,
+    spec:'PixArt 3395 · 52g超轻 · 小手专属 · 性价比爆棚',
+    specs:{传感器:'PixArt 3395',重量:'52g',连接:'有线 USB-C',DPI:'100~26,000',适合:'小号手型'},
+    colors:['#fff','#111','#ff9900'],
+    desc:'小手玩家的专属福音！52g超轻量级配备顶级3395传感器，超高性价比让它在入门轻量鼠标市场长期霸榜。'
+  },
+  {
+    id:'m-7', cat:'mouse', brand:'Lamzu', name:'Lamzu Atlantis Pro', sname:'Atlantis Pro',
+    price:699, orig:null, icon:'🖱️',
+    img:null,
+    bg:'linear-gradient(135deg,#001433,#00336a)',
+    tags:['new'], rating:4.8, sold:1230,
+    spec:'PixArt 3395 · 55g · 蜂巢减重结构 · VALORANT职业圈热门',
+    specs:{传感器:'PixArt 3395',重量:'55g',连接:'有线/2.4G 双模',DPI:'100~26,000',外壳:'蜂巢镂空减重结构'},
+    colors:['#fff','#111','#7b2fff'],
+    desc:'从VALORANT职业圈走红的新锐品牌。蜂巢镂空减重结构将重量控制在55g，手感轻盈到令人惊讶。新一代高性价比黑马。'
+  },
+  {
+    id:'m-8', cat:'mouse', brand:'Razer', name:'Razer DeathAdder V3 Pro', sname:'DeathAdder V3',
+    price:699, orig:899, icon:'🖱️',
+    img:'https://assets3.razerzone.com/9kM2m1uFG1y9qgJe5J5x0Tl07J4=/1500x1000/https://medias-p1.phoenix.razer.com/sys-master-phoenix-images-container/h00/h18/9698015813662/deathadder-v3-pro-black-500x500.png',
+    bg:'linear-gradient(135deg,#0d1a0d,#1a3300)',
+    tags:['sale','hot'], rating:4.7, sold:6340,
+    spec:'Focus Pro 30K · 63g · 人体工学右手设计 · 无线版',
+    specs:{传感器:'Focus Pro 30K',重量:'63g',连接:'2.4G HyperSpeed',DPI:'100~30,000',握法:'人体工学 右手握型'},
+    colors:['#111','#00ff41'],
+    desc:'延续二十年的人体工学传奇，全球销量超1200万只。DeathAdder V3 Pro完美传承经典握感，是人体工学鼠标的终极答案。'
+  },
+
+  // ===== MICE EXTRA =====
+  {
+    id:'m-9', cat:'mouse', brand:'VGN', name:'VGN Dragonfly F1 Pro Max', sname:'F1 Pro Max',
+    price:369, orig:449, icon:'🖱️',
+    img:null,
+    bg:'linear-gradient(135deg,#00001a,#000055)',
+    tags:['hot','new'], rating:4.9, sold:28900,
+    spec:'PixArt 3395 · 42g · 蜂巢镂空 · 2.4G无线 · 国货电竞之星',
+    specs:{传感器:'PixArt 3395',重量:'42g (！！)',连接:'2.4G 无线',DPI:'100~26,000',外壳:'蜂巢镂空轻量化'},
+    colors:['#fff','#111','#00f5ff'],
+    desc:'42g + 蜂巢镂空 + 3395传感器 + 369元，2025年最离谱的性价比无线鼠标。B站开箱视频累计千万播放，销量长期占领国货榜首。'
+  },
+  {
+    id:'m-10', cat:'mouse', brand:'Endgame Gear', name:'OP1 8K Wireless', sname:'OP1 8K',
+    price:799, orig:899, icon:'🖱️',
+    img:null,
+    bg:'linear-gradient(135deg,#1a000d,#400020)',
+    tags:['pro','new'], rating:4.8, sold:3100,
+    spec:'8000Hz · PixArt 3395 · 60g · 对称设计 · 职业圈新宠',
+    specs:{传感器:'PixArt 3395',重量:'60g',连接:'8000Hz 2.4G 无线',DPI:'100~26,000',握法:'对称双手握型'},
+    colors:['#fff','#111'],
+    desc:'8000Hz无线鼠标在市场仍属稀缺品，Endgame Gear先人一步。60g对称设计+顶级传感器，受到越来越多职业选手关注。'
+  },
+  {
+    id:'m-11', cat:'mouse', brand:'Attack Shark', name:'Attack Shark X3 磁吸充电版', sname:'X3',
+    price:299, orig:379, icon:'🖱️',
+    img:null,
+    bg:'linear-gradient(135deg,#001a22,#003344)',
+    tags:['hot','sale'], rating:4.7, sold:19800,
+    spec:'PixArt 3395 · 54g · 磁吸充电底座 · 高性价比无线',
+    specs:{传感器:'PixArt 3395',重量:'54g',连接:'2.4G 无线 + 蓝牙',充电:'磁吸底座 无线充电',DPI:'400~26,000'},
+    colors:['#00aaff','#ff6600','#111','#fff'],
+    desc:'磁吸充电底座让你不再为断电焦虑，放回底座就充电。PixArt 3395传感器在299元价位完全是白菜价，颜值配色方案丰富。'
+  },
+
+  // ===== HEADSETS (6) =====
+  {
+    id:'h-1', cat:'headset', brand:'SteelSeries', name:'Arctis Nova Pro Wireless', sname:'Nova Pro WL',
+    price:2440, orig:2799, icon:'🎧',
+    img:'https://images.ctfassets.net/hmm5mo4qf4mf/4EwYTpKVVXomhKP0iwxz5l/eee8a3f7c09dab1956a92d984523ee0c/arctis_nova_pro_wl_black_img_buy_1.png__1920x1080_crop-fit_optimize_subsampling-2-227.png',
+    bg:'linear-gradient(135deg,#1a1a2e,#333366)',
+    tags:['pro','hot'], rating:4.9, sold:2100,
+    spec:'双无线技术 · Hi-Res音频认证 · 主动降噪 · 旗舰之选',
+    specs:{连接:'2.4G 无线 + 蓝牙5.0 双模',驱动单元:'40mm Nova Pro',音频:'Hi-Res Certified',降噪:'主动降噪 ANC',续航:'22h+充电底座'},
+    colors:['#111','#fff'],
+    desc:'双无线旗舰。可同时连接游戏主机和手机，ANC主动降噪+Hi-Res认证驱动，游戏与音乐全场景无缝切换。充电底座随时满电不焦虑。'
+  },
+  {
+    id:'h-2', cat:'headset', brand:'HyperX', name:'Cloud Alpha Wireless 2', sname:'Cloud Alpha 2',
+    price:999, orig:1199, icon:'🎧',
+    img:'https://hyperx.com/cdn/shop/files/hx_cloud_alpha_2_wireless_dock_tom_sguide_windowcentral_1600x1600_wht.png?v=1763563184',
+    bg:'linear-gradient(135deg,#1a0000,#4d0000)',
+    tags:['hot','sale'], rating:4.8, sold:5600,
+    spec:'300小时超长续航 · 无线 · DTS:X 3D空间音频',
+    specs:{连接:'2.4G 无线',驱动单元:'50mm 双腔体驱动',续航:'300小时 (!)',麦克风:'可拆卸 噪音消除',音效:'DTS:X 3D'},
+    colors:['#cc0000','#111','#fff'],
+    desc:'行业最长续航无线耳机。300小时意味着几乎不用记得充电。双腔体驱动带来更宽广声场，游戏脚步声定位超级清晰。'
+  },
+  {
+    id:'h-3', cat:'headset', brand:'Razer', name:'BlackShark V2 Pro (2023)', sname:'BlackShark V2',
+    price:1099, orig:1299, icon:'🎧',
+    img:'https://assets3.razerzone.com/IvT87rLsIhFOy3tkAVXJLEjfI_o=/1500x1000/https://medias-p1.phoenix.razer.com/sys-master-phoenix-images-container/h5c/h2a/9890474704926/blackshark-v2-pro-2023-black-500x500.png',
+    bg:'linear-gradient(135deg,#0d1a0d,#003300)',
+    tags:['hot'], rating:4.8, sold:4320,
+    spec:'THX空间音效 · 70h续航 · 职业赛场使用率第一',
+    specs:{连接:'2.4G HyperSpeed',驱动单元:'Razer TriForce 50mm',音效:'THX Spatial Audio',续航:'70小时',麦克风:'HyperClear 超心形'},
+    colors:['#111','#00ff41'],
+    desc:'2025年职业赛场使用率最高的无线耳机。THX空间音效精准还原敌人脚步方位，FPS游戏中听声辨位提前对手半秒。'
+  },
+  {
+    id:'h-4', cat:'headset', brand:'Logitech', name:'G733 LIGHTSPEED 无线', sname:'G733',
+    price:799, orig:999, icon:'🎧',
+    img:null,
+    bg:'linear-gradient(135deg,#001633,#003399)',
+    tags:['sale'], rating:4.5, sold:3890,
+    spec:'LIGHTSPEED无线 · 悬挂头带零压迫 · LIGHTSYNC RGB',
+    specs:{连接:'LIGHTSPEED 2.4G',驱动单元:'Pro-G 40mm',续航:'29小时',特点:'悬挂式头带 无压迫',灯光:'LIGHTSYNC RGB'},
+    colors:['#0033cc','#cc00cc','#00cc66','#111'],
+    desc:'罗技生态颜值天花板。悬挂式无头梁设计彻底消除长时间佩戴压迫感，RGB灯光与键盘鼠标联动，宅男颜值套装首选。'
+  },
+  {
+    id:'h-5', cat:'headset', brand:'Corsair', name:'Virtuoso RGB Wireless SE', sname:'Virtuoso SE',
+    price:1499, orig:1799, icon:'🎧',
+    img:null,
+    bg:'linear-gradient(135deg,#1a0010,#400030)',
+    tags:['pro'], rating:4.7, sold:1560,
+    spec:'iCUE生态联动 · 铝合金机身 · Hi-Fi级音质',
+    specs:{连接:'2.4G/USB/3.5mm 三模',驱动单元:'Neodymium 50mm',材质:'铝合金骨架',续航:'20小时',生态:'iCUE 全套同步控制'},
+    colors:['#c0c0c0','#111'],
+    desc:'海盗船全家桶旗舰耳机。iCUE统一管理键鼠耳机内存的RGB，铝合金机身提供旗舰级质感与超长耐用寿命。'
+  },
+  {
+    id:'h-6', cat:'headset', brand:'Beyerdynamic', name:'MMX 300 Pro', sname:'MMX 300 Pro',
+    price:1699, orig:null, icon:'🎧',
+    img:null,
+    bg:'linear-gradient(135deg,#0d0d0d,#1a1a1a)',
+    tags:['pro','limited'], rating:4.9, sold:680,
+    spec:'监听级Hi-Fi音质 · 超心形麦克风 · 德国制造',
+    specs:{类型:'封闭式头戴',驱动:'拜亚动力 Tesla专利',频响:'5~35,000 Hz',麦克风:'超心形 专业监听级',产地:'德国 Heilbronn 制造'},
+    colors:['#1a1a1a'],
+    desc:'当你不再满足于"够用"的时候，拜亚动力告诉你顶级监听音质是什么体验。游戏中每一个音效细节清晰可辨，连重启音效都是享受。'
+  },
+
+  // ===== HEADSETS EXTRA =====
+  {
+    id:'h-7', cat:'headset', brand:'Audeze', name:'Maxwell Wireless for PC', sname:'Maxwell PC',
+    price:3999, orig:4499, icon:'🎧',
+    img:null,
+    bg:'linear-gradient(135deg,#1a0d00,#3a2000)',
+    tags:['pro','limited'], rating:5.0, sold:340,
+    spec:'90mm平板振膜 · 最顶级音质 · AI降噪 · 2.4G无线',
+    specs:{类型:'平板磁路驱动单元',振膜:'90mm 平板振膜',连接:'2.4G 无线 / USB',降噪:'AI 实时语音降噪',频响:'10Hz – 50,000Hz'},
+    colors:['#111'],
+    desc:'游戏耳机的天花板。平板振膜技术让声场宽度与声音密度远超任何传统动圈耳机。游戏中脚步定位精准到令人恐惧，有钱任性的终极听觉享受。'
+  },
+  {
+    id:'h-8', cat:'headset', brand:'Logitech', name:'G735 LIGHTSPEED 限定色', sname:'G735',
+    price:1099, orig:1299, icon:'🎧',
+    img:null,
+    bg:'linear-gradient(135deg,#0a001a,#250050)',
+    tags:['new','sale'], rating:4.7, sold:4200,
+    spec:'LIGHTSPEED · 可换耳罩 · 56h续航 · 渐变色限定版',
+    specs:{连接:'LIGHTSPEED 2.4G / 蓝牙 双模',续航:'56小时',特点:'可更换多色外套耳罩',灯光:'LogiLight RGB',麦克风:'心形双极头'},
+    colors:['#cc00cc','#0033cc','#ff4400','#111'],
+    desc:'买了不后悔的颜值旗舰。可更换多色耳罩套随心换装，渐变配色超级出片。56h续航几乎不用记得充电，宅系玩家桌搭C位。'
+  },
+
+  // ===== MONITORS (5) =====
+  {
+    id:'mo-1', cat:'monitor', brand:'ASUS ROG', name:'ROG Swift Pro PG248QP', sname:'PG248QP',
+    price:6299, orig:7499, icon:'🖥️',
+    img:'https://dlcdnwebimgs.asus.com/gain/2DDC8872-7B9F-4395-85FE-4D116C96FC75/w1000/h732',
+    bg:'linear-gradient(135deg,#1a0022,#400062)',
+    tags:['pro','hot'], rating:4.9, sold:1240,
+    spec:'540Hz · 1080P · 0.2ms GTG · 职业FPS终极武器',
+    specs:{分辨率:'1920×1080 FHD',刷新率:'540Hz (!)',响应时间:'0.2ms GTG',面板:'TN Fast IPS',认证:'NVIDIA G-Sync Ultimate'},
+    colors:['#111'],
+    desc:'全球刷新率最高的电竞显示器。540Hz意味着每秒呈现540帧画面，职业FPS选手专属武器，让子弹时间变成现实。'
+  },
+  {
+    id:'mo-2', cat:'monitor', brand:'技嘉', name:'GIGABYTE MO27Q28GR OLED', sname:'MO27Q28GR',
+    price:2999, orig:3699, icon:'🖥️',
+    img:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80',
+    bg:'linear-gradient(135deg,#001a1a,#004444)',
+    tags:['new','hot'], rating:4.9, sold:890,
+    spec:'LG W-OLED第四代 · 2K 280Hz · 0.03ms · 超低反射',
+    specs:{分辨率:'2560×1440 2K',刷新率:'280Hz',响应时间:'0.03ms GtG',面板:'LG W-OLED 第四代',反射率:'1.1% 超低反射镜面'},
+    colors:['#111'],
+    desc:'LG最新一代W-OLED面板，2K+280Hz+0.03ms，画质与速度同时到极致。超低反射镜面屏在强光环境下依然清晰可辨。'
+  },
+  {
+    id:'mo-3', cat:'monitor', brand:'Samsung', name:'Odyssey OLED G8 34英寸', sname:'Odyssey G8',
+    price:5999, orig:7499, icon:'🖥️',
+    img:null,
+    bg:'linear-gradient(135deg,#00001a,#000066)',
+    tags:['sale','pro'], rating:4.8, sold:560,
+    spec:'34" 曲面 QD-OLED · 175Hz · 3440×1440 · 极致沉浸',
+    specs:{尺寸:'34英寸 1800R曲面',分辨率:'3440×1440 UWQHD',刷新率:'175Hz',面板:'三星 QD-OLED',特点:'无边框 HDR True Black'},
+    colors:['#111'],
+    desc:'34英寸超宽曲面QD-OLED，视野完全被屏幕包裹。RPG/模拟/飞行游戏中如同置身其中，游戏观影两不误的旗舰曲屏。'
+  },
+  {
+    id:'mo-4', cat:'monitor', brand:'AOC', name:'AGON AG276QZD QD-OLED', sname:'AG276QZD',
+    price:2999, orig:3999, icon:'🖥️',
+    img:null,
+    bg:'linear-gradient(135deg,#1a0000,#4d0000)',
+    tags:['sale'], rating:4.7, sold:1430,
+    spec:'QD-OLED · 2K 180Hz · 99% DCI-P3 · 入门OLED首选',
+    specs:{分辨率:'2560×1440 2K',刷新率:'180Hz',面板:'QD-OLED',响应时间:'0.03ms',色域:'DCI-P3 99%'},
+    colors:['#cc0000','#111'],
+    desc:'入门OLED电竞的最佳选择。QD-OLED面板兼顾180Hz高刷与99% DCI-P3色域，价格远低于三星原厂却有同等画质体验。'
+  },
+  {
+    id:'mo-5', cat:'monitor', brand:'Zowie', name:'ZOWIE XL2566K 360Hz', sname:'XL2566K',
+    price:3599, orig:3999, icon:'🖥️',
+    img:null,
+    bg:'linear-gradient(135deg,#0d0d0d,#1a1a1a)',
+    tags:['pro'], rating:4.8, sold:780,
+    spec:'DyAc+ · 360Hz · CS2官方指定赛事显示器',
+    specs:{分辨率:'1920×1080 FHD',刷新率:'360Hz',技术:'DyAc+ 动态精准',面板:'Fast TN',认证:'CS2官方赛事指定'},
+    colors:['#111'],
+    desc:'CS职业赛场官方指定显示器。DyAc+专利技术有效消除运动模糊，360Hz+超快TN是追求极致竞技优势玩家的唯一答案。'
+  },
+
+  // ===== MONITORS EXTRA =====
+  {
+    id:'mo-6', cat:'monitor', brand:'LG', name:'LG 27GR95QE-B OLED 240Hz', sname:'27GR95QE',
+    price:4599, orig:5499, icon:'🖥️',
+    img:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80',
+    bg:'linear-gradient(135deg,#001a33,#003a66)',
+    tags:['sale','pro'], rating:4.9, sold:2140,
+    spec:'27" WQHD OLED · 240Hz · 0.03ms · HDR True Black 400',
+    specs:{分辨率:'2560×1440 WQHD',刷新率:'240Hz',面板:'LG W-OLED',响应时间:'0.03ms GtG',认证:'VESA DisplayHDR True Black 400'},
+    colors:['#111'],
+    desc:'LG亲儿子OLED显示器，同款面板供给全球各大品牌，直接买LG更省钱。WQHD 240Hz+OLED真黑，入门OLED电竞显示器最佳选择之一。'
+  },
+  {
+    id:'mo-7', cat:'monitor', brand:'Alienware', name:'AW2725DF QD-OLED 500Hz', sname:'AW2725DF',
+    price:5999, orig:7499, icon:'🖥️',
+    img:null,
+    bg:'linear-gradient(135deg,#001a22,#004455)',
+    tags:['new','pro'], rating:4.9, sold:820,
+    spec:'500Hz QD-OLED · 2K · 0.03ms · OLED画质+超高刷双绝',
+    specs:{分辨率:'2560×1440 2K',刷新率:'500Hz (!)',面板:'三星 QD-OLED',响应时间:'0.03ms GtG',特点:'OLED画质 + 超高刷 同时拥有'},
+    colors:['#111'],
+    desc:'QD-OLED + 500Hz，以前这种组合根本不存在。2025年最惊喜的显示器：既有OLED深黑色彩，又有500Hz的流畅感，前所未有的旗舰级别。'
+  },
+
+  // ===== CHAIRS (4) =====
+  {
+    id:'c-1', cat:'chair', brand:'Secretlab', name:'TITAN Evo 2022 XL', sname:'TITAN Evo',
+    price:3799, orig:4299, icon:'🪑',
+    img:null,
+    bg:'linear-gradient(135deg,#0d0d0d,#1a1a1a)',
+    tags:['hot','pro'], rating:4.8, sold:3100,
+    spec:'SoftWeave Plus布面 · 磁吸记忆棉头枕 · 4D扶手',
+    specs:{面料:'SoftWeave Plus 透气布面',头枕:'磁吸式 记忆棉头枕',扶手:'4D 多方向调节',靠背:'165° 无级锁定',承重:'180kg'},
+    colors:['#111','#c8a050','#cc0000','#0033cc'],
+    desc:'电竞椅的行业标准答案。SoftWeave透气布面彻底解决PU皮闷热难题，磁吸头枕调节极便利。众多电竞战队官方合作用椅，久坐依然舒适。'
+  },
+  {
+    id:'c-2', cat:'chair', brand:'Herman Miller×Logitech', name:'Embody Gaming Chair 联名版', sname:'Embody Gaming',
+    price:12999, orig:null, icon:'🪑',
+    img:null,
+    bg:'linear-gradient(135deg,#001a0d,#003300)',
+    tags:['pro','limited'], rating:5.0, sold:280,
+    spec:'人体工学之王 × Logitech联名 · 专为游戏优化 · 12年质保',
+    specs:{设计:'人体工学科学精华',背部:'脊椎自适应支撑系统',扶手:'4D 极精细调节',认证:'临床人体工学认证',质保:'12年官方质保'},
+    colors:['#1a3300','#111'],
+    desc:'办公椅界的爱马仕。Herman Miller与Logitech联名打造，专为长时间游戏优化坐姿支撑系统，12年质保，有钱任性必入。'
+  },
+  {
+    id:'c-3', cat:'chair', brand:'AndaSeat', name:'Kaiser 4 XL 旗舰版', sname:'Kaiser 4 XL',
+    price:2499, orig:2999, icon:'🪑',
+    img:null,
+    bg:'linear-gradient(135deg,#1a0020,#400060)',
+    tags:['sale','hot'], rating:4.7, sold:4560,
+    spec:'超宽座垫 · 4D旋转扶手 · 高密度记忆棉 · 大体型友好',
+    specs:{座宽:'超宽设计 大体型友好',扶手:'4D 可旋转调节',填充:'高密度记忆泡棉',靠背:'160° 无级调节',承重:'200kg'},
+    colors:['#7b2fff','#111','#cc0000','#ffd700'],
+    desc:'大体型玩家的理想之选。超宽座垫设计+高密度记忆泡棉，久坐不压迫。4D扶手满足各种手臂习惯摆放方式。'
+  },
+  {
+    id:'c-4', cat:'chair', brand:'DXRacer', name:'DXRacer Formula F11', sname:'Formula F11',
+    price:1899, orig:2299, icon:'🪑',
+    img:null,
+    bg:'linear-gradient(135deg,#1a0000,#4d0000)',
+    tags:['sale'], rating:4.4, sold:6780,
+    spec:'经典赛车风格 · 高背全包裹 · 电竞椅奠基品牌',
+    specs:{风格:'赛车跑车设计',靠背:'高背全包裹式',扶手:'3D 调节',材质:'优质PU皮革+透气网布',承重:'120kg'},
+    colors:['#cc0000','#111','#ffd700'],
+    desc:'电竞椅的奠基品牌，入行超过15年。赛车风格设计经久不衰，高背全包裹提供全身支撑。电竞椅入坑的高性价比首选。'
+  },
+
+  // ===== CHAIRS EXTRA =====
+  {
+    id:'c-5', cat:'chair', brand:'Noblechairs', name:'HERO 系列 真皮旗舰版', sname:'HERO Leather',
+    price:5999, orig:6999, icon:'🪑',
+    img:null,
+    bg:'linear-gradient(135deg,#0d0d0d,#1a0000)',
+    tags:['pro','limited'], rating:4.9, sold:1020,
+    spec:'顶层真皮 · 电动腰托 · 德国设计 · 铝合金骨架',
+    specs:{材质:'优质头层牛皮',腰托:'电动可调 内置气囊',扶手:'4D 极细调节',骨架:'铝合金轻量化',产地:'德国设计 精工制造'},
+    colors:['#111','#cc0000'],
+    desc:'顶层真皮在电竞椅领域属于奢侈品。电动腰托精确控制支撑位置，德国工艺品质做工令人折服。犒劳自己或高端礼品的顶配之选。'
+  },
+  {
+    id:'c-6', cat:'chair', brand:'Autonomous', name:'ErgoChair Pro+ 人体工学', sname:'ErgoChair Pro+',
+    price:4599, orig:5499, icon:'🪑',
+    img:null,
+    bg:'linear-gradient(135deg,#001a33,#003366)',
+    tags:['pro','sale'], rating:4.7, sold:2330,
+    spec:'脊椎自适应 · 全网面透气 · 8级腰托 · BIFMA认证',
+    specs:{背部:'脊椎自适应网背',腰托:'8级可调气压腰托',扶手:'4D 多方向',认证:'BIFMA 人体工学认证',透气:'全网面 四季适用'},
+    colors:['#003366','#c0c0c0','#111'],
+    desc:'专为程序员和设计师打造。脊椎自适应网背随坐姿实时调整支撑方向，全网面透气设计即使夏天久坐也不闷热。颈椎腰椎都感谢你。'
+  },
+
+  // ===== FIGURES (8) =====
+  {
+    id:'f-1', cat:'figure', brand:'Pop Mart', name:'LABUBU 怪兽电音系列盲盒', sname:'LABUBU电音',
+    price:139, orig:null, icon:'🧸',
+    img:'https://www.popmart.com/cdn/shop/files/LABUBU-Monster-Vinyl-Plush-Doll_1.png',
+    bg:'linear-gradient(135deg,#2d1a40,#5a2d80)',
+    tags:['hot','limited'], rating:4.9, sold:24600,
+    spec:'泡泡玛特 · 9款+1隐藏 · 赛博电音DJ主题',
+    specs:{IP:'LABUBU × 电音DJ',规格:'盲盒 随机一款',材质:'PVC+ABS',尺寸:'约 9cm',隐藏款:'全球限量 溢价超高'},
+    colors:['#7b2fff','#ff0090','#00f5ff','#ffd700'],
+    desc:'LABUBU最新联名系列爆款！电音DJ主题造型充满赛博感，隐藏款全球限量发售，已有成交价溢价15倍以上的记录。'
+  },
+  {
+    id:'f-2', cat:'figure', brand:'Pop Mart', name:'SKULLPANDA 光织园系列', sname:'SKULLPANDA光织',
+    price:99, orig:null, icon:'💀',
+    img:'https://www.popmart.com/cdn/shop/products/SKULLPANDA-The-Flash-Session-Series_01.png',
+    bg:'linear-gradient(135deg,#0d0020,#2d0060)',
+    tags:['hot'], rating:4.8, sold:18400,
+    spec:'泡泡玛特 · 暗黑赛博美学 · 12款+1隐藏',
+    specs:{IP:'SKULLPANDA',系列:'光织园',规格:'盲盒 随机一款',尺寸:'约 12cm',材质:'PVC 精细涂装'},
+    colors:['#7b2fff','#ff0090','#111','#00f5ff'],
+    desc:'暗黑美学代表IP。光织园系列以赛博都市为主题，每款均有精细的霓虹光泽涂装，完美契合电竞桌搭暗色风格。'
+  },
+  {
+    id:'f-3', cat:'figure', brand:'米哈游', name:'崩坏：星穹铁道 开拓者 1/7手办', sname:'开拓者手办',
+    price:399, orig:null, icon:'⭐',
+    img:null,
+    bg:'linear-gradient(135deg,#001a33,#004080)',
+    tags:['new','hot'], rating:4.9, sold:7800,
+    spec:'官方正版 · 1/7比例精细涂装 · 限量版',
+    specs:{比例:'1/7',尺寸:'约 26cm (含底座)',材质:'PVC+ABS',出品:'米哈游官方授权',附件:'专属装甲配件'},
+    colors:['#0066ff','#fff','#ffd700'],
+    desc:'崩铁官方限量手办，1/7比例精细还原游戏开拓者形象。从眼睛纹理到装甲细节全做工精良，铁道粉桌搭必入。'
+  },
+  {
+    id:'f-4', cat:'figure', brand:'米哈游', name:'绝区零 邦布蔬果国度盲盒', sname:'邦布盲盒',
+    price:79, orig:null, icon:'🤖',
+    img:null,
+    bg:'linear-gradient(135deg,#1a1000,#4d3300)',
+    tags:['new','hot'], rating:4.9, sold:31200,
+    spec:'绝区零官方 · Q版邦布 · 8款+1隐藏 · 推出即秒空',
+    specs:{IP:'绝区零 邦布',系列:'蔬果国度',规格:'盲盒 随机',尺寸:'约 7cm',款式:'8款正常+1款隐藏'},
+    colors:['#ff9900','#66cc00','#cc0066','#00aaff'],
+    desc:'绝区零人气小怪邦布的官方可爱周边！推出即秒空，隐藏款超级稀有，是桌搭摆件和收藏两用的绝佳选择。'
+  },
+  {
+    id:'f-5', cat:'figure', brand:'Good Smile', name:'Racing Miku 2024 Ver. 1/7', sname:'赛车初音2024',
+    price:1899, orig:2099, icon:'🏁',
+    img:null,
+    bg:'linear-gradient(135deg,#001a1a,#00334d)',
+    tags:['limited','sale'], rating:4.9, sold:3400,
+    spec:'GSC年度限定 · 1/7比例 · 赛车轮胎互动底座',
+    specs:{比例:'1/7',尺寸:'约 22cm (含底座)',IP:'初音未来 赛车限定',年份:'2024 Ver.',材质:'ABS+PVC 精细涂装'},
+    colors:['#00e5e5','#fff'],
+    desc:'GSC年度限量赛车初音，每年仅出此一版。2024版新增赛车轮胎互动底座设计，涂装细节更胜往年，初音收藏家年度必入。'
+  },
+  {
+    id:'f-6', cat:'figure', brand:'Bandai', name:'PG 1/60 RX-78-2 元祖高达 LED版', sname:'PG RX-78-2',
+    price:1299, orig:1499, icon:'🤖',
+    img:null,
+    bg:'linear-gradient(135deg,#001a33,#003366)',
+    tags:['pro','sale'], rating:4.8, sold:2100,
+    spec:'1/60 Perfect Grade · LED发光套件 · 双层骨架',
+    specs:{比例:'1/60',尺寸:'约 30cm',系列:'Perfect Grade (PG)',结构:'全内骨架+装甲双层',附件:'LED发光套件'},
+    colors:['#0033cc','#cc0000','#fff'],
+    desc:'高达模型最高规格Perfect Grade系列。1/60超大比例+全内骨架设计，LED套件让双眼和胸口发光。三周组装，值得。'
+  },
+  {
+    id:'f-7', cat:'figure', brand:'Pop Mart×CRYBABY', name:'CRYBABY 怪兽的眼泪系列', sname:'CRYBABY眼泪',
+    price:119, orig:null, icon:'😢',
+    img:'https://www.popmart.com/cdn/shop/files/CRYBABY-Monster-Tears-Series.png',
+    bg:'linear-gradient(135deg,#1a0000,#330000)',
+    tags:['hot','new'], rating:4.8, sold:12300,
+    spec:'泡泡玛特 · 泰国艺术家创作 · LABUBU后增速最快IP',
+    specs:{IP:'CRYBABY',系列:'怪兽的眼泪',规格:'盲盒 随机',艺术家:'泰国本土艺术家',尺寸:'约 8cm'},
+    colors:['#cc0000','#7b2fff','#ff9900','#00aaff'],
+    desc:'LABUBU后增速最快的潮玩IP！CRYBABY怪兽的眼泪以"眼泪"为设计语言融合怪诞美学，已跻身泡泡玛特10亿IP俱乐部。'
+  },
+  {
+    id:'f-8', cat:'figure', brand:'万代南梦宫', name:'英雄联盟 亚索 大师级手办', sname:'亚索手办',
+    price:1299, orig:1499, icon:'⚔️',
+    img:'https://images-na.ssl-images-amazon.com/images/I/81q3YJ4q5zL._AC_SL1500_.jpg',
+    bg:'linear-gradient(135deg,#0d1a0d,#1a3300)',
+    tags:['hot','sale'], rating:4.8, sold:5600,
+    spec:'1/6比例 · 拳头官方授权 · 风墙特效底座',
+    specs:{比例:'1/6',尺寸:'约 32cm',IP:'英雄联盟 亚索 风男',授权:'Riot Games 官方授权',附件:'招牌风墙透明特效底座'},
+    colors:['#1a3300','#c8a050'],
+    desc:'LOL销量冠军英雄的官方高级手办。风男亚索经典招牌姿态，透明风墙特效底座令人叫绝。LOL玩家桌搭必备镇桌神器。'
+  },
+
+  // ===== FIGURES EXTRA =====
+  {
+    id:'f-9', cat:'figure', brand:'Pop Mart', name:'DIMOO 太空旅行家系列', sname:'DIMOO太空',
+    price:89, orig:null, icon:'🧑‍🚀',
+    img:null,
+    bg:'linear-gradient(135deg,#001833,#003366)',
+    tags:['hot','new'], rating:4.8, sold:16200,
+    spec:'泡泡玛特 · 12款+1隐藏 · 太空科幻赛博主题',
+    specs:{IP:'DIMOO',系列:'太空旅行家',规格:'盲盒 随机一款',尺寸:'约 7cm',主题:'太空 · 科幻 · 赛博朋克'},
+    colors:['#003366','#cc6600','#9900cc','#00aaff'],
+    desc:'DIMOO圆眼大头蓬松风格配上宇航员太空服，一上架就在泡泡玛特日榜前三。科技感桌搭必备摆件，隐藏款溢价已超十倍。'
+  },
+  {
+    id:'f-10', cat:'figure', brand:'miHoYo', name:'原神 胡桃 1/7 精工发光版', sname:'胡桃手办',
+    price:1299, orig:null, icon:'🔥',
+    img:null,
+    bg:'linear-gradient(135deg,#2a0000,#6a0000)',
+    tags:['hot','limited'], rating:4.9, sold:13600,
+    spec:'米哈游官方 · 1/7 · 悼亡花发光底座 · 全球限量',
+    specs:{比例:'1/7',尺寸:'约 28cm (含底座)',IP:'原神 胡桃',授权:'miHoYo 官方正版',底座:'悼亡花特效发光底座'},
+    colors:['#cc3300','#ffffff','#333333'],
+    desc:'原神人气角色限量精工版。悼亡花特效底座可自发光，胡桃双马尾细节精细到每根发丝。原神玩家桌搭必须拥有的镇宅神器。'
+  },
+  {
+    id:'f-11', cat:'figure', brand:'Bandai Spirits', name:'海贼王 罗罗诺亚·索隆 DXF', sname:'索隆DXF',
+    price:299, orig:349, icon:'⚔️',
+    img:null,
+    bg:'linear-gradient(135deg,#001a00,#003300)',
+    tags:['hot','sale'], rating:4.8, sold:10500,
+    spec:'DXF精致系列 · 三刀流经典姿态 · 东映官方授权',
+    specs:{系列:'DXF THE GRANDLINE SERIES',比例:'约 1/8',尺寸:'约 18cm',材质:'ABS+PVC',授权:'东映动画 官方授权'},
+    colors:['#003300','#c8a050'],
+    desc:'ONE PIECE人气角色索隆的经典三刀流造型，DXF系列做工精细价格亲民。桌搭摆上去立刻燃起来，入门收藏首选。'
+  },
+  {
+    id:'f-12', cat:'figure', brand:'Good Smile', name:'鬼灭之刃 竈門炭治郎 1/8', sname:'炭治郎手办',
+    price:899, orig:1099, icon:'🌊',
+    img:null,
+    bg:'linear-gradient(135deg,#001a33,#003333)',
+    tags:['sale'], rating:4.8, sold:7100,
+    spec:'GSC官方 · 1/8 · 水之呼吸透明特效底座 · 全力姿态',
+    specs:{比例:'1/8',尺寸:'约 20cm (含底座)',IP:'鬼灭之刃 竈門炭治郎',授权:'GSC 官方授权',底座:'水之呼吸波纹特效底座'},
+    colors:['#003333','#003366','#111'],
+    desc:'鬼灭之刃最经典角色的GSC精品版。水之呼吸波纹特效底座配合炭治郎全力挥刀姿态，完美重现动画最燃场面。'
+  },
+  {
+    id:'f-13', cat:'figure', brand:'Pop Mart×Molly', name:'Molly 星河系列 精装版', sname:'Molly星河',
+    price:159, orig:null, icon:'⭐',
+    img:null,
+    bg:'linear-gradient(135deg,#0d001a,#2a004d)',
+    tags:['hot','new'], rating:4.9, sold:21300,
+    spec:'泡泡玛特 · Molly精装 · 9款+1隐藏 · 发光特效涂装',
+    specs:{IP:'Molly',系列:'星河系列 精装版',规格:'精装盒装 随机',尺寸:'约 12cm',特效:'荧光发光涂装'},
+    colors:['#9900cc','#00aaff','#ff6600','#fff'],
+    desc:'Molly最高规格精装版，配备荧光发光特效涂装，暗处可见星河微光。比普通盲盒大一圈，盒子本身就是艺术品，二手市场溢价稳定。'
+  }
+];
+
+// ---------- STATE ----------
+let cart = [];
+let build = [];
+let curCat = 'keyboard';
+let selColor = '#111';
+
+// ---------- CATEGORIES ----------
+const CATS = [
+  {id:'keyboard', label:'机械键盘', icon:'⌨️'},
+  {id:'mouse',    label:'电竞鼠标', icon:'🖱️'},
+  {id:'headset',  label:'头戴耳机', icon:'🎧'},
+  {id:'monitor',  label:'电竞显示器', icon:'🖥️'},
+  {id:'chair',    label:'人体工学椅', icon:'🪑'},
+  {id:'figure',   label:'潮流玩具', icon:'🧸'}
+];
+const COLORS = ['#111111','#ffffff','#00f5ff','#ff0090','#7b2fff','#ffd700','#00ff88','#ff6600','#c8a050','#cc0000'];
+const BADGE_LABELS = {hot:'热销',new:'新品',sale:'特惠',pro:'职业',limited:'限量'};
+
+// ---------- IMAGE FALLBACK ----------
+const IMG_FALLBACK_ICON = {
+  keyboard:'⌨',
+  mouse:'🖱',
+  headset:'🎧',
+  monitor:'🖥',
+  chair:'🪑',
+  figure:'🧸',
+  community:'📸'
+};
+const productFallbackCache = new Map();
+const communityFallbackCache = new Map();
+const LOCAL_ASSET_MAP = window.LOCAL_ASSET_MAP || {};
+function toLocalAsset(url) {
+  return url && LOCAL_ASSET_MAP[url] ? LOCAL_ASSET_MAP[url] : url;
+}
+function syncLocalAssetMap() {
+  if (typeof DB !== 'undefined') {
+    DB.forEach(p => { if (p.img) p.img = toLocalAsset(p.img); });
+  }
+  if (typeof POSTS !== 'undefined') {
+    POSTS.forEach(p => { if (p.img) p.img = toLocalAsset(p.img); });
+  }
+}
+const PRODUCT_IMAGE_OVERRIDES = {
+  // Keyboards
+  'kb-4':'assets/stock/keyboard-1.jpg',
+  'kb-5':'assets/remote/img009.jpg',
+  'kb-6':'assets/stock/keyboard-3.jpg',
+  'kb-7':'assets/stock/keyboard-5.jpg',
+  'kb-8':'assets/stock/keyboard-2.jpg',
+  'kb-9':'assets/stock/keyboard-6.jpg',
+  'kb-10':'assets/stock/keyboard-4.jpg',
+  'kb-11':'assets/remote/img031.jpg',
+  // Mice
+  'm-3':'assets/remote/img015.jpg',
+  'm-4':'assets/stock/mouse-7.jpg',
+  'm-5':'assets/stock/mouse-1.jpg',
+  'm-6':'assets/stock/mouse-4.jpg',
+  'm-7':'assets/stock/mouse-6.jpg',
+  'm-8':'assets/stock/mouse-2.jpg',
+  'm-9':'assets/stock/mouse-5.jpg',
+  'm-10':'assets/stock/mouse-8.jpg',
+  'm-11':'assets/stock/mouse-9.jpg',
+  // Headsets
+  'h-3':'assets/stock/headset-3.jpg',
+  'h-4':'assets/stock/headset-4.jpg',
+  'h-5':'assets/remote/img013.jpg',
+  'h-6':'assets/stock/headset-1.jpg',
+  'h-7':'assets/stock/headset-6.jpg',
+  'h-8':'assets/stock/headset-5.png',
+  // Monitors
+  'mo-2':'assets/stock/monitor-4.jpg',
+  'mo-3':'assets/stock/monitor-3.jpg',
+  'mo-4':'assets/stock/monitor-5.jpg',
+  'mo-5':'assets/stock/monitor-6.jpg',
+  'mo-6':'assets/stock/monitor-1.jpg',
+  'mo-7':'assets/stock/monitor-7.jpg',
+  // Chairs
+  'c-1':'assets/stock/chair-7.jpg',
+  'c-2':'assets/stock/chair-4.jpg',
+  'c-3':'assets/stock/chair-6.jpg',
+  'c-4':'assets/stock/chair-5.jpg',
+  'c-5':'assets/stock/chair-1.jpg',
+  'c-6':'assets/remote/img022.jpg',
+  // Figures
+  'f-1':'assets/stock/figure-7.jpg',
+  'f-2':'assets/stock/figure-8.jpg',
+  'f-3':'assets/stock/figure-1.jpg',
+  'f-4':'assets/stock/figure-11.jpg',
+  'f-5':'assets/stock/figure-racing-miku-2024.jpg',
+  'f-6':'assets/stock/figure-2.jpg',
+  'f-7':'assets/stock/figure-3.jpg',
+  'f-8':'assets/stock/official-f8-yasuo.jpg',
+  'f-9':'assets/stock/figure-4.jpg',
+  'f-10':'assets/stock/official-f10-hutao.webp',
+  'f-11':'assets/stock/official-f11-zoro.jpg',
+  'f-12':'assets/stock/official-f12-tanjiro.jpg',
+  'f-13':'assets/stock/figure-13.jpg'
+};
+const LOCAL_STOCK_IMAGE_POOL = {
+  keyboard:['assets/remote/img030.webp','assets/stock/keyboard-2.jpg'],
+  mouse:['assets/stock/mouse-4.jpg','assets/stock/mouse-7.jpg'],
+  headset:['assets/stock/headset-4.jpg','assets/remote/img010.png'],
+  monitor:['assets/stock/monitor-2.jpg','assets/stock/monitor-3.jpg'],
+  chair:['assets/stock/chair-4.jpg','assets/stock/chair-7.jpg'],
+  figure:['assets/stock/figure-1.jpg','assets/stock/figure-4.jpg']
+};
+function normalizeProductImages() {
+  if (typeof DB === 'undefined') return;
+  const catIndex = {};
+  DB.forEach(p => {
+    if (PRODUCT_IMAGE_OVERRIDES[p.id]) {
+      p.img = PRODUCT_IMAGE_OVERRIDES[p.id];
+      return;
+    }
+    if (p.img) return;
+    const pool = LOCAL_STOCK_IMAGE_POOL[p.cat];
+    if (!pool || !pool.length) return;
+    const idx = catIndex[p.cat] || 0;
+    p.img = pool[idx % pool.length];
+    catIndex[p.cat] = idx + 1;
+  });
+}
+function hydrateStaticImages() {
+  document.querySelectorAll('img[src]').forEach(img => {
+    const src = img.getAttribute('src');
+    if (!src || !/^https?:\/\//.test(src)) return;
+    const local = toLocalAsset(src);
+    if (local !== src) img.setAttribute('src', local);
+  });
+}
+function escSvg(text) {
+  return String(text || '').replace(/[&<>"']/g, ch => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[ch]));
+}
+function makeSvgDataUri({title, subtitle, emoji, c1, c2}) {
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'>
+    <defs>
+      <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+        <stop offset='0%' stop-color='${c1}'/>
+        <stop offset='100%' stop-color='${c2}'/>
+      </linearGradient>
+    </defs>
+    <rect width='1200' height='800' fill='url(#g)'/>
+    <circle cx='1080' cy='100' r='220' fill='rgba(255,255,255,0.08)'/>
+    <circle cx='120' cy='720' r='260' fill='rgba(0,245,255,0.08)'/>
+    <text x='600' y='330' font-family='Segoe UI,Arial,sans-serif' font-size='160' text-anchor='middle'>${emoji}</text>
+    <text x='60' y='610' font-family='Segoe UI,Arial,sans-serif' font-size='58' font-weight='700' fill='#ecf3ff'>${escSvg(title)}</text>
+    <text x='60' y='680' font-family='Segoe UI,Arial,sans-serif' font-size='40' fill='#b4c2d8'>${escSvg(subtitle)}</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+function getProductFallbackImg(p) {
+  if (productFallbackCache.has(p.id)) return productFallbackCache.get(p.id);
+  const icon = IMG_FALLBACK_ICON[p.cat] || '🛍️';
+  const uri = makeSvgDataUri({
+    title:p.brand,
+    subtitle:p.sname || p.name,
+    emoji:icon,
+    c1:'#122845',
+    c2:'#2f1459'
+  });
+  productFallbackCache.set(p.id, uri);
+  return uri;
+}
+function getCommunityFallbackImg(post) {
+  const key = `${post.user}|${post.tag}`;
+  if (communityFallbackCache.has(key)) return communityFallbackCache.get(key);
+  const uri = makeSvgDataUri({
+    title:post.user,
+    subtitle:post.tag,
+    emoji:IMG_FALLBACK_ICON.community,
+    c1:'#0d2740',
+    c2:'#3f175f'
+  });
+  communityFallbackCache.set(key, uri);
+  return uri;
+}
+function handleImgFallback(img) {
+  const fb = img.dataset.fallback;
+  if (fb && img.src !== fb) {
+    img.src = fb;
+    return;
+  }
+  img.style.display = 'none';
+  const icon = img.parentNode.querySelector('.pimg-inner,.m-icon');
+  if (icon) icon.style.display = 'flex';
+}
+function handlePostImgFallback(img) {
+  const fb = img.dataset.fallback;
+  if (fb && img.src !== fb) {
+    img.src = fb;
+    return;
+  }
+  img.style.display = 'none';
+}
+
+// ---------- NAVIGATION ----------
+function goPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  const idx = {home:0, workshop:1, community:2, gift:3, flowchart:4, about:5};
+  const links = document.querySelectorAll('.nav-link');
+  if (idx[name] !== undefined && links[idx[name]]) links[idx[name]].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function goCat(cat) {
+  curCat = cat;
+  goPage('workshop');
+  renderWorkshop();
+}
+
+// ---------- SEARCH ----------
+let searchQuery = '';
+function doSearch(val) {
+  searchQuery = val.trim().toLowerCase();
+  const clearBtn = document.getElementById('searchClear');
+  const countEl = document.getElementById('searchCount');
+  clearBtn.style.display = searchQuery ? 'block' : 'none';
+  if (!searchQuery) {
+    countEl.style.display = 'none';
+    document.getElementById('catTabs').style.display = 'flex';
+    renderProducts();
+    return;
+  }
+  document.getElementById('catTabs').style.display = 'none';
+  const results = DB.filter(p =>
+    p.name.toLowerCase().includes(searchQuery) ||
+    p.brand.toLowerCase().includes(searchQuery) ||
+    p.spec.toLowerCase().includes(searchQuery) ||
+    p.desc.toLowerCase().includes(searchQuery) ||
+    Object.values(p.specs).join(' ').toLowerCase().includes(searchQuery)
+  );
+  countEl.style.display = 'block';
+  countEl.innerHTML = `找到 <span style="color:var(--cyan);font-weight:700">${results.length}</span> 件商品 匹配 "<span style="color:var(--text-primary)">${val.trim()}</span>"`;
+  document.getElementById('wsGrid').innerHTML = results.length
+    ? results.map(makeCard).join('')
+    : `<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--text-secondary)">
+        <div style="font-size:48px;margin-bottom:12px">🔍</div>
+        <div>没有找到匹配的商品，换个关键词试试？</div>
+       </div>`;
+}
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  doSearch('');
+}
+
+// ---------- PRODUCT CARD HTML ----------
+function makeCard(p) {
+  const badgesHtml = p.tags.map(t => `<span class="badge b-${t}">${BADGE_LABELS[t]}</span>`).join('');
+  const fb = getProductFallbackImg(p);
+  const src = p.img || fb;
+  const imgHtml = `<img class="pimg-real" src="${src}" data-fallback="${fb}" alt="${p.name}" loading="lazy"
+         onerror="handleImgFallback(this)">`;
+  const emojiStyle = 'display:none';
+  return `<div class="pcard" onclick="openModal('${p.id}')">
+    <div class="pimg" style="background:${p.bg}">
+      ${imgHtml}
+      <div class="pimg-inner" style="${emojiStyle}">${p.icon}</div>
+      <div class="pimg-shine"></div>
+    </div>
+    <div class="pbadges">${badgesHtml}</div>
+    <div class="pinfo">
+      <div class="pbrand">${p.brand}</div>
+      <div class="pname">${p.name}</div>
+      <div class="pspec">${p.spec}</div>
+      <div class="pfooter">
+        <div>
+          <span class="pprice">¥${p.price.toLocaleString()}</span>
+          ${p.orig ? `<span class="porig">¥${p.orig.toLocaleString()}</span>` : ''}
+        </div>
+        <button class="padd" onclick="event.stopPropagation();quickAdd('${p.id}')">+</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ---------- HOME ----------
+function renderHome() {
+  const hot = DB.filter(p => p.tags.includes('hot')).slice(0,4);
+  document.getElementById('homeHot').innerHTML = hot.map(makeCard).join('');
+  const newP = DB.filter(p => p.tags.includes('new')).slice(0,3);
+  document.getElementById('homeNew').innerHTML = newP.map(makeCard).join('');
+  // AI recommendation cards
+  const recs = DB.filter(p => ['m-1','kb-1','h-3'].includes(p.id));
+  document.getElementById('aiPills').innerHTML = recs.map(p => {
+    const imgHtml = p.img
+      ? `<img class="ai-pill-img" src="${p.img}" alt="${p.sname}" onerror="this.outerHTML='<div class=\\'ai-pill-img-placeholder\\'>${p.icon||'📦'}</div>'">`
+      : `<div class="ai-pill-img-placeholder">${p.icon||'📦'}</div>`;
+    return `<div class="ai-pill" onclick="openModal('${p.id}')">
+      ${imgHtml}
+      <div class="ai-pill-info">
+        <div class="ai-pill-match">AI匹配 ${88+Math.floor(Math.random()*10)}%</div>
+        <div class="ai-pill-name">${p.sname}</div>
+        <div class="ai-pill-price">¥${p.price.toLocaleString()}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ---------- TICKER ----------
+function renderTicker() {
+  const items = DB.slice(0,16).map(p => ({
+    name: p.sname, price: p.price,
+    up: Math.random() > 0.4,
+    pct: (Math.random() * 4.5 + 0.3).toFixed(1)
+  }));
+  const html = [...items, ...items].map(x =>
+    `<div class="ticker-item">
+      <span class="ti-name">${x.name}</span>
+      <span class="ti-price">¥${x.price.toLocaleString()}</span>
+      <span class="${x.up ? 'ti-up' : 'ti-dn'}">${x.up ? '↑' : '↓'}${x.pct}%</span>
+    </div>`
+  ).join('');
+  document.getElementById('tickerTrack').innerHTML = html;
+}
+
+// ---------- WORKSHOP ----------
+function renderTabs() {
+  document.getElementById('catTabs').innerHTML = CATS.map(c => {
+    const cnt = DB.filter(p => p.cat === c.id).length;
+    return `<button class="ctab ${c.id === curCat ? 'active' : ''}" onclick="selectCat('${c.id}')">
+      ${c.icon} ${c.label} <span style="font-size:10px;opacity:0.55">(${cnt})</span>
+    </button>`;
+  }).join('');
+}
+function renderProducts() {
+  const prods = DB.filter(p => p.cat === curCat);
+  document.getElementById('wsGrid').innerHTML = prods.map(makeCard).join('');
+}
+function renderSwatches() {
+  document.getElementById('swatches').innerHTML = COLORS.map(c =>
+    `<div class="sw ${selColor === c ? 'active' : ''}"
+      style="background:${c};${c === '#111111' ? 'border-color:#444' : `border-color:${c}`}"
+      onclick="pickColor('${c}')"></div>`
+  ).join('');
+}
+function renderBuild() {
+  const el = document.getElementById('buildList');
+  if (!build.length) {
+    el.innerHTML = '<div class="build-empty">点击商品加入装备清单<br>开始打造你的专属战场</div>';
+    document.getElementById('buildTotal').textContent = '¥0';
+    return;
+  }
+  el.innerHTML = build.map(p =>
+    `<div class="build-item">
+      <div class="bi-icon">${p.icon}</div>
+      <div class="bi-info">
+        <div class="bi-name">${p.name}</div>
+        <div class="bi-price">¥${p.price.toLocaleString()}</div>
+      </div>
+      <button class="bi-rm" onclick="removeFromBuild('${p.id}')">×</button>
+    </div>`
+  ).join('');
+  document.getElementById('buildTotal').textContent = '¥' + build.reduce((s,p) => s+p.price, 0).toLocaleString();
+}
+function renderWorkshop() {
+  renderTabs();
+  renderProducts();
+  renderBuild();
+  renderSwatches();
+}
+function selectCat(cat) {
+  curCat = cat;
+  renderWorkshop();
+}
+function pickColor(c) {
+  selColor = c;
+  renderSwatches();
+  showToast('主题配色已更新 ✓', 's');
+}
+function addToBuild(id) {
+  const p = DB.find(x => x.id === id);
+  if (build.find(x => x.id === id)) { showToast(p.sname + ' 已在装备清单中', 'i'); return; }
+  build.push(p);
+  renderBuild();
+  showToast(p.sname + ' 已加入装备清单 ⚡', 's');
+}
+function removeFromBuild(id) {
+  build = build.filter(x => x.id !== id);
+  renderBuild();
+}
+function buildToCart() {
+  if (!build.length) { showToast('装备清单还是空的', 'e'); return; }
+  build.forEach(p => pushCart(p));
+  showToast(build.length + ' 件装备已移入购物车 🛒', 's');
+}
+
+// ---------- CART ----------
+function quickAdd(id) {
+  const p = DB.find(x => x.id === id);
+  pushCart(p);
+  showToast(p.sname + ' 已加入购物车 ✓', 's');
+}
+function pushCart(p) {
+  const ex = cart.find(x => x.id === p.id);
+  ex ? ex.qty++ : cart.push({...p, qty:1});
+  renderCart();
+}
+function renderCart() {
+  const tot = cart.reduce((s,x) => s+x.qty, 0);
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = tot;
+  badge.style.display = tot > 0 ? 'flex' : 'none';
+  document.getElementById('cartCount').textContent = tot;
+  const el = document.getElementById('cartItems');
+  if (!cart.length) {
+    el.innerHTML = '<div class="cart-empty-msg"><div style="font-size:48px;margin-bottom:10px">🛒</div><div style="font-size:13px">空空如也，快去挑选吧</div></div>';
+    document.getElementById('cartTotal').textContent = '¥0';
+    return;
+  }
+  el.innerHTML = cart.map(x =>
+    `<div class="ci">
+      <div class="ci-icon">${x.icon}</div>
+      <div class="ci-info">
+        <div class="ci-name">${x.name}</div>
+        <div class="ci-price">¥${(x.price * x.qty).toLocaleString()}</div>
+        <div class="ci-qty">
+          <button class="qb" onclick="chgQty('${x.id}',-1)">−</button>
+          <span class="qn">${x.qty}</span>
+          <button class="qb" onclick="chgQty('${x.id}',1)">+</button>
+        </div>
+      </div>
+      <button class="ci-del" onclick="rmCart('${x.id}')">🗑️</button>
+    </div>`
+  ).join('');
+  document.getElementById('cartTotal').textContent = '¥' + cart.reduce((s,x) => s+x.price*x.qty, 0).toLocaleString();
+}
+function chgQty(id, d) {
+  const x = cart.find(i => i.id === id);
+  if (!x) return;
+  x.qty += d;
+  if (x.qty <= 0) cart = cart.filter(i => i.id !== id);
+  renderCart();
+}
+function rmCart(id) { cart = cart.filter(i => i.id !== id); renderCart(); }
+function toggleCart() {
+  document.getElementById('cartSidebar').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+function doCheckout() {
+  if (!cart.length) { showToast('购物车还是空的哦', 'e'); return; }
+  const total = cart.reduce((s,x) => s+x.price*x.qty, 0);
+  toggleCart();
+  showToast(`订单金额 ¥${total.toLocaleString()}，正在处理...`, 'i');
+  setTimeout(() => showToast('📍 已为你匹配最近门店：NEXUSGEAR 新沙体验店', 'i'), 1000);
+  setTimeout(() => showToast('🏪 O2O自取优先 · 或选择智能仓配24h到达', 'i'), 2100);
+  setTimeout(() => {
+    cart = []; renderCart();
+    showToast('✅ 订单已提交！凭取货码到店体验取货，或等待48h极速配送', 's');
+  }, 3400);
+}
+
+// ---------- MODAL ----------
+function openModal(id) {
+  const p = DB.find(x => x.id === id);
+  if (!p) return;
+  const specHtml = Object.entries(p.specs).map(([k,v]) =>
+    `<div class="sp-item"><div class="sp-k">${k}</div><div class="sp-v">${v}</div></div>`
+  ).join('');
+  const badgeHtml = p.tags.map(t => `<span class="badge b-${t}">${BADGE_LABELS[t]}</span>`).join(' ');
+  const colHtml = p.colors.map(c =>
+    `<div class="sw" style="background:${c};${c==='#111111'?'border-color:#444':`border-color:${c}`}"
+      onclick="(function(el,col){el.closest('.m-body').querySelectorAll('.sw').forEach(s=>s.classList.remove('active'));el.classList.add('active');var vwr=el.closest('.m-body').querySelector('.m-viewer');vwr.style.boxShadow='0 0 60px '+col+'66';var ov=vwr.querySelector('.m-clr-ov');if(!ov){ov=document.createElement('div');ov.className='m-clr-ov';ov.style.cssText='position:absolute;inset:0;border-radius:14px;pointer-events:none;transition:background 0.4s;z-index:3';vwr.appendChild(ov);}ov.style.background=col+'28';})(this,'${c}')"></div>`
+  ).join('');
+  const fb = getProductFallbackImg(p);
+  const src = p.img || fb;
+  document.getElementById('mBody').innerHTML = `
+    <div class="m-viewer" style="background:${p.bg}">
+      <img class="m-real-img" src="${src}" data-fallback="${fb}" alt="${p.name}" onerror="handleImgFallback(this)">
+      <div class="m-icon" style="display:none">${p.icon}</div>
+      <div class="m-hint">悬停可旋转 · 3D互动预览</div>
+    </div>
+    <div>
+      <div style="display:flex;gap:7px;margin-bottom:11px;flex-wrap:wrap">${badgeHtml}</div>
+      <div class="m-brand">${p.brand}</div>
+      <div class="m-name">${p.name}</div>
+      <div class="m-pr">
+        <span class="m-price">¥${p.price.toLocaleString()}</span>
+        ${p.orig ? `<span class="m-orig">¥${p.orig.toLocaleString()}</span><span class="m-save">省¥${(p.orig-p.price).toLocaleString()}</span>` : ''}
+      </div>
+      <p class="m-desc">${p.desc}</p>
+      <div class="m-specs">${specHtml}</div>
+      <div class="m-clr">
+        <div class="cust-lbl">可选配色方案</div>
+        <div class="swatches" style="margin-top:8px">${colHtml}</div>
+      </div>
+      <div class="m-rating">⭐ ${p.rating} &nbsp;|&nbsp; 已售 ${p.sold.toLocaleString()} 件</div>
+      <div class="m-acts">
+        <button class="btn-build" onclick="addToBuild('${p.id}');closeModalDirect()">+ 加入装备清单</button>
+        <button class="btn-addcart" onclick="quickAdd('${p.id}');closeModalDirect()">立即加入购物车</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('mOverlay').classList.add('open');
+}
+function closeModal(e) { if (e.target === document.getElementById('mOverlay')) closeModalDirect(); }
+function closeModalDirect() { document.getElementById('mOverlay').classList.remove('open'); }
+
+// ---------- COMMUNITY ----------
+const POSTS = [
+  {user:'NeonWolf_GG', av:'#ff0090', tag:'FPS竞技', cap:'Wooting 60HE+ + Superlight 2 双修，VALORANT这个赛季从铂金一路冲到钻石。RAPID TRIGGER真的是物理外挂，走停射精准度直线上升！', likes:2341, cmts:189, tags:['FPS','桌搭','外设评测'], relProd:'kb-1',
+   img:'https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?w=600&q=80'},
+  {user:'CyberpunkSetup', av:'#7b2fff', tag:'桌搭达人', cap:'ROG全家桶全开极光同步的效果，深夜开着真的像在家里建了个赛博朋克都市。PG248QP + 魔导士Ace HFX + G Pro全家桶完美。', likes:5678, cmts:423, tags:['全家桶','颜值','桌搭'], relProd:'kb-2',
+   img:'https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600&q=80'},
+  {user:'アニメ収集家', av:'#00f5ff', tag:'手办收藏', cap:'崩铁开拓者手办开箱！做工比预期好太多，眼睛的透明感配合桌搭氛围灯完全是从游戏里走出来的感觉。强烈推荐！', likes:1892, cmts:234, tags:['手办','开箱'], relProd:'f-10',
+   img:'https://images.unsplash.com/photo-1608889825103-eb5ed706fc64?w=600&q=80'},
+  {user:'ProGamer_ZZZ', av:'#ffd700', tag:'职业选手', cap:'换了Viper V3 Pro之后，FPS跑分直接高了一大截！Focus Pro 35K传感器真的没有任何预期移动，精准到令人发指。', likes:4103, cmts:312, tags:['FPS','外设评测','职业'], relProd:'m-1',
+   img:'https://images.unsplash.com/photo-1527814050087-3793815479db?w=600&q=80'},
+  {user:'SimplistDesk', av:'#00ff88', tag:'极简主义', cap:'Herman Miller Embody到了。开了一个月工资，但是腰不疼了，晚上能多写两个小时代码。这就是真正的生产力投资。', likes:8934, cmts:667, tags:['人体工学','测评','椅子'], relProd:'c-1',
+   img:'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80'},
+  {user:'LimitedEdge', av:'#ff9900', tag:'限定猎人', cap:'SKULLPANDA光织园隐藏款终于到手！连续三个月每周蹲守，溢价买真的不值，等官方补货靠运气才是正确答案。', likes:3210, cmts:445, tags:['潮玩','盲盒','手办'], relProd:'f-2',
+   img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'},
+  {user:'AudioPhile_K', av:'#c0c0c0', tag:'音频发烧', cap:'Arctis Nova Pro Wireless双连接，游戏连PC，音乐连手机，主动降噪上地铁。我终于找到了人生中最后一款耳机。', likes:2876, cmts:198, tags:['耳机','测评'], relProd:'h-1',
+   img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80'},
+  {user:'OLEDHunter', av:'#00aaff', tag:'显示器玩家', cap:'技嘉MO27Q28GR开箱！LG W-OLED的黑色深度和280Hz流畅感同时存在，这就是我梦寐以求的桌搭主屏，强烈推荐。', likes:6234, cmts:501, tags:['显示器','OLED','桌搭'], relProd:'mo-1',
+   img:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80'},
+  {user:'Gundam_Master', av:'#0033cc', tag:'模型大师', cap:'PG RX-78-2组装完成！历时三周，LED套件全亮的瞬间感动到眼眶湿润。这不是玩具，这是工艺品，这是信仰。', likes:7234, cmts:589, tags:['手办','高达','模型'], relProd:'f-9',
+   img:'https://images.unsplash.com/photo-1620336655055-088d06e36bf0?w=600&q=80'},
+  {user:'NightOwl_Code', av:'#ff4466', tag:'深夜程序员', cap:'HHKB Type-S配桌搭氛围灯，深夜写代码的打字声音就像在演奏音乐。拿到HHKB之前别说爱过键盘，这是规律。', likes:3456, cmts:278, tags:['键盘','桌搭','HHKB'], relProd:'kb-6',
+   img:'https://images.unsplash.com/photo-1595225476474-87563907a212?w=600&q=80'},
+  {user:'PinkGamer娘', av:'#ff9999', tag:'粉色系桌搭', cap:'罗技星云粉全家桶到齐！G316X + G304X + G733粉色霓虹灯效开起来整个房间都变成少女心桌搭，绝了简直！', likes:9876, cmts:823, tags:['颜值','粉色系','桌搭'], relProd:'m-3',
+   img:'https://images.unsplash.com/photo-1616628188859-7a11abb6fcc9?w=600&q=80'},
+  {user:'InitMiku_Fan', av:'#00e5e5', tag:'初音厨', cap:'GSC赛车初音2024入手！每年必买，今年赛车轮胎底座设计是真升级，和2023版摆一起对比涂装细节差距明显。', likes:4567, cmts:389, tags:['初音','手办','开箱'], relProd:'f-5',
+   img:'https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?w=600&q=80'}
+];
+const CF_LIST = ['全部','桌搭','FPS','手办','测评','颜值','开箱'];
+
+function renderCommunity() {
+  document.getElementById('cfWrap').innerHTML = CF_LIST.map((f,i) =>
+    `<button class="cf-btn ${i===0?'active':''}" onclick="filterCom('${f}',this)">${f}</button>`
+  ).join('');
+  renderPostGrid(POSTS);
+}
+function filterCom(tag, btn) {
+  document.querySelectorAll('.cf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = tag === '全部' ? POSTS : POSTS.filter(p => p.tags.includes(tag));
+  renderPostGrid(filtered);
+}
+function renderPostGrid(posts) {
+  document.getElementById('masonry').innerHTML = posts.map(p => {
+    const globalIdx = POSTS.indexOf(p);
+    const fb = getCommunityFallbackImg(p);
+    const src = p.img || fb;
+    return `<div class="ccard" onclick="openCommModal(${globalIdx})">
+      <div class="cimg">
+        <div class="cimg-in">
+          <img class="cimg-real" src="${src}" data-fallback="${fb}" alt="${p.tag}" loading="lazy" onerror="handlePostImgFallback(this)">
+        </div>
+      </div>
+      <div class="cinfo">
+        <div class="cuser">
+          <div class="cavatar" style="background:${p.av}">${p.user[0]}</div>
+          <span class="cuname">${p.user}</span>
+          <span class="ctag-badge">${p.tag}</span>
+        </div>
+        <div class="ccap">${p.cap}</div>
+        <div class="cfoot">
+          <div class="cact" onclick="event.stopPropagation();toggleLike(this)">♥ <span>${p.likes.toLocaleString()}</span></div>
+          <div class="cact">💬 ${p.cmts}</div>
+          <div class="cact" onclick="event.stopPropagation()">↗ 分享</div>
+          <div class="cact" style="color:var(--cyan);margin-left:auto" onclick="event.stopPropagation();openCommModal(${globalIdx})">🛒 同款下单</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function toggleLike(el) {
+  el.classList.toggle('liked');
+  const sp = el.querySelector('span');
+  const n = parseInt(sp.textContent.replace(/,/g,''));
+  sp.textContent = (el.classList.contains('liked') ? n+1 : n-1).toLocaleString();
+}
+
+// ---------- COMMUNITY POST MODAL ----------
+function openCommModal(idx) {
+  const p = POSTS[idx];
+  if (!p) return;
+  const prod = p.relProd ? DB.find(x => x.id === p.relProd) : null;
+  const fb = getCommunityFallbackImg(p);
+  const src = p.img || fb;
+  const tagsHtml = p.tags.map(t =>
+    `<span style="background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.18);padding:3px 9px;border-radius:20px;font-size:10px;color:#fff;margin-right:5px">#${t}</span>`
+  ).join('');
+  const prodSection = prod ? `
+    <div class="comm-prod-rec">
+      <div class="cpr-ttl">📦 同款商品 · 一键下单</div>
+      <div class="cpr-row">
+        <div class="cpr-icon">${prod.icon}</div>
+        <div>
+          <div class="cpr-name">${prod.name}</div>
+          <div style="font-size:10px;color:var(--text-secondary);margin:2px 0">${prod.spec.split('·')[0].trim()}</div>
+          <div class="cpr-price">¥${prod.price.toLocaleString()}</div>
+        </div>
+      </div>
+      <button class="btn-sameorder" onclick="openModal('${prod.id}');document.getElementById('commOverlay').classList.remove('open')">🛒 查看同款并下单</button>
+    </div>` : `
+    <div class="comm-prod-rec" style="margin-top:auto">
+      <div class="cpr-ttl">🔍 发现更多好物</div>
+      <button class="btn-sameorder" onclick="goPage('workshop');document.getElementById('commOverlay').classList.remove('open')">🛒 前往定制车间选同款</button>
+    </div>`;
+  document.getElementById('commModal').innerHTML = `
+    <div class="comm-img-side">
+      <img src="${src}" onerror="this.src='${fb}'" alt="${p.tag}">
+      <div class="comm-img-tags">${tagsHtml}</div>
+    </div>
+    <div class="comm-info-side">
+      <button class="comm-close-btn" onclick="document.getElementById('commOverlay').classList.remove('open')">×</button>
+      <div class="comm-post-author">
+        <div class="cavatar" style="background:${p.av};width:40px;height:40px;font-size:15px;flex-shrink:0">${p.user[0]}</div>
+        <div>
+          <div style="font-size:14px;font-weight:700">${p.user}</div>
+          <div style="font-size:11px;color:var(--text-secondary)">${p.tag} 达人</div>
+        </div>
+        <button style="margin-left:auto;padding:5px 14px;border-radius:20px;background:rgba(255,0,144,0.09);border:1px solid rgba(255,0,144,0.3);color:var(--pink);font-size:12px;cursor:pointer;font-family:inherit" onclick="showToast('已关注 ${p.user} ♥','s')">+ 关注</button>
+      </div>
+      <div class="comm-post-cap">${p.cap}</div>
+      <div class="comm-post-acts">
+        <button class="cpa-btn" onclick="this.classList.toggle('liked');const sp=this.querySelector('span');sp.textContent=(parseInt(sp.textContent.replace(/,/g,''))+(this.classList.contains('liked')?1:-1)).toLocaleString()">♥ <span>${p.likes.toLocaleString()}</span></button>
+        <button class="cpa-btn">💬 <span>${p.cmts}</span></button>
+        <button class="cpa-btn" onclick="showToast('链接已复制 ↗','s')">↗ 分享</button>
+        <button class="cpa-btn" onclick="showToast('已收藏 ⭐','s')">⭐ 收藏</button>
+      </div>
+      ${prodSection}
+    </div>
+  `;
+  document.getElementById('commOverlay').classList.add('open');
+}
+function closeCommOverlay(e) {
+  if (e.target === document.getElementById('commOverlay'))
+    document.getElementById('commOverlay').classList.remove('open');
+}
+
+// ---------- GIFT ----------
+const GIFT_TMPL = [
+  {name:'FPS 极限竞技套装', icon:'⚡', items:['Viper V3 Pro','Wooting 60HE+','BlackShark V2 Pro'], ids:['m-1','kb-1','h-3'], price:3297, bg:'linear-gradient(135deg,#001a0d,#003322)'},
+  {name:'潮玩收藏家礼盒', icon:'🎁', items:['LABUBU电音','SKULLPANDA光织园','赛车初音2024'], ids:['f-1','f-2','f-5'], price:357, bg:'linear-gradient(135deg,#2d1a40,#5a2d80)'},
+  {name:'程序员终极战斗包', icon:'💻', items:['HHKB Type-S','Superlight 2 DEX','Nova Pro WL'], ids:['kb-4','mo-1','h-1'], price:5497, bg:'linear-gradient(135deg,#0d0d0d,#1a1a2e)'},
+  {name:'ROG 信仰全家桶', icon:'🔥', items:['PG248QP 540Hz','TITAN Evo XL','G733 RGB'], ids:['mo-1','c-1','h-2'], price:9597, bg:'linear-gradient(135deg,#1a0022,#400062)'}
+];
+
+function renderGift() {
+  document.getElementById('giftTemplates').innerHTML = GIFT_TMPL.map((t,ti) =>
+    `<div class="pcard" onclick="openGiftAnim(GIFT_TMPL[${ti}])">
+      <div class="pimg" style="background:${t.bg}">
+        <div class="pimg-inner" style="font-size:86px">${t.icon}</div>
+        <div class="pimg-shine"></div>
+      </div>
+      <div class="pbadges"><span class="badge b-limited">礼盒模板</span><span class="badge b-new">点击体验</span></div>
+      <div class="pinfo">
+        <div class="pbrand">NEXUSGEAR 限定礼盒</div>
+        <div class="pname">${t.name}</div>
+        <div class="pspec">${t.items.join(' · ')}</div>
+        <div class="pfooter">
+          <span class="pprice">¥${t.price.toLocaleString()}</span>
+          <button class="padd" onclick="event.stopPropagation();openGiftAnim(GIFT_TMPL[${ti}])">🎁</button>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+  // Floating particles
+  const pColors = ['#ffd700','#ff0090','#00f5ff','#7b2fff','#00ff88','#ff6600'];
+  document.getElementById('gParticles').innerHTML = Array.from({length:14}).map((_, i) => {
+    const a = (i/14)*360;
+    const r = 90 + Math.random()*50;
+    const dx = (Math.cos(a*Math.PI/180)*r).toFixed(0);
+    const dy = (Math.sin(a*Math.PI/180)*r).toFixed(0);
+    const c = pColors[i % pColors.length];
+    const sz = 5 + Math.floor(Math.random()*5);
+    return `<div class="g-p" style="left:50%;top:50%;background:${c};width:${sz}px;height:${sz}px;--dx:${dx}px;--dy:${dy}px;animation-delay:${(i*0.22).toFixed(2)}s;animation-duration:${(2.5+Math.random()).toFixed(2)}s"></div>`;
+  }).join('');
+}
+function giftDemo() {
+  openGiftAnim(GIFT_TMPL[0]);
+}
+function openGiftAnim(tmpl) {
+  const code = 'NG-' + Math.random().toString(36).substr(2,4).toUpperCase() + '-' + Math.random().toString(36).substr(2,4).toUpperCase();
+  const inner = document.getElementById('giftOpenInner');
+  // Resolve product images from DB
+  const prods = (tmpl.ids || []).map(id => DB.find(p => p.id === id)).filter(Boolean);
+  const popPositions = ['20%','50%','80%'];
+  const popTy = ['-20px','0px','-20px']; // final Y offset from top:0 (upward)
+  const prodCardsHtml = prods.map((p, i) => {
+    const imgHtml = p.img
+      ? `<img src="${p.img}" onerror="this.outerHTML='<div style=\\'font-size:30px\\'>${p.icon||'📦'}</div>'">`
+      : `<div style="font-size:30px">${p.icon||'📦'}</div>`;
+    return `<div class="gift-prod-popup" id="gpop-${i}" style="--gift-lx:${popPositions[i]};--gift-ty:${popTy[i]};--gift-src:120px">
+      ${imgHtml}
+      <div class="gpop-name">${p.sname}</div>
+      <div class="gpop-price">¥${p.price.toLocaleString()}</div>
+    </div>`;
+  }).join('');
+  inner.innerHTML = `
+    <button class="gift-open-close" onclick="document.getElementById('giftOpenOverlay').classList.remove('open')">×</button>
+    <div class="gift-open-hint" id="giftHint">👆 点击礼盒打开惊喜</div>
+    <div style="position:relative;display:inline-block">
+      <div class="gift-products-stage" id="giftProdStage">${prodCardsHtml}</div>
+      <div class="gbox-stage" id="gboxStage" onclick="triggerGiftOpen()" style="background:transparent;margin:0 auto">
+        <div class="gbox-stage-lid" id="gboxLid" style="background:${tmpl.bg}">🎁 GIFT</div>
+        <div class="gbox-stage-body" id="gboxBody" style="background:${tmpl.bg}">${tmpl.icon}</div>
+        <div class="gbox-ribbon-h" style="top:48%"></div>
+        <div class="gbox-ribbon-v"></div>
+        <div class="gbox-sparkle-ring" id="sparkleRing"></div>
+      </div>
+    </div>
+    <div class="gift-open-ttl" style="margin-top:14px" id="giftOpenTtl">${tmpl.name}</div>
+    <div class="gift-open-sub" id="giftOpenSub">为好友精心挑选的专属惊喜</div>
+    <div id="giftCardWrap" style="display:none">
+      <div class="gift-wechat-card">
+        <div class="gift-wechat-top">
+          <div class="gift-wechat-avatar">N</div>
+          <div>
+            <div class="gift-wechat-from">NEXUSGEAR 专属礼盒</div>
+            <div class="gift-wechat-msg">${tmpl.name}</div>
+          </div>
+        </div>
+        <div class="gift-wechat-divider"></div>
+        <div class="gift-wechat-code-row">
+          <div class="gift-wechat-code">${code}</div>
+          <button class="gift-wechat-open-btn" onclick="showToast('链接已复制 ✓','s')">复制链接</button>
+        </div>
+      </div>
+      <div class="gift-share-row">
+        <button class="gift-share-wechat" onclick="showToast('✅ 已分享到微信','s');document.getElementById('giftOpenOverlay').classList.remove('open')">💚 微信发送</button>
+        <button class="gift-share-weibo" onclick="showToast('✅ 已分享到微博','s');document.getElementById('giftOpenOverlay').classList.remove('open')">🔴 微博分享</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('giftOpenOverlay').classList.add('open');
+}
+function triggerGiftOpen() {
+  const stage = document.getElementById('gboxStage');
+  if (stage.classList.contains('opened')) return;
+  stage.classList.add('opened');
+  document.getElementById('giftHint').textContent = '🎉 惊喜揭晓！';
+  // Sparkle particles
+  const ring = document.getElementById('sparkleRing');
+  const colors = ['#ffd700','#ff0090','#00f5ff','#7b2fff','#00ff88','#ff6600','#ffffff'];
+  ring.innerHTML = Array.from({length:22}).map((_, i) => {
+    const angle = (i / 22) * 360;
+    const r = 80 + Math.random() * 60;
+    const gx = Math.round(Math.cos(angle * Math.PI / 180) * r);
+    const gy = Math.round(Math.sin(angle * Math.PI / 180) * r);
+    const c = colors[i % colors.length];
+    const sz = 5 + Math.floor(Math.random() * 8);
+    return `<div class="gs-dot" style="background:${c};width:${sz}px;height:${sz}px;--gx:${gx}px;--gy:${gy}px;animation:gsDot ${(0.7+Math.random()*0.6).toFixed(2)}s ease-out ${(i*0.03).toFixed(2)}s forwards"></div>`;
+  }).join('');
+  // Pop product cards one by one
+  const popDelay = [250, 430, 610];
+  for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+      const el = document.getElementById(`gpop-${i}`);
+      if (el) el.classList.add('popped');
+    }, popDelay[i]);
+  }
+  // Show WeChat-style gift card
+  setTimeout(() => {
+    document.getElementById('giftOpenSub').textContent = '发送给好友，Ta直接填写地址收货 →';
+    const wrap = document.getElementById('giftCardWrap');
+    if (wrap) { wrap.style.display = 'block'; wrap.style.animation = 'mIn 0.4s ease'; }
+  }, 1200);
+}
+
+// ---------- TOAST ----------
+function showToast(msg, type='s') {
+  const c = document.getElementById('toastWrap');
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  const ico = {s:'✓', e:'✕', i:'ℹ'};
+  el.innerHTML = `<span style="font-size:15px">${ico[type]||'•'}</span>${msg}`;
+  c.appendChild(el);
+  setTimeout(() => {
+    el.style.animation = 'tOut 0.3s ease forwards';
+    setTimeout(() => el.remove(), 300);
+  }, 3000);
+}
+
+// ---------- DYNAMIC PRICING ----------
+function startDynamicPricing() {
+  setInterval(() => {
+    const idx = Math.floor(Math.random() * DB.length);
+    DB[idx].price = Math.max(39, DB[idx].price + Math.round((Math.random()-0.5)*80));
+    renderTicker();
+  }, 9000);
+}
+
+// ---------- FLOWCHART ----------
+function node(icon, label, type='') {
+  return `<div class="flow-node">
+    <div class="flow-box ${type}">
+      <span class="flow-box-icon">${icon}</span>${label}
+    </div>
+  </div>`;
+}
+function decision(icon, label) {
+  return `<div class="flow-node" style="min-width:150px">
+    <div class="flow-box decision">
+      <div class="flow-inner">${icon}<br>${label}</div>
+    </div>
+  </div>`;
+}
+function arrow(label='') {
+  return `<div class="flow-arrow">→${label ? `<span style="font-size:9px;position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;color:var(--yellow)">${label}</span>` : ''}</div>`;
+}
+function arrowD() { return `<div style="text-align:center;margin:4px 0;color:var(--cyan);font-size:18px">↓</div>`; }
+
+function fv2(icon, title, sub, cls='c-default') {
+  return `<div class="fv2-node"><div class="fv2-box ${cls}"><span class="fv2-icon">${icon}</span>${title}<span class="fv2-sub">${sub}</span></div></div>`;
+}
+function fa2() { return `<div class="fv2-arrow">→</div>`; }
+
+function renderFlowchart() {
+  // MAIN O2O flow
+  document.getElementById('flowMain').innerHTML = `
+    <div class="fv2-row">
+      ${fv2('🚪','用户进入平台','线上浏览 / 线下扫码','c-start')}
+      ${fa2()}
+      ${fv2('🖥️','3D定制车间','选品 · 外观定制','c-default')}
+      ${fa2()}
+      ${fv2('💰','动态价格核算','实时比价算法','c-purple')}
+      ${fa2()}
+      <div class="fv2-node" style="min-width:160px;align-self:center;margin-bottom:20px">
+        <div class="fv2-box c-yellow" style="width:110px;height:110px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px">
+          <span style="font-size:26px">🛒</span>
+          <span style="font-size:11px;margin-top:4px">自购<br>or 送礼?</span>
+        </div>
+      </div>
+      <div class="fv2-branch">
+        <div class="fv2-brow">
+          <div class="fv2-blabel buy">自购</div>
+          ${fv2('📝','填写收货信息','选择到店/快递','')}
+          ${fa2()}
+          ${fv2('💳','线上支付','多种支付方式','')}
+          ${fa2()}
+          ${fv2('🏭','智能仓配','极速发货','c-end')}
+          ${fa2()}
+          ${fv2('⭐','UGC社区','晒单 · 分享','c-end')}
+        </div>
+        <div class="fv2-brow">
+          <div class="fv2-blabel gift">送礼</div>
+          ${fv2('🎁','生成礼盒链接','专属动画页面','c-pink')}
+          ${fa2()}
+          ${fv2('📤','社交分享','微信 / 微博','c-pink')}
+          ${fa2()}
+          ${fv2('📍','收礼人填地址','无需提前知道','c-pink')}
+          ${fa2()}
+          ${fv2('🚀','智能仓配发货','O2O极速寻源','c-end')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  // GIFT FLOW
+  document.getElementById('flowGift').innerHTML = `
+    <div class="fv2-row">
+      ${fv2('👤','买家选品','加入装备清单','c-start')}
+      ${fa2()}
+      ${fv2('✍️','撰写礼物留言','个性化寄语','c-default')}
+      ${fa2()}
+      ${fv2('🔗','生成赛博礼盒','专属动画链接','c-purple')}
+      ${fa2()}
+      ${fv2('📱','微信/微博分享','社交裂变传播','c-purple')}
+      ${fa2()}
+      ${fv2('🎀','收礼人开礼盒','惊喜动画效果','c-pink')}
+      ${fa2()}
+      ${fv2('📍','填写收货地址','无需预先知道','c-pink')}
+      ${fa2()}
+      ${fv2('🤖','AI匹配仓库','O2O智能寻源','c-default')}
+      ${fa2()}
+      ${fv2('📦','当日发货','48h极速到达','c-end')}
+    </div>
+  `;
+
+  // C2M FLOW
+  document.getElementById('flowC2M').innerHTML = `
+    <div class="fv2-row">
+      ${fv2('📊','用户行为采集','浏览 / 游戏 / 偏好','c-start')}
+      ${fa2()}
+      ${fv2('🤖','C2M AI分析引擎','协同过滤算法','c-purple')}
+      ${fa2()}
+      ${fv2('📈','需求聚合','长尾需求发现','c-purple')}
+      ${fa2()}
+      ${fv2('🏭','向代工厂推送','反向定制需求','c-pink')}
+      ${fa2()}
+      ${fv2('🎯','定制化产品','小批量试产','c-pink')}
+      ${fa2()}
+      ${fv2('🛒','精准推送用户','个性化推荐','c-default')}
+      ${fa2()}
+      ${fv2('💰','提升转化率','降低库存风险','c-end')}
+    </div>
+  `;
+}
+
+// =============================================
+// DUTCH AUCTION
+// =============================================
+const AUC_ITEMS = [
+  { id:'auc-1', emoji:'⌨️', name:'Wooting 60HE+ 限量极夜版', orig:1899, start:1599, floor:799, watchers:47, stock:3, prodId:'kb-6' },
+  { id:'auc-2', emoji:'🖱️', name:'Logitech G Pro X Superlight 2 DEX 钛金版', orig:1299, start:999, floor:599, watchers:63, stock:1, prodId:'mo-1' },
+  { id:'auc-3', emoji:'🎧', name:'SteelSeries Arctis Nova Pro WL 午夜限定', orig:2499, start:1999, floor:999, watchers:31, stock:2, prodId:'h-1' }
+];
+const aucState = {};
+const aucIntervals = {};
+
+function renderAuction() {
+  const grid = document.getElementById('aucGrid');
+  if (!grid) return;
+  grid.innerHTML = AUC_ITEMS.map((item, i) => {
+    aucState[item.id] = { cur: item.start, sold: false };
+    return `
+    <div class="auc-card" id="auc-card-${item.id}">
+      <div class="auc-lbl">限量 ${item.stock} 件</div>
+      <span class="auc-img">${item.emoji}</span>
+      <div class="auc-name">${item.name}</div>
+      <div class="auc-orig">原价 ¥${item.orig.toLocaleString()}</div>
+      <div class="auc-cur" id="auc-price-${item.id}">¥${item.start.toLocaleString()}</div>
+      <div class="auc-save" id="auc-save-${item.id}">已降价 ¥${(item.orig - item.start).toLocaleString()}</div>
+      <div class="auc-meta">
+        <span>👁 <strong id="auc-w-${item.id}">${item.watchers}</strong> 人正在盯</span>
+        <span>⏱ 倒计时</span>
+      </div>
+      <div class="auc-progress"><div class="auc-progress-bar" id="auc-bar-${item.id}" style="width:100%"></div></div>
+      <div class="auc-timer" id="auc-timer-${item.id}">10:00</div>
+      <button class="btn-snatch" id="auc-btn-${item.id}" onclick="aucSnatch('${item.id}','${item.prodId}')">立即抢购 — ¥${item.start.toLocaleString()}</button>
+    </div>`;
+  }).join('');
+  AUC_ITEMS.forEach((item, i) => startAucTimer(item, i));
+}
+
+function startAucTimer(item, idx) {
+  const TOTAL = 600; // 10 min per cycle
+  let elapsed = idx * 120; // stagger start
+  const decrement = Math.round((item.start - item.floor) / (TOTAL / 10)); // drop every 10s
+
+  aucIntervals[item.id] = setInterval(() => {
+    if (aucState[item.id].sold) { clearInterval(aucIntervals[item.id]); return; }
+    elapsed++;
+    const remaining = TOTAL - (elapsed % TOTAL);
+    const mins = String(Math.floor(remaining / 60)).padStart(2, '0');
+    const secs = String(remaining % 60).padStart(2, '0');
+    const timerEl = document.getElementById(`auc-timer-${item.id}`);
+    if (timerEl) timerEl.textContent = `${mins}:${secs}`;
+
+    // Decrement price every 10s
+    if (elapsed % 10 === 0) {
+      const st = aucState[item.id];
+      st.cur = Math.max(item.floor, st.cur - decrement);
+      const priceEl = document.getElementById(`auc-price-${item.id}`);
+      const saveEl = document.getElementById(`auc-save-${item.id}`);
+      const btnEl = document.getElementById(`auc-btn-${item.id}`);
+      if (priceEl) priceEl.textContent = `¥${st.cur.toLocaleString()}`;
+      if (saveEl) saveEl.textContent = `已降价 ¥${(item.orig - st.cur).toLocaleString()}`;
+      if (btnEl && !st.sold) btnEl.textContent = `立即抢购 — ¥${st.cur.toLocaleString()}`;
+      showToast(`📉 「${item.name.slice(0,10)}...」价格下降至 ¥${st.cur.toLocaleString()}`, 'i');
+    }
+
+    // Fluctuate watcher count
+    if (elapsed % 17 === 0) {
+      const wEl = document.getElementById(`auc-w-${item.id}`);
+      if (wEl) {
+        const cur = parseInt(wEl.textContent);
+        wEl.textContent = Math.max(1, cur + Math.round((Math.random() - 0.35) * 3));
+      }
+    }
+
+    // Progress bar
+    const barEl = document.getElementById(`auc-bar-${item.id}`);
+    if (barEl) barEl.style.width = (remaining / TOTAL * 100) + '%';
+
+    // Reset when cycle ends
+    if (elapsed % TOTAL === 0) {
+      aucState[item.id].cur = item.start;
+      aucState[item.id].sold = false;
+      const btnEl = document.getElementById(`auc-btn-${item.id}`);
+      if (btnEl) { btnEl.disabled = false; btnEl.textContent = `立即抢购 — ¥${item.start.toLocaleString()}`; }
+    }
+  }, 1000);
+}
+
+function aucSnatch(aucId, prodId) {
+  const item = AUC_ITEMS.find(x => x.id === aucId);
+  if (!item || aucState[aucId].sold) return;
+  aucState[aucId].sold = true;
+  const btnEl = document.getElementById(`auc-btn-${aucId}`);
+  if (btnEl) { btnEl.disabled = true; btnEl.textContent = '🎉 已抢到！'; }
+  const prod = DB.find(x => x.id === prodId);
+  if (prod) {
+    const aucPrice = aucState[aucId].cur;
+    cart.push({ ...prod, price: aucPrice, qty: 1 });
+    renderCart();
+    showToast(`🔥 恭喜！以 ¥${aucPrice.toLocaleString()} 抢到「${item.name.slice(0,12)}」！`, 's');
+    setTimeout(() => { toggleCart(); }, 600);
+  }
+}
+
+// =============================================
+// DNA MODAL
+// =============================================
+const DNA_QUESTIONS = [
+  {
+    q: '你主要玩什么类型的游戏？',
+    sub: '选择最常见的游戏类型',
+    opts: [
+      { icon:'🎯', label:'FPS / 射击', scores:[5,4,2,3,2] },
+      { icon:'⚔️', label:'MOBA / 策略', scores:[4,3,3,3,2] },
+      { icon:'🏎️', label:'竞速 / 体育', scores:[3,5,2,4,3] },
+      { icon:'🌍', label:'RPG / 开放世界', scores:[2,3,5,2,4] }
+    ]
+  },
+  {
+    q: '你的日均游戏时长？',
+    sub: '影响设备耐久度与人体工学推荐',
+    opts: [
+      { icon:'⏱', label:'1~2 小时 (休闲)', scores:[2,3,3,2,5] },
+      { icon:'🕹', label:'3~4 小时 (进阶)', scores:[3,4,3,3,3] },
+      { icon:'🔥', label:'5~6 小时 (硬核)', scores:[5,4,2,4,2] },
+      { icon:'💀', label:'8+ 小时 (职业级)', scores:[5,5,1,5,1] }
+    ]
+  },
+  {
+    q: '你最在意哪项外设性能？',
+    sub: '帮助AI精准权重分配',
+    opts: [
+      { icon:'⚡', label:'延迟 / 响应速度', scores:[5,3,2,5,2] },
+      { icon:'🎵', label:'音效 / 麦克风质量', scores:[2,3,5,2,4] },
+      { icon:'🎨', label:'外观 / RGB 颜值', scores:[2,2,5,2,5] },
+      { icon:'🤝', label:'手感 / 人体工学', scores:[3,5,3,3,3] }
+    ]
+  },
+  {
+    q: '你的预算范围？',
+    sub: '决定推荐产品的价格区间',
+    opts: [
+      { icon:'💰', label:'500 元以内', scores:[2,2,2,2,2] },
+      { icon:'💎', label:'500~1500 元', scores:[3,3,3,3,3] },
+      { icon:'👑', label:'1500~3000 元', scores:[4,4,4,4,4] },
+      { icon:'🚀', label:'3000+ 元，只要最好', scores:[5,5,5,5,5] }
+    ]
+  },
+  {
+    q: '你的桌面风格偏好？',
+    sub: '影响外观系与周边配件推荐',
+    opts: [
+      { icon:'🖤', label:'极简全黑 / 暗黑风', scores:[4,3,2,5,1] },
+      { icon:'🌈', label:'RGB 赛博霓虹', scores:[2,2,5,3,4] },
+      { icon:'🌸', label:'粉色少女 / ACG', scores:[1,2,5,1,5] },
+      { icon:'🏢', label:'白灰商务简约', scores:[2,4,2,2,3] }
+    ]
+  }
+];
+const DNA_DIMS = ['精准操控', '手感舒适', '颜值外观', '低延迟竞技', '沉浸音效'];
+let dnaAnswers = [];
+let dnaStep = 0;
+let dnaScores = [0,0,0,0,0];
+
+function openDNAModal() {
+  dnaAnswers = [];
+  dnaStep = 0;
+  dnaScores = [0,0,0,0,0];
+  document.getElementById('dnaOverlay').classList.add('open');
+  renderDNAStep();
+}
+function closeDNA() {
+  document.getElementById('dnaOverlay').classList.remove('open');
+}
+function closeDNAOverlay(e) {
+  if (e.target === document.getElementById('dnaOverlay')) closeDNA();
+}
+function renderDNAStep() {
+  const inner = document.getElementById('dnaInner');
+  if (dnaStep >= DNA_QUESTIONS.length) { renderDNAResult(); return; }
+  const q = DNA_QUESTIONS[dnaStep];
+  const dots = DNA_QUESTIONS.map((_, i) =>
+    `<div class="dna-step-dot ${i < dnaStep ? 'done' : i === dnaStep ? 'active' : ''}"></div>`
+  ).join('');
+  inner.innerHTML = `
+    <div class="dna-step-bar">${dots}</div>
+    <div style="font-size:11px;color:var(--text-secondary);margin-bottom:12px">问题 ${dnaStep+1} / ${DNA_QUESTIONS.length}</div>
+    <div class="dna-q">${q.q}</div>
+    <div class="dna-qsub">${q.sub}</div>
+    <div class="dna-opts">${q.opts.map((o, i) =>
+      `<button class="dna-opt" id="dna-opt-${i}" onclick="dnaSelect(${i})">
+        <span class="opt-icon">${o.icon}</span>${o.label}
+      </button>`
+    ).join('')}</div>
+    <button class="dna-next-btn" id="dna-next-btn" style="opacity:0.4;cursor:not-allowed" disabled onclick="dnaNext()">
+      ${dnaStep < DNA_QUESTIONS.length - 1 ? '下一题 →' : '生成DNA图谱 🧬'}
+    </button>`;
+}
+function dnaSelect(optIdx) {
+  document.querySelectorAll('.dna-opt').forEach(o => o.classList.remove('selected'));
+  document.getElementById(`dna-opt-${optIdx}`).classList.add('selected');
+  dnaAnswers[dnaStep] = optIdx;
+  const btn = document.getElementById('dna-next-btn');
+  if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer'; }
+}
+function dnaNext() {
+  if (dnaAnswers[dnaStep] === undefined) return;
+  const q = DNA_QUESTIONS[dnaStep];
+  const scores = q.opts[dnaAnswers[dnaStep]].scores;
+  scores.forEach((s, i) => { dnaScores[i] += s; });
+  dnaStep++;
+  renderDNAStep();
+}
+function renderDNAResult() {
+  // Normalize scores 0-100
+  const max = 25; // max 5 per question * 5 questions
+  const norm = dnaScores.map(s => Math.round(s / max * 100));
+  // Find top 2 dimensions
+  const sorted = norm.map((v, i) => ({v, i})).sort((a,b) => b.v - a.v);
+  const topDims = sorted.slice(0,2).map(x => DNA_DIMS[x.i]);
+  // Pick 3 recommended products based on dominant dimension
+  const dimToCat = ['keyboard','mouse','figure','keyboard','headset'];
+  const topCat = dimToCat[sorted[0].i];
+  const recs = DB.filter(p => p.cat === topCat).slice(0,3);
+  const inner = document.getElementById('dnaInner');
+  const radarSVG = generateRadarSVG(norm, DNA_DIMS);
+  inner.innerHTML = `
+    <div class="dna-result-wrap">
+      <div style="font-size:13px;color:var(--text-secondary);margin-bottom:4px">你的玩家DNA图谱</div>
+      <div style="font-size:18px;font-weight:900;color:var(--text-primary);margin-bottom:4px">${topDims.join(' × ')} 型玩家</div>
+      <div class="dna-radar-wrap">${radarSVG}</div>
+      <div class="dna-score-list">${DNA_DIMS.map((d,i) =>
+        `<div class="dna-score-chip">${d} ${norm[i]}%</div>`
+      ).join('')}</div>
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:12px;text-align:left">AI 精准推荐 — 最适配你的外设</div>
+      <div class="dna-rec-grid">${recs.map(p => {
+        const matchPct = 80 + Math.floor(Math.random()*18);
+        const imgHtml = p.img
+          ? `<img src="${p.img}" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto 6px" onerror="this.outerHTML='<div style=\\'font-size:36px;text-align:center;margin-bottom:6px\\'>${p.icon||'📦'}</div>'">`
+          : `<div style="font-size:36px;text-align:center;margin-bottom:6px">${p.icon||'📦'}</div>`;
+        return `<div class="dna-rec-card" onclick="closeDNA();openModal('${p.id}')">
+          ${imgHtml}
+          <div class="dna-rec-name">${p.name}</div>
+          <div class="dna-rec-match">兼容度 ${matchPct}%</div>
+          <div class="dna-rec-price">¥${p.price.toLocaleString()}</div>
+        </div>`;
+      }).join('')}</div>
+      <button class="dna-next-btn" style="margin-top:20px" onclick="closeDNA()">去逛逛推荐外设 →</button>
+    </div>`;
+}
+function generateRadarSVG(scores, labels) {
+  const cx = 130, cy = 130, r = 90;
+  const n = scores.length;
+  const angleStep = (Math.PI * 2) / n;
+  const offset = -Math.PI / 2;
+  function pt(val, idx) {
+    const a = offset + idx * angleStep;
+    const rv = r * val / 100;
+    return [cx + rv * Math.cos(a), cy + rv * Math.sin(a)];
+  }
+  // Grid lines
+  let grid = '';
+  [0.25,0.5,0.75,1].forEach(frac => {
+    const pts = Array.from({length:n}, (_,i) => {
+      const a = offset + i * angleStep;
+      return `${cx + r*frac*Math.cos(a)},${cy + r*frac*Math.sin(a)}`;
+    }).join(' ');
+    grid += `<polygon points="${pts}" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;
+  });
+  // Axis lines
+  let axes = Array.from({length:n}, (_,i) => {
+    const a = offset + i * angleStep;
+    return `<line x1="${cx}" y1="${cy}" x2="${cx+r*Math.cos(a)}" y2="${cy+r*Math.sin(a)}" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>`;
+  }).join('');
+  // Data polygon
+  const dataPts = Array.from({length:n}, (_,i) => pt(scores[i], i).join(',')).join(' ');
+  const dataPolyFill = `<polygon points="${dataPts}" fill="rgba(0,245,255,0.15)" stroke="rgba(0,245,255,0.8)" stroke-width="2"/>`;
+  // Dots
+  const dots = Array.from({length:n}, (_,i) => {
+    const [px,py] = pt(scores[i], i);
+    return `<circle cx="${px}" cy="${py}" r="4" fill="var(--cyan)" filter="url(#glow)"/>`;
+  }).join('');
+  // Labels
+  const lbls = labels.map((lb, i) => {
+    const a = offset + i * angleStep;
+    const lx = cx + (r+20) * Math.cos(a);
+    const ly = cy + (r+20) * Math.sin(a);
+    return `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="inherit">${lb}</text>`;
+  }).join('');
+  return `<svg width="260" height="260" viewBox="0 0 260 260">
+    <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    ${grid}${axes}${dataPolyFill}${dots}${lbls}
+  </svg>`;
+}
+
+// =============================================
+// TRADE-IN
+// =============================================
+const TI_MODELS = {
+  keyboard: [
+    { name:'Wooting 60HE+', base:600 }, { name:'Razer BlackWidow V4 Pro', base:400 },
+    { name:'Logitech G Pro X TKL', base:350 }, { name:'HHKB Professional Hybrid', base:550 },
+    { name:'Keychron Q1 Pro', base:280 }, { name:'其他型号', base:150 }
+  ],
+  mouse: [
+    { name:'Logitech G Pro X Superlight 2', base:500 }, { name:'Razer Viper V3 Pro', base:420 },
+    { name:'Zowie EC2-C', base:300 }, { name:'SteelSeries Prime Wireless', base:250 },
+    { name:'Finalmouse Starlight-12', base:600 }, { name:'其他型号', base:120 }
+  ],
+  headset: [
+    { name:'SteelSeries Arctis Nova Pro WL', base:800 }, { name:'ASUS ROG Delta S', base:450 },
+    { name:'Razer BlackShark V2 Pro', base:400 }, { name:'HyperX Cloud Alpha WL', base:350 },
+    { name:'Sony WH-1000XM5', base:550 }, { name:'其他型号', base:150 }
+  ],
+  monitor: [
+    { name:'ASUS ROG Swift PG32UQX', base:2000 }, { name:'LG 27GP950-B', base:1200 },
+    { name:'Samsung Odyssey G7', base:800 }, { name:'Dell Alienware AW2723DF', base:700 },
+    { name:'MSI MEG 342C QD-OLED', base:1500 }, { name:'其他型号', base:400 }
+  ],
+  controller: [
+    { name:'Xbox Elite Series 2', base:350 }, { name:'DualSense Edge', base:500 },
+    { name:'8BitDo Pro 2', base:200 }, { name:'Razer Wolverine V2 Pro', base:380 },
+    { name:'其他型号', base:100 }
+  ],
+  other: [
+    { name:'外设捕捉卡', base:200 }, { name:'直播麦克风', base:150 },
+    { name:'流量控制器 Stream Deck', base:300 }, { name:'电竞椅', base:400 }, { name:'其他', base:80 }
+  ]
+};
+const TI_COND_MULT = { mint:0.75, good:0.6, fair:0.42, poor:0.22 };
+const TI_COND_NAMES = { mint:'近全新', good:'九成新', fair:'七成新', poor:'需维修' };
+let tiState = { cat: null, model: null, modelBase: 0, cond: null };
+
+function tiSelect(key, val, btn) {
+  tiState[key] = val;
+  if (key === 'cat') {
+    btn.closest('.ti-grid').querySelectorAll('.ti-option').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const next = document.getElementById('ti-next0');
+    next.disabled = false; next.style.opacity = '1'; next.style.cursor = 'pointer';
+  } else if (key === 'model') {
+    tiState.modelBase = parseInt(btn.dataset.base);
+    btn.closest('.ti-grid').querySelectorAll('.ti-option').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const next = document.getElementById('ti-next1');
+    next.disabled = false; next.style.opacity = '1'; next.style.cursor = 'pointer';
+  } else if (key === 'cond') {
+    btn.closest('.ti-cond-list').querySelectorAll('.ti-cond').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const next = document.getElementById('ti-next2');
+    next.disabled = false; next.style.opacity = '1'; next.style.cursor = 'pointer';
+  }
+}
+function tiNext(step) {
+  document.getElementById(`ti-p${step}`).classList.remove('active');
+  document.getElementById(`ti-s${step}`).classList.remove('active');
+  document.getElementById(`ti-s${step}`).classList.add('done');
+  if (step === 0) {
+    // Build model grid
+    const models = TI_MODELS[tiState.cat] || TI_MODELS.other;
+    document.getElementById('ti-model-grid').innerHTML = models.map(m =>
+      `<button class="ti-option" data-base="${m.base}" onclick="tiSelect('model','${m.name}',this)">
+        <span class="ti-oi">📦</span><span class="ti-on">${m.name}</span>
+      </button>`
+    ).join('');
+    tiState.model = null; tiState.modelBase = 0;
+    const next = document.getElementById('ti-next1');
+    next.disabled = true; next.style.opacity = '0.4'; next.style.cursor = 'not-allowed';
+  }
+  if (step < 3) {
+    document.getElementById(`ti-p${step+1}`).classList.add('active');
+    document.getElementById(`ti-s${step+1}`).classList.add('active');
+  }
+  if (step === 2) tiShowResult();
+}
+function tiShowResult() {
+  document.getElementById(`ti-p3`).classList.add('active');
+  document.getElementById(`ti-s3`).classList.add('active');
+  const base = tiState.modelBase;
+  const mult = TI_COND_MULT[tiState.cond] || 0.5;
+  const val = Math.round(base * mult);
+  const voucherVal = Math.round(val * 1.1); // 10% bonus if used as voucher
+  const voucherCode = 'NEXUS-' + Math.random().toString(36).substring(2,6).toUpperCase();
+  document.getElementById('ti-result-title').textContent = `${tiState.model} · ${TI_COND_NAMES[tiState.cond]}`;
+  document.getElementById('ti-val-num').textContent = `¥${val.toLocaleString()}`;
+  document.getElementById('ti-voucher-code').textContent = voucherCode;
+  document.getElementById('ti-voucher-val').textContent = `折抵券价值 ¥${voucherVal.toLocaleString()}（比直接回收多 ¥${(voucherVal-val).toLocaleString()}）`;
+  const condDescriptions = {
+    mint: `成色极佳，市场需求旺盛，预计翻新后可达原价 ${Math.round(mult*100+15)}% 价值出售。`,
+    good: `正常磨损，主要功能完好，翻新工序较少，市场流通价高于回收价约 20%。`,
+    fair: `存在明显使用痕迹，需要基础翻新，建议使用折抵券兑换以获得最大价值。`,
+    poor: `需要维修处理，零件存在损耗，AI预估翻新成本后给出最终估算价格。`
+  };
+  document.getElementById('ti-ai-analysis').innerHTML = `
+    <strong>🤖 AI 残值分析：</strong><br>
+    · 参考型号：<strong>${tiState.model}</strong><br>
+    · 成色系数：<strong>${Math.round(mult*100)}%</strong>（${TI_COND_NAMES[tiState.cond]}）<br>
+    · 市场行情：近30天同款二手均价约 <strong>¥${Math.round(base * 0.65).toLocaleString()}</strong><br>
+    · ${condDescriptions[tiState.cond]}<br>
+    · 建议：<strong>使用折抵券可额外获得 10% 价值加成</strong>，比直接现金回收更合算。
+  `;
+}
+function tiReset() {
+  tiState = { cat: null, model: null, modelBase: 0, cond: null };
+  for (let i = 0; i <= 3; i++) {
+    const p = document.getElementById(`ti-p${i}`);
+    const s = document.getElementById(`ti-s${i}`);
+    if (p) p.classList.remove('active');
+    if (s) { s.classList.remove('active','done'); }
+  }
+  document.getElementById('ti-p0').classList.add('active');
+  document.getElementById('ti-s0').classList.add('active');
+  document.querySelectorAll('#page-tradein .ti-option, #page-tradein .ti-cond').forEach(b => b.classList.remove('selected'));
+  const next = document.getElementById('ti-next0');
+  if (next) { next.disabled = true; next.style.opacity = '0.4'; next.style.cursor = 'not-allowed'; }
+}
+function initTradein() { /* page is static HTML, nothing to pre-render */ }
+
+// ---------- INIT ----------
+document.addEventListener('DOMContentLoaded', () => {
+  syncLocalAssetMap();
+  normalizeProductImages();
+  hydrateStaticImages();
+  renderTicker();
+  renderHome();
+  renderWorkshop();
+  renderCommunity();
+  renderGift();
+  renderFlowchart();
+  renderAuction();
+  startDynamicPricing();
+});
+</script>
+</body>
+</html>

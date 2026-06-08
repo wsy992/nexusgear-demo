@@ -1,0 +1,8 @@
+*.docx
+*.pdf
+*.pptx
+*.py
+*.txt
+demo图/
+图片/
+.claude/
