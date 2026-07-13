@@ -1,11 +1,3 @@
-<picture>
-
-</picture>
-
-<h1 align="center">
-  <img src="https://raw.githubusercontent.com/wsy992/nexusgear-demo/main/screenshots/homepage.png" alt="NEXUS GEAR" width="100%">
-</h1>
-
 <h1 align="center">NEXUS GEAR</h1>
 <h3 align="center">沉浸式 O2O 电竞潮玩定制平台</h3>
 
@@ -120,17 +112,6 @@ nexusgear-demo/
 2. **内容营销** — KOL/KOC 测评 + UGC 桌搭社区双轮驱动 + 赛博礼盒社交裂变 + 小红书/抖音/微博矩阵
 3. **用户留存** — 积分体系 + DNA 图谱长期绑定 + 会员早鸟价 + Ticker 行情刺激
 4. **ESG 可持续** — 以旧换新闭环 + 年度减碳披露 + Z 世代绿色品牌认同溢价
-
----
-
-## 👥 团队
-
-| 成员 | 角色 | 主要贡献 |
-|------|------|---------|
-| **吴世扬** | 组长 / 前端架构 | 社区设计、AI 推荐 UI、整体框架、HTML Demo 开发、流程图规划、PPT 设计 |
-| 程诺 | AI 工程师 | 五维雷达图算法、5 题问卷、兼容度评分、C2M 数据链路、礼盒动画 |
-| 李天琦 | 产品经理 | 荷兰式拍卖逻辑、10 秒降价机制、稀缺营销策略、前店后仓模式 |
-| 章钧凯 | 运营策划 | AI 残值估算、折抵券体系、ESG 流程、可持续发展规划、O2O 配送链路 |
 
 ---
 
