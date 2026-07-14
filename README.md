@@ -39,8 +39,106 @@ nexusgear-demo/
 
 - **纯原生前端技术栈**：HTML + CSS + JavaScript 实现完整电商前端逻辑，涵盖路由切换、状态管理与交互动画全链路
 - **赛博朋克视觉风格**：深色主题 + 霓虹渐变 + CSS 动画（网格移动 / 粒子爆炸 / 3D 旋转立方体 / 开箱动画）
-- **无框架 SPA 架构**：7 个页面即时切换无白屏刷新，浏览器原生实现类原生 APP 交互体验
+- **SPA 架构**：7 个页面即时切换无白屏刷新，浏览器原生实现类原生 APP 交互体验
 - **原创+AI辅助**：个人独立编写代码，结合 Claude Code 辅助完成架构思路梳理与样式打磨
+
+### 代码亮点
+
+**CSS 设计系统 — 霓虹赛博朋克主题变量**：
+
+```css
+:root {
+  --bg-primary: #070711;      /* 深空底色 */
+  --cyan: #00f5ff;            /* 霓虹青 — 主色调 */
+  --pink: #ff0090;            /* 霓虹粉 — 强调色 */
+  --purple: #7b2fff;          /* 霓虹紫 — 渐变辅色 */
+  --yellow: #ffd700;          /* 金色 — 拍卖价格高亮 */
+  --text-primary: #e8eaf6;    /* 主文字色 — 浅灰白 */
+  --text-secondary: #8892a4;  /* 辅助文字色 */
+  --border: rgba(0,245,255,0.12);  /* 微光边框 */
+  --shadow-cyan: 0 0 24px rgba(0,245,255,0.35); /* 发光阴影 */
+}
+```
+
+**荷兰式拍卖 — 实时倒计时与递减定价**：
+```javascript
+function startAucTimer(item, idx) {
+  const TOTAL = 600; // 10分钟一个拍卖周期
+  let elapsed = idx * 120; // 三个拍品错峰开始，间隔2分钟
+  const decrement = Math.round((item.start - item.floor) / (TOTAL / 10)); // 每10秒降价步长
+
+  aucIntervals[item.id] = setInterval(() => {
+    // 已被抢购则停止倒计时
+    if (aucState[item.id].sold) { clearInterval(aucIntervals[item.id]); return; }
+    elapsed++;
+    const remaining = TOTAL - (elapsed % TOTAL);
+    const mins = String(Math.floor(remaining / 60)).padStart(2, '0');
+    const secs = String(remaining % 60).padStart(2, '0');
+    document.getElementById(`auc-timer-${item.id}`).textContent = `${mins}:${secs}`;
+
+    // 每10秒触发一次降价，不低于底价
+    if (elapsed % 10 === 0) {
+      aucState[item.id].cur = Math.max(item.floor, aucState[item.id].cur - decrement);
+      document.getElementById(`auc-price-${item.id}`).textContent =
+        `¥${aucState[item.id].cur.toLocaleString()}`;
+    }
+  }, 1000); // 每秒刷新
+}
+```
+
+**DNA 五维雷达图 — 纯 SVG 动态生成**：
+```javascript
+function generateRadarSVG(scores, labels) {
+  const cx = 130, cy = 130, r = 90; // 圆心坐标 & 半径
+  const angleStep = (Math.PI * 2) / scores.length; // 五等分圆周
+  // 绘制4层同心网格（25%/50%/75%/100%）
+  const grid = [0.25,0.5,0.75,1].map(frac => {
+    const pts = Array.from({length:scores.length}, (_,i) => {
+      const a = -Math.PI/2 + i * angleStep; // 从正上方开始绘制
+      return `${cx + r*frac*Math.cos(a)},${cy + r*frac*Math.sin(a)}`;
+    }).join(' ');
+    return `<polygon points="${pts}" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;
+  }).join('');
+  // 根据五项得分计算数据多边形顶点坐标
+  const dataPts = Array.from({length:scores.length}, (_,i) => {
+    const a = -Math.PI/2 + i * angleStep;
+    const rv = r * scores[i] / 100;
+    return `${cx + rv*Math.cos(a)},${cy + rv*Math.sin(a)}`;
+  }).join(' ');
+  return `<svg viewBox="0 0 260 260">${grid}
+    <polygon points="${dataPts}" fill="rgba(0,245,255,0.15)" stroke="rgba(0,245,255,0.8)" stroke-width="2"/>
+  </svg>`;
+}
+```
+
+**购物车状态管理 — 实现增删改与实时计价**：
+```javascript
+function pushCart(p) {
+  const ex = cart.find(x => x.id === p.id);
+  ex ? ex.qty++ : cart.push({...p, qty: 1}); // 已存在则累计，否则新增
+  renderCart();
+}
+function renderCart() {
+  const tot = cart.reduce((s, x) => s + x.qty, 0);
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = tot;
+  badge.style.display = tot > 0 ? 'flex' : 'none'; // 角标显隐
+  if (!cart.length) { /* 空状态UI */ return; }
+  // 渲染每件商品（含数量增减按钮与删除）
+  document.getElementById('cartTotal').textContent =
+    '¥' + cart.reduce((s, x) => s + x.price * x.qty, 0).toLocaleString();
+}
+function chgQty(id, d) {
+  const x = cart.find(i => i.id === id);
+  if (!x) return;
+  x.qty += d;
+  if (x.qty <= 0) cart = cart.filter(i => i.id !== id); // 数量归零则移除
+  renderCart();
+}
+```
+
+
+> 完整源码 3,600+ 行见 [`index.html`](https://github.com/wsy992/nexusgear-demo/blob/main/index.html)
 
 ---
 
